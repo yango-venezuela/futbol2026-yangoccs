@@ -470,6 +470,12 @@
   }
   .scorer-input-box input:focus{outline:none;border-color:var(--yango-red)}
 
+  /* RANKING SUB-TABS */
+  .ranking-subtabs{display:flex;gap:8px;margin-bottom:20px}
+  .ranking-subtab{font-family:'Yango Headline',sans-serif;font-size:14px;font-weight:900;text-transform:uppercase;padding:10px 24px;border:3px solid var(--yango-black);background:var(--yango-white);cursor:pointer;letter-spacing:0.04em;transition:background 0.15s}
+  .ranking-subtab:hover{background:var(--yango-gray-soft)}
+  .ranking-subtab.active{background:var(--yango-black);color:var(--yango-white)}
+
   /* RANKING TAB */
   .ranking-table{
     background:var(--yango-white);
@@ -985,11 +991,16 @@
     <div class="tab-content" data-tab="ranking">
       <h2 class="section-title">RANKING <span class="red">GENERAL</span></h2>
       <p class="section-sub">Resultado del último cálculo. Presiona "Calcular Ranking" arriba para actualizar.</p>
-      
+
+      <div class="ranking-subtabs">
+        <button class="ranking-subtab active" id="subtab-usuarios" onclick="switchRankingView('usuarios')">USUARIOS</button>
+        <button class="ranking-subtab" id="subtab-drivers" onclick="switchRankingView('drivers')">DRIVERS</button>
+      </div>
+
       <div class="stats-bar" id="statsBar"></div>
 
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Buscar por código (ej: YNGABC123) o nombre" oninput="filterRanking()">
+        <input type="text" id="searchInput" placeholder="Buscar por código o nombre" oninput="filterRanking()">
         <button onclick="exportCSV()">📥 EXPORTAR CSV</button>
       </div>
 
@@ -1021,6 +1032,7 @@
 // ============================================
 const ADMIN_PASSWORD = 'Yango2026Admin!';
 const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxHSwzDNWdOJ-C6tMIkKFB7iMMqUZ-elRI8V54LkIQgpV-Ykfsc1XaeZyV760ZvwKjT/exec';
+const GOOGLE_SHEETS_URL_DRIVERS = 'PEGA_AQUI_LA_URL_DE_TU_GOOGLE_APPS_SCRIPT_DRIVERS';
 
 // Datos de grupos (mismos del index)
 const GROUPS = {
@@ -1049,7 +1061,9 @@ const adminState = {
   },
   topScorer: '',
   ranking: [],
-  allQuinielas: []
+  allQuinielas: [],
+  rankingDrivers: [],
+  allQuinielasDrivers: []
 };
 
 // ============================================
@@ -1576,8 +1590,10 @@ function updateAllStatuses(){
   document.getElementById('status-goleador').textContent = adminState.topScorer ? '✓' : '-';
   document.querySelector('[data-tab="goleador"]').classList.toggle('complete', !!adminState.topScorer);
   
-  // Ranking
-  document.getElementById('status-ranking').textContent = adminState.ranking.length;
+  // Ranking (U = usuarios, D = drivers)
+  const dCount = adminState.rankingDrivers.length;
+  document.getElementById('status-ranking').textContent =
+    adminState.ranking.length + (dCount > 0 ? '+'+dCount+'D' : '');
 }
 
 // ============================================
@@ -1611,7 +1627,20 @@ async function loadSavedData(){
       adminState.ranking = data.ranking;
       renderRanking();
     }
-    
+
+    // Cargar ranking de drivers si el URL está configurado
+    if(GOOGLE_SHEETS_URL_DRIVERS && GOOGLE_SHEETS_URL_DRIVERS.indexOf('PEGA_AQUI') === -1){
+      try{
+        const rd = await fetch(GOOGLE_SHEETS_URL_DRIVERS + '?action=get_ranking');
+        if(rd.ok){
+          const dd = await rd.json();
+          if(dd.ranking && dd.ranking.length > 0){
+            adminState.rankingDrivers = dd.ranking;
+          }
+        }
+      }catch(e){ /* drivers ranking no disponible aún */ }
+    }
+
     // Recalcular standings de todos los grupos al cargar
     Object.keys(GROUPS).forEach(g => calculateGroupStandings(g));
   }catch(e){
@@ -1638,65 +1667,86 @@ async function sendToSheets(payload){
   }
 }
 
+async function sendToSheetsDrivers(payload){
+  if(!GOOGLE_SHEETS_URL_DRIVERS || GOOGLE_SHEETS_URL_DRIVERS.indexOf('PEGA_AQUI') !== -1) return false;
+  try{
+    await fetch(GOOGLE_SHEETS_URL_DRIVERS, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: JSON.stringify(payload)
+    });
+    return true;
+  }catch(e){
+    console.error('Error enviando a Sheets Drivers:', e);
+    return false;
+  }
+}
+
 // ============================================
 // CÁLCULO DE RANKING
 // ============================================
+function buildRankingFromQuinielas(quinielas){
+  return quinielas.map(q => {
+    try{
+      const datos = JSON.parse(q.json);
+      const puntos = calcularPuntosQuiniela(datos);
+      return {
+        code: q.code,
+        nombre: datos.user.name,
+        email: datos.user.email,
+        telefono: datos.user.phone,
+        campeon: (datos.predictions && datos.predictions.champion) ? datos.predictions.champion.name : '',
+        goleador: datos.predictions.topScorer || '',
+        puntos: puntos,
+        datos: datos
+      };
+    }catch(e){ return null; }
+  }).filter(x => x !== null).sort((a, b) => b.puntos - a.puntos);
+}
+
+async function fetchQuinielas(url){
+  const r = await fetch(url + '?action=get_quinielas');
+  if(!r.ok) throw new Error('No se pudo cargar quinielas de ' + url);
+  const result = await r.json();
+  return result.quinielas || [];
+}
+
 async function calculateRanking(){
   const btn = document.getElementById('calcBtn');
   btn.disabled = true;
   btn.textContent = '⏳ CALCULANDO...';
   showToast('Cargando quinielas...');
-  
+
   try{
-    // Cargar todas las quinielas frescas del Sheet
-    const r = await fetch(GOOGLE_SHEETS_URL + '?action=get_quinielas');
-    if(!r.ok) throw new Error('No se pudo cargar quinielas');
-    const result = await r.json();
-    adminState.allQuinielas = result.quinielas || [];
-    
-    if(adminState.allQuinielas.length === 0){
-      showToast('No hay quinielas para calcular', 'error');
-      btn.disabled = false;
-      btn.textContent = '🏆 CALCULAR RANKING';
-      return;
-    }
-    
-    // Calcular puntos para cada quiniela
-    const ranking = adminState.allQuinielas.map(q => {
-      try {
-        const datos = JSON.parse(q.json);
-        const puntos = calcularPuntosQuiniela(datos);
-        return {
-          code: q.code,
-          nombre: datos.user.name,
-          email: datos.user.email,
-          telefono: datos.user.phone,
-          campeon: (datos.predictions && datos.predictions.champion) ? datos.predictions.champion.name : '',
-          goleador: datos.predictions.topScorer || '',
-          puntos: puntos,
-          datos: datos
-        };
-      } catch(e) {
-        return null;
-      }
-    }).filter(x => x !== null);
-    
-    // Ordenar
-    ranking.sort((a, b) => b.puntos - a.puntos);
-    
-    adminState.ranking = ranking;
-    
-    // Guardar ranking en el Sheet (para que la página pública lo lea)
-    await sendToSheets({action:'save_ranking', ranking: ranking.map(r => ({
+    // ── Usuarios ──
+    adminState.allQuinielas = await fetchQuinielas(GOOGLE_SHEETS_URL);
+    const rankingUsuarios = buildRankingFromQuinielas(adminState.allQuinielas);
+    adminState.ranking = rankingUsuarios;
+    await sendToSheets({action:'save_ranking', ranking: rankingUsuarios.map(r => ({
       code: r.code, nombre: r.nombre, email: r.email, telefono: r.telefono,
       campeon: r.campeon, goleador: r.goleador, puntos: r.puntos
     }))});
-    
+
+    // ── Drivers ──
+    let driversMsg = '';
+    if(GOOGLE_SHEETS_URL_DRIVERS && GOOGLE_SHEETS_URL_DRIVERS.indexOf('PEGA_AQUI') === -1){
+      adminState.allQuinielasDrivers = await fetchQuinielas(GOOGLE_SHEETS_URL_DRIVERS);
+      const rankingDrivers = buildRankingFromQuinielas(adminState.allQuinielasDrivers);
+      adminState.rankingDrivers = rankingDrivers;
+      await sendToSheetsDrivers({action:'save_ranking', ranking: rankingDrivers.map(r => ({
+        code: r.code, nombre: r.nombre, email: r.email, telefono: r.telefono,
+        campeon: r.campeon, goleador: r.goleador, puntos: r.puntos
+      }))});
+      driversMsg = ' · Drivers: '+rankingDrivers.length;
+    } else {
+      driversMsg = ' · (Drivers URL no configurada)';
+    }
+
     renderRanking();
     updateAllStatuses();
     showTab('ranking');
-    
-    showToast('✓ Ranking calculado: '+ranking.length+' participantes', 'success');
+    showToast('✓ Usuarios: '+rankingUsuarios.length+driversMsg, 'success');
   }catch(e){
     console.error(e);
     showToast('Error: '+e.message, 'error');
@@ -1830,9 +1880,20 @@ function calcularPuntosQuiniela(datos){
 // RENDER RANKING
 // ============================================
 let currentFilter = '';
+let currentRankingView = 'usuarios';
+
+function switchRankingView(view){
+  currentRankingView = view;
+  document.getElementById('subtab-usuarios').classList.toggle('active', view === 'usuarios');
+  document.getElementById('subtab-drivers').classList.toggle('active', view === 'drivers');
+  currentFilter = '';
+  document.getElementById('searchInput').value = '';
+  renderRanking();
+}
+
 function renderRanking(){
   const body = document.getElementById('rankingBody');
-  let ranking = adminState.ranking;
+  let ranking = currentRankingView === 'drivers' ? adminState.rankingDrivers : adminState.ranking;
   
   if (currentFilter){
     const f = currentFilter.toLowerCase();
@@ -1861,14 +1922,15 @@ function renderRanking(){
   }
   body.innerHTML = html;
   
-  // Stats
+  // Stats (basadas en la vista activa, sin filtro)
   const stats = document.getElementById('statsBar');
   if (stats){
-    const total = adminState.ranking.length;
-    const conPuntos = adminState.ranking.filter(r => r.puntos > 0).length;
-    const maxPts = adminState.ranking[0] ? adminState.ranking[0].puntos : 0;
-    const promedio = total > 0 ? Math.round(adminState.ranking.reduce((s, r) => s + r.puntos, 0) / total) : 0;
-    stats.innerHTML = 
+    const fullRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : adminState.ranking;
+    const total = fullRanking.length;
+    const conPuntos = fullRanking.filter(r => r.puntos > 0).length;
+    const maxPts = fullRanking[0] ? fullRanking[0].puntos : 0;
+    const promedio = total > 0 ? Math.round(fullRanking.reduce((s, r) => s + r.puntos, 0) / total) : 0;
+    stats.innerHTML =
       '<div class="stat-card"><div class="num">'+total+'</div><div class="lbl">Participantes</div></div>'+
       '<div class="stat-card"><div class="num">'+conPuntos+'</div><div class="lbl">Con puntos</div></div>'+
       '<div class="stat-card"><div class="num">'+maxPts+'</div><div class="lbl">Pts máximos</div></div>'+
@@ -1885,7 +1947,8 @@ function filterRanking(){
 // DETAIL MODAL
 // ============================================
 function viewDetail(code){
-  const p = adminState.ranking.find(r => r.code === code);
+  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : adminState.ranking;
+  const p = activeRanking.find(r => r.code === code);
   if (!p) return;
   const d = p.datos;
   
@@ -1958,12 +2021,14 @@ document.addEventListener('click', e => {
 // EXPORT CSV
 // ============================================
 function exportCSV(){
-  if (adminState.ranking.length === 0){
+  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : adminState.ranking;
+  if (activeRanking.length === 0){
     showToast('No hay datos para exportar', 'error');
     return;
   }
+  const label = currentRankingView === 'drivers' ? 'drivers' : 'usuarios';
   let csv = 'Posicion,Codigo,Nombre,Email,Telefono,Campeon,Goleador,Puntos\n';
-  adminState.ranking.forEach((p, i) => {
+  activeRanking.forEach((p, i) => {
     csv += (i+1)+',';
     csv += '"'+(p.code||'')+'",';
     csv += '"'+(p.nombre||'').replace(/"/g,'""')+'",';
@@ -1977,7 +2042,7 @@ function exportCSV(){
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'ranking_yango_'+new Date().toISOString().split('T')[0]+'.csv';
+  a.download = 'ranking_'+label+'_'+new Date().toISOString().split('T')[0]+'.csv';
   a.click();
   showToast('✓ CSV descargado', 'success');
 }
