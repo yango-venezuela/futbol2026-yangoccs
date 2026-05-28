@@ -1673,7 +1673,7 @@ function renderR32(){
         const team = GROUPS[assignedThird.group][assignedThird.teamIdx];
         teamB = {flag:team.flag, name:team.name, label:`3${assignedThird.group}`};
       } else {
-        teamB = {flag:'❓', name:'TBD', label:'3?'};
+        teamB = {flag:'⚽', name:'MEJOR 3RO', label:'3°'};
       }
     }
     if(!state.predictions.r32[match.id]) state.predictions.r32[match.id] = {teamA, teamB};
