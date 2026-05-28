@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADMIN | TEMPORADA FÚTBOL YANGO 2026</title>
+<title>TEMPORADA FÚTBOL YANGO PRO 2026</title>
 <style>
   @font-face{
     font-family:'Yango Headline';
@@ -28,16 +28,15 @@
     --yango-white:#FFFFFF;
     --yango-yellow:#FFE44D;
     --yango-gray-soft:#F4F4F4;
-    --yango-success:#22C55E;
-    --yango-warning:#F59E0B;
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{overflow-x:hidden}
   body{
     font-family:'Yango Text',-apple-system,BlinkMacSystemFont,sans-serif;
-    background:var(--yango-gray-soft);
+    background:var(--yango-white);
     color:var(--yango-black);
     min-height:100vh;
+    -webkit-font-smoothing:antialiased;
     font-weight:400;
   }
   h1,h2,h3,.headline{
@@ -45,210 +44,281 @@
     font-weight:normal;
   }
 
-  /* LOGIN SCREEN */
-  .login-screen{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  /* HERO */
+  .hero{
     background:var(--yango-red);
-    padding:20px;
-  }
-  .login-box{
-    background:var(--yango-white);
-    border:4px solid var(--yango-black);
-    box-shadow:10px 10px 0 var(--yango-yellow);
-    padding:40px 32px;
-    max-width:420px;
-    width:100%;
+    color:var(--yango-white);
+    padding:48px 20px 64px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:6px solid var(--yango-black);
     text-align:center;
   }
-  .login-box h1{
+  .hero::before{
+    content:"YANGO YANGO YANGO YANGO YANGO";
+    position:absolute;
+    top:50%; left:-10%;
+    transform:translateY(-50%) rotate(-4deg);
     font-family:'Yango Headline',sans-serif;
-    font-size:36px;
-    text-transform:uppercase;
-    line-height:0.95;
-    margin-bottom:8px;
+    font-size:clamp(80px,18vw,200px);
+    color:rgba(0,0,0,0.08);
+    white-space:nowrap;
+    letter-spacing:-0.04em;
+    pointer-events:none;
+    z-index:0;
   }
-  .login-box h1 .red{color:var(--yango-red)}
-  .login-box p{
-    font-size:13px;
-    color:#666;
-    margin-bottom:24px;
-    text-transform:uppercase;
-    font-weight:800;
-    letter-spacing:0.04em;
+  .hero-content{position:relative;z-index:1;max-width:1100px;margin:0 auto}
+  .hero-logo{
+    display:block;
+    height:240px;
+    width:auto;
+    max-width:90%;
+    margin:0 auto 32px;
+    filter:brightness(0) invert(1);
   }
-  .login-box input{
-    width:100%;
-    padding:14px 16px;
-    border:3px solid var(--yango-black);
+  .hero h1{
+    font-family:'Yango Headline',sans-serif;
+    font-size:clamp(48px,11vw,104px);
+    line-height:0.92;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .hero h1 .yellow{color:var(--yango-yellow)}
+  .hero h1 .stroke{
+    -webkit-text-stroke:2px var(--yango-white);
+    color:transparent;
+  }
+  .hero-sub{
     font-family:'Yango Text',sans-serif;
-    font-size:16px;
-    margin-bottom:16px;
-  }
-  .login-box input:focus{outline:none;border-color:var(--yango-red);box-shadow:4px 4px 0 var(--yango-red)}
-  .login-box button{
-    width:100%;
-    background:var(--yango-black);
-    color:var(--yango-white);
-    border:none;
-    padding:16px;
-    font-family:'Yango Headline',sans-serif;
-    font-size:18px;
-    text-transform:uppercase;
-    cursor:pointer;
-    transition:transform 0.15s;
-  }
-  .login-box button:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--yango-red)}
-  .login-error{
-    color:var(--yango-red);
-    font-size:12px;
     font-weight:800;
-    text-transform:uppercase;
-    margin-top:12px;
-    display:none;
+    font-size:clamp(16px,3vw,20px);
+    margin:0 auto 32px;
+    max-width:600px;
+    line-height:1.4;
   }
-  .login-error.show{display:block}
-
-  /* ADMIN HEADER */
-  .admin-header{
+  .prizes{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:36px;
+    justify-content:center;
+  }
+  .prize{
     background:var(--yango-black);
     color:var(--yango-white);
     padding:16px 20px;
-    border-bottom:4px solid var(--yango-red);
-    position:sticky;
-    top:0;
-    z-index:100;
+    border:3px solid var(--yango-white);
+    flex:1;
+    min-width:140px;
+    max-width:240px;
   }
-  .admin-header-inner{
-    max-width:1200px;
-    margin:0 auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:12px;
-  }
-  .admin-header h1{
+  .prize-pos{
     font-family:'Yango Headline',sans-serif;
-    font-size:22px;
-    text-transform:uppercase;
+    font-size:18px;
+    color:var(--yango-yellow);
     line-height:1;
+    text-transform:uppercase;
+    margin-bottom:8px;
   }
-  .admin-header h1 .yellow{color:var(--yango-yellow)}
-  .admin-header .admin-badge{
-    background:var(--yango-red);
+  .prize-amount{
+    font-family:'Yango Headline',sans-serif;
+    font-size:32px;
     color:var(--yango-white);
-    padding:4px 10px;
+    line-height:1;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .prize-text{
     font-family:'Yango Text',sans-serif;
     font-weight:800;
     font-size:11px;
+    letter-spacing:0.04em;
     text-transform:uppercase;
-    letter-spacing:0.06em;
-    margin-left:8px;
+    color:var(--yango-yellow);
   }
-  .calc-ranking-btn{
-    background:var(--yango-yellow);
-    color:var(--yango-black);
-    border:none;
-    padding:12px 20px;
-    font-family:'Yango Headline',sans-serif;
-    font-size:16px;
-    text-transform:uppercase;
-    cursor:pointer;
-    transition:transform 0.15s;
-    border:2px solid var(--yango-black);
-  }
-  .calc-ranking-btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--yango-red)}
-  .calc-ranking-btn:disabled{opacity:0.5;cursor:wait}
-
-  /* TABS */
-  .tabs-container{
-    background:var(--yango-white);
-    border-bottom:2px solid var(--yango-black);
-    position:sticky;
-    top:60px;
-    z-index:90;
-  }
-  .tabs{
-    max-width:1200px;
-    margin:0 auto;
-    display:flex;
-    overflow-x:auto;
-    gap:0;
-  }
-  .tab{
-    flex:1;
-    min-width:120px;
-    background:var(--yango-white);
-    border:none;
-    border-right:1px solid #ddd;
-    padding:14px 12px;
-    font-family:'Yango Headline',sans-serif;
-    font-size:14px;
-    text-transform:uppercase;
-    cursor:pointer;
-    transition:all 0.15s;
-    text-align:center;
-  }
-  .tab:hover{background:var(--yango-gray-soft)}
-  .tab.active{
-    background:var(--yango-red);
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .btn-primary{
+    background:var(--yango-black);
     color:var(--yango-white);
+    border:none;
+    padding:20px 40px;
+    font-family:'Yango Headline',sans-serif;
+    font-size:22px;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    cursor:pointer;
+    transition:transform 0.15s ease;
   }
-  .tab .tab-status{
-    display:block;
-    font-family:'Yango Text',sans-serif;
-    font-weight:800;
-    font-size:10px;
-    margin-top:2px;
-    opacity:0.7;
+  .btn-primary:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--yango-yellow)}
+  .btn-secondary{
+    background:transparent;
+    color:var(--yango-white);
+    border:3px solid var(--yango-white);
+    padding:15px 28px;
+    font-family:'Yango Headline',sans-serif;
+    font-size:18px;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    cursor:pointer;
   }
-  .tab.complete{background:var(--yango-success);color:var(--yango-white)}
-  .tab.complete .tab-status{opacity:0.9}
+  .btn-secondary:hover{background:var(--yango-white);color:var(--yango-red)}
 
-  /* CONTENT */
-  .content{
-    max-width:1200px;
-    margin:0 auto;
-    padding:24px 20px;
+  .ticker{
+    background:var(--yango-black);
+    color:var(--yango-white);
+    padding:14px 0;
+    overflow:hidden;
+    border-bottom:4px solid var(--yango-yellow);
   }
-  .tab-content{display:none}
-  .tab-content.active{display:block}
+  .ticker-track{
+    display:flex;
+    gap:48px;
+    white-space:nowrap;
+    animation:scroll 30s linear infinite;
+    font-family:'Yango Headline',sans-serif;
+    font-size:22px;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+  }
+  .ticker-track span{display:inline-flex;align-items:center;gap:48px}
+  .ticker-track i{color:var(--yango-yellow);font-style:normal}
+  @keyframes scroll{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(-50%)}
+  }
+
+  .section{padding:48px 20px;max-width:1100px;margin:0 auto}
   .section-title{
     font-family:'Yango Headline',sans-serif;
-    font-size:32px;
+    font-size:clamp(36px,7vw,60px);
     text-transform:uppercase;
-    line-height:1;
+    letter-spacing:-0.02em;
+    line-height:0.95;
     margin-bottom:8px;
   }
   .section-title .red{color:var(--yango-red)}
   .section-sub{
     font-family:'Yango Text',sans-serif;
     font-weight:800;
-    font-size:13px;
+    font-size:14px;
     color:#666;
-    margin-bottom:24px;
+    margin-bottom:32px;
     text-transform:uppercase;
     letter-spacing:0.04em;
   }
 
-  .save-btn{
-    background:var(--yango-success);
-    color:var(--yango-white);
-    border:none;
-    padding:14px 28px;
-    font-family:'Yango Headline',sans-serif;
-    font-size:16px;
-    text-transform:uppercase;
-    cursor:pointer;
-    transition:transform 0.15s;
+  .how-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:16px;
   }
-  .save-btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--yango-black)}
-  .save-btn:disabled{opacity:0.5;cursor:wait;background:#999}
+  .how-card{
+    background:var(--yango-white);
+    border:3px solid var(--yango-black);
+    padding:24px;
+    box-shadow:6px 6px 0 var(--yango-black);
+  }
+  .how-num{
+    font-family:'Yango Headline',sans-serif;
+    font-size:56px;
+    color:var(--yango-red);
+    line-height:1;
+  }
+  .how-card h3{font-size:24px;margin:8px 0;text-transform:uppercase}
+  .how-card p{font-size:14px}
 
-  /* GROUPS TAB - mismo estilo que la quiniela del usuario */
+  .rules-box{
+    background:var(--yango-gray-soft);
+    border:3px solid var(--yango-black);
+    padding:20px;
+    margin-top:32px;
+  }
+  .rules-box h3{
+    font-family:'Yango Headline',sans-serif;
+    font-size:24px;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .rules-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+  }
+  .rule-block h4{
+    font-family:'Yango Text',sans-serif;
+    font-weight:800;
+    font-size:13px;
+    text-transform:uppercase;
+    color:var(--yango-red);
+    margin-bottom:8px;
+    letter-spacing:0.04em;
+  }
+  .rule-block ul{list-style:none;font-size:13px;line-height:1.5}
+  .rule-block ul li{padding:2px 0}
+  .rule-block ul li b{font-weight:800;color:var(--yango-black)}
+
+  .steps{
+    display:flex;
+    gap:6px;
+    margin-bottom:32px;
+    overflow-x:auto;
+    padding-bottom:8px;
+  }
+  .step{
+    flex:1;
+    min-width:70px;
+    background:var(--yango-gray-soft);
+    padding:12px 6px;
+    text-align:center;
+    border:2px solid transparent;
+    transition:all 0.2s;
+  }
+  .step.active{background:var(--yango-red);color:var(--yango-white);border-color:var(--yango-black)}
+  .step.completed{background:var(--yango-black);color:var(--yango-yellow)}
+  .step-num{font-family:'Yango Headline',sans-serif;font-size:18px;line-height:1}
+  .step-label{
+    font-family:'Yango Text',sans-serif;
+    font-weight:800;
+    font-size:10px;
+    margin-top:4px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+
+  .card{
+    background:var(--yango-white);
+    border:3px solid var(--yango-black);
+    padding:24px;
+    margin-bottom:24px;
+    box-shadow:8px 8px 0 var(--yango-red);
+  }
+  .form-group{margin-bottom:18px}
+  .form-group label{
+    display:block;
+    font-family:'Yango Text',sans-serif;
+    font-weight:800;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-bottom:8px;
+  }
+  .form-group input{
+    width:100%;
+    padding:14px 16px;
+    border:2px solid var(--yango-black);
+    font-family:'Yango Text',sans-serif;
+    font-size:16px;
+    font-weight:400;
+    background:var(--yango-white);
+  }
+  .form-group input:focus{
+    outline:none;
+    border-color:var(--yango-red);
+    box-shadow:4px 4px 0 var(--yango-red);
+  }
+
+  /* GROUP STAGE */
   .group-card{
     background:var(--yango-white);
     border:3px solid var(--yango-black);
@@ -259,13 +329,13 @@
     color:var(--yango-white);
     padding:14px 18px;
     font-family:'Yango Headline',sans-serif;
-    font-size:22px;
+    font-size:24px;
     text-transform:uppercase;
     display:flex;
     justify-content:space-between;
     align-items:center;
   }
-  .group-status-badge{
+  .group-header .group-status{
     background:var(--yango-yellow);
     color:var(--yango-black);
     padding:3px 8px;
@@ -274,7 +344,7 @@
     font-weight:800;
     letter-spacing:0.04em;
   }
-  .group-status-badge.complete{background:var(--yango-success);color:var(--yango-white)}
+  .group-header .group-status.complete{background:#4ADE80}
   .group-teams{padding:8px}
   .group-team{
     display:flex;
@@ -291,7 +361,7 @@
   .group-team:hover{background:#e8e8e8}
   .group-team .team-flag{font-size:24px}
   .group-team .team-name{flex:1;font-weight:800;text-transform:uppercase;font-size:14px}
-  .position-badge{
+  .group-team .position-badge{
     width:38px;
     height:38px;
     border-radius:50%;
@@ -301,7 +371,7 @@
     align-items:center;
     justify-content:center;
     font-family:'Yango Headline',sans-serif;
-    font-size:16px;
+    font-size:18px;
     flex-shrink:0;
   }
   .group-team[data-pos="1"]{background:var(--yango-yellow);border-color:var(--yango-black)}
@@ -322,7 +392,7 @@
     border-top:1px solid #eee;
   }
 
-  /* THIRDS */
+  /* THIRDS SELECTION */
   .thirds-counter{
     background:var(--yango-yellow);
     color:var(--yango-black);
@@ -330,7 +400,7 @@
     border:3px solid var(--yango-black);
     margin-bottom:20px;
     font-family:'Yango Headline',sans-serif;
-    font-size:20px;
+    font-size:22px;
     text-transform:uppercase;
     text-align:center;
   }
@@ -341,7 +411,7 @@
     margin-bottom:20px;
   }
   .third-card{
-    background:var(--yango-white);
+    background:var(--yango-gray-soft);
     border:3px solid var(--yango-black);
     padding:14px;
     cursor:pointer;
@@ -366,232 +436,160 @@
   }
   .third-card.selected .third-group{color:#FFD6CC}
 
-  /* BRACKET / MATCH CARDS */
-  .round-section{
-    margin-bottom:32px;
-  }
-  .round-title{
-    font-family:'Yango Headline',sans-serif;
-    font-size:24px;
-    text-transform:uppercase;
-    margin-bottom:14px;
-    padding:8px 14px;
-    background:var(--yango-black);
-    color:var(--yango-white);
-    display:inline-block;
-  }
-  .match-row-admin{
+  /* MATCH CARD */
+  .match-card{
     background:var(--yango-white);
-    border:2px solid var(--yango-black);
-    padding:14px;
+    border:3px solid var(--yango-black);
+    margin-bottom:14px;
+    padding:14px 16px;
+  }
+  .match-header{
+    font-family:'Yango Text',sans-serif;
+    font-weight:800;
+    font-size:11px;
+    text-transform:uppercase;
+    color:#999;
     margin-bottom:10px;
+    letter-spacing:0.06em;
+  }
+  .match-row{
     display:grid;
-    grid-template-columns:30px 1fr 80px 80px 1fr 80px;
+    grid-template-columns:1fr auto 1fr;
     gap:10px;
     align-items:center;
   }
-  .match-num{
-    font-family:'Yango Headline',sans-serif;
-    font-size:14px;
-    color:#999;
+  .team-block{
+    cursor:pointer;
+    padding:12px;
+    border:2px solid transparent;
+    transition:all 0.15s;
+    user-select:none;
   }
-  .match-row-admin select{
-    width:100%;
-    padding:10px;
-    border:2px solid var(--yango-black);
-    font-family:'Yango Text',sans-serif;
-    font-size:13px;
+  .team-block:hover{background:var(--yango-gray-soft)}
+  .team-block.winner{
+    background:var(--yango-red);
+    color:var(--yango-white);
+    border-color:var(--yango-black);
+  }
+  .team-block.right{text-align:right}
+  .team-name{
     font-weight:800;
-    background:var(--yango-white);
+    font-size:14px;
+    line-height:1.2;
     text-transform:uppercase;
   }
-  .match-row-admin input[type="number"]{
-    width:100%;
-    padding:10px;
-    border:2px solid var(--yango-black);
+  .team-flag{font-size:22px;display:block;margin-bottom:4px}
+  .team-block.right .team-flag{text-align:right}
+  .vs-text-only{
     font-family:'Yango Headline',sans-serif;
     font-size:18px;
+    color:#999;
     text-align:center;
+  }
+  .score-block{
+    display:flex;
+    gap:6px;
+    align-items:center;
+    justify-content:center;
+  }
+  .score-input{
+    width:46px;
+    height:46px;
+    text-align:center;
+    border:2px solid var(--yango-black);
+    font-family:'Yango Headline',sans-serif;
+    font-size:24px;
     background:var(--yango-white);
   }
-  .match-row-admin input[type="number"]:focus,
-  .match-row-admin select:focus{
+  .score-input:focus{
     outline:none;
+    background:var(--yango-yellow);
     border-color:var(--yango-red);
   }
-  .penalty-select{
-    grid-column:1 / -1;
-    background:var(--yango-yellow);
-    border:2px dashed var(--yango-black);
-    padding:10px;
-    margin-top:8px;
-    display:none;
-  }
-  .penalty-select.show{display:block}
-  .penalty-select label{
+  .vs-text{font-family:'Yango Headline',sans-serif;font-size:14px;color:#999}
+  .winner-hint{
     font-family:'Yango Text',sans-serif;
     font-weight:800;
     font-size:11px;
-    text-transform:uppercase;
-    display:block;
-    margin-bottom:6px;
-  }
-  .penalty-select select{
-    width:100%;
-    padding:8px;
-    border:2px solid var(--yango-black);
-    background:var(--yango-white);
-    font-weight:800;
-  }
-
-  /* GOLEADOR */
-  .scorer-input-box{
-    background:var(--yango-white);
-    border:3px solid var(--yango-black);
-    padding:24px;
-    box-shadow:6px 6px 0 var(--yango-red);
-    max-width:600px;
-  }
-  .scorer-input-box label{
-    display:block;
-    font-family:'Yango Text',sans-serif;
-    font-weight:800;
-    font-size:13px;
-    text-transform:uppercase;
-    margin-bottom:8px;
-  }
-  .scorer-input-box input{
-    width:100%;
-    padding:14px 16px;
-    border:2px solid var(--yango-black);
-    font-family:'Yango Text',sans-serif;
-    font-size:16px;
-    margin-bottom:16px;
-  }
-  .scorer-input-box input:focus{outline:none;border-color:var(--yango-red)}
-
-  /* RANKING SUB-TABS */
-  .ranking-subtabs{display:flex;gap:8px;margin-bottom:20px}
-  .ranking-subtab{font-family:'Yango Headline',sans-serif;font-size:14px;font-weight:900;text-transform:uppercase;padding:10px 24px;border:3px solid var(--yango-black);background:var(--yango-white);cursor:pointer;letter-spacing:0.04em;transition:background 0.15s}
-  .ranking-subtab:hover{background:var(--yango-gray-soft)}
-  .ranking-subtab.active{background:var(--yango-black);color:var(--yango-white)}
-
-  /* RANKING TAB */
-  .ranking-table{
-    background:var(--yango-white);
-    border:3px solid var(--yango-black);
-    overflow:hidden;
-  }
-  .ranking-row{
-    display:grid;
-    grid-template-columns:60px 1fr 1fr 1fr 100px 80px;
-    gap:12px;
-    padding:12px 16px;
-    border-bottom:1px solid #eee;
-    align-items:center;
-    font-family:'Yango Text',sans-serif;
-    font-size:13px;
-  }
-  .ranking-row.header{
-    background:var(--yango-black);
-    color:var(--yango-white);
-    font-family:'Yango Headline',sans-serif;
-    font-size:12px;
+    color:#999;
+    margin-top:8px;
+    text-align:center;
     text-transform:uppercase;
     letter-spacing:0.04em;
   }
-  .ranking-row .pos{
-    font-family:'Yango Headline',sans-serif;
-    font-size:20px;
-    color:var(--yango-red);
+  .winner-hint.set{color:var(--yango-red)}
+
+  /* CHAMPION */
+  .champion-card{
+    background:linear-gradient(135deg,var(--yango-red) 0%,var(--yango-red-deep) 100%);
+    color:var(--yango-white);
+    padding:32px 24px;
+    text-align:center;
+    border:4px solid var(--yango-black);
+    box-shadow:10px 10px 0 var(--yango-yellow);
+    margin-bottom:24px;
   }
-  .ranking-row.gold .pos{color:#FFD700}
-  .ranking-row.silver .pos{color:#C0C0C0}
-  .ranking-row.bronze .pos{color:#CD7F32}
-  .ranking-row .pts{
+  .champion-card h3{
     font-family:'Yango Headline',sans-serif;
-    font-size:18px;
-    text-align:right;
-    color:var(--yango-red);
+    font-size:32px;
+    margin-bottom:12px;
+    text-transform:uppercase;
   }
-  .ranking-row .view-btn{
+  .champion-display{
+    font-family:'Yango Headline',sans-serif;
+    font-size:42px;
+    margin:16px 0;
+    text-transform:uppercase;
+  }
+  .champion-display .empty{opacity:0.5;font-size:22px}
+
+  /* LEADERBOARD */
+  .leaderboard{
     background:var(--yango-black);
     color:var(--yango-white);
-    border:none;
-    padding:6px 10px;
+    padding:32px 20px;
+    margin-top:32px;
+    min-height:80vh;
+  }
+  .lb-row{
+    display:grid;
+    grid-template-columns:60px 1fr 80px;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px solid #333;
+    align-items:center;
+  }
+  .lb-pos{
+    font-family:'Yango Headline',sans-serif;
+    font-size:28px;
+    color:var(--yango-yellow);
+  }
+  .lb-pos.gold{color:#FFD700}
+  .lb-pos.silver{color:#C0C0C0}
+  .lb-pos.bronze{color:#CD7F32}
+  .lb-name{font-weight:800;text-transform:uppercase;font-size:14px}
+  .lb-score{
+    font-family:'Yango Headline',sans-serif;
+    font-size:20px;
+    text-align:right;
+    color:var(--yango-yellow);
+  }
+
+  footer{
+    background:var(--yango-black);
+    color:var(--yango-white);
+    padding:32px 20px;
+    text-align:center;
+  }
+  footer .logo-foot{height:32px;width:auto;margin-bottom:12px;filter:brightness(0) invert(1)}
+  footer p{
     font-family:'Yango Text',sans-serif;
     font-weight:800;
-    font-size:11px;
-    text-transform:uppercase;
-    cursor:pointer;
-  }
-  .ranking-row .view-btn:hover{background:var(--yango-red)}
-
-  /* MODAL - quiniela detail */
-  .modal{
-    display:none;
-    position:fixed;
-    top:0;left:0;right:0;bottom:0;
-    background:rgba(0,0,0,0.85);
-    z-index:9999;
-    overflow-y:auto;
-    padding:20px;
-  }
-  .modal.active{display:block}
-  .modal-content{
-    background:white;
-    max-width:900px;
-    margin:20px auto;
-    padding:28px;
-    border:4px solid var(--yango-black);
-    box-shadow:8px 8px 0 var(--yango-red);
-  }
-  .modal-content h2{
-    font-family:'Yango Headline',sans-serif;
-    font-size:24px;
-    text-transform:uppercase;
-    margin-bottom:8px;
-  }
-  .modal-content h3{
-    font-family:'Yango Headline',sans-serif;
-    font-size:16px;
-    text-transform:uppercase;
-    color:var(--yango-red);
-    margin:20px 0 8px;
-  }
-  .modal-content .meta{
     font-size:13px;
-    color:#666;
-    margin-bottom:16px;
-  }
-  .modal-close{
-    background:var(--yango-black);
-    color:white;
-    border:none;
-    padding:12px 24px;
-    font-family:'Yango Headline',sans-serif;
-    font-size:14px;
+    letter-spacing:0.04em;
     text-transform:uppercase;
-    cursor:pointer;
-    width:100%;
-    margin-top:16px;
   }
-  .modal-close:hover{background:var(--yango-red)}
-  .detail-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:8px;
-  }
-  .detail-item{
-    background:var(--yango-gray-soft);
-    padding:8px 10px;
-    font-size:11px;
-    border-left:3px solid var(--yango-red);
-  }
-  .detail-item .lbl{font-weight:800;text-transform:uppercase;color:#666;display:block;font-size:10px;letter-spacing:0.04em}
-  .detail-item .val{font-weight:800;font-size:13px}
 
-  /* TOAST */
   .toast{
     position:fixed;
     bottom:24px;
@@ -601,7 +599,7 @@
     color:var(--yango-yellow);
     padding:16px 24px;
     font-family:'Yango Headline',sans-serif;
-    font-size:14px;
+    font-size:16px;
     border:3px solid var(--yango-yellow);
     z-index:1000;
     transition:transform 0.3s;
@@ -610,431 +608,760 @@
     text-transform:uppercase;
   }
   .toast.show{transform:translateX(-50%) translateY(0)}
-  .toast.success{background:var(--yango-success);color:white;border-color:white}
-  .toast.error{background:var(--yango-red);color:white;border-color:white}
 
-  /* STATS BAR */
-  .stats-bar{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:12px;
-    margin-bottom:24px;
-  }
-  .stat-card{
-    background:var(--yango-white);
-    border:2px solid var(--yango-black);
-    padding:16px;
-  }
-  .stat-card .num{
+  .success{text-align:center;padding:48px 24px}
+  .success-emoji{font-size:80px;margin-bottom:16px}
+  .success h2{
     font-family:'Yango Headline',sans-serif;
-    font-size:32px;
-    color:var(--yango-red);
-    line-height:1;
-  }
-  .stat-card .lbl{
-    font-family:'Yango Text',sans-serif;
-    font-weight:800;
-    font-size:11px;
-    color:#666;
+    font-size:48px;
     text-transform:uppercase;
-    margin-top:4px;
+    margin-bottom:12px;
+    line-height:0.95;
+  }
+  .success .code{
+    background:var(--yango-yellow);
+    border:3px solid var(--yango-black);
+    padding:12px 20px;
+    display:inline-block;
+    font-family:'Yango Headline',sans-serif;
+    font-size:26px;
+    margin:16px 0;
     letter-spacing:0.04em;
   }
 
-  /* SEARCH BOX */
-  .search-box{
-    display:flex;
-    gap:8px;
-    margin-bottom:16px;
-  }
-  .search-box input{
-    flex:1;
-    padding:12px 14px;
-    border:2px solid var(--yango-black);
-    font-family:'Yango Text',sans-serif;
-    font-size:14px;
-  }
-  .search-box input:focus{outline:none;border-color:var(--yango-red)}
-  .search-box button{
-    background:var(--yango-black);
-    color:white;
-    border:none;
-    padding:12px 20px;
-    font-family:'Yango Headline',sans-serif;
-    font-size:14px;
-    text-transform:uppercase;
-    cursor:pointer;
-  }
-  .search-box button:hover{background:var(--yango-red)}
+  .hidden{display:none}
 
-
-  /* INFO BANNER */
-  .info-banner{
-    background:var(--yango-yellow);
-    border:2px solid var(--yango-black);
-    padding:12px 16px;
-    margin-bottom:20px;
-    font-family:'Yango Text',sans-serif;
-    font-weight:800;
-    font-size:13px;
-    line-height:1.4;
-    letter-spacing:0.02em;
-  }
-
-  /* GROUP MATCH CARDS */
-  .group-block{
+  .top-nav{
+    position:sticky;
+    top:0;
     background:var(--yango-white);
-    border:3px solid var(--yango-black);
-    margin-bottom:18px;
-    overflow:hidden;
-  }
-  .group-block-header{
-    background:var(--yango-black);
-    color:var(--yango-white);
-    padding:14px 18px;
+    border-bottom:3px solid var(--yango-black);
+    padding:8px 20px;
+    z-index:100;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    flex-wrap:wrap;
-    gap:8px;
   }
-  .group-block-title{
-    font-family:'Yango Headline',sans-serif;
-    font-size:22px;
-    text-transform:uppercase;
-  }
-  .group-block-progress{
-    background:var(--yango-yellow);
-    color:var(--yango-black);
-    padding:4px 10px;
-    font-size:11px;
-    font-family:'Yango Text',sans-serif;
-    font-weight:800;
-    letter-spacing:0.04em;
-  }
-  .group-block-progress.complete{background:var(--yango-success);color:var(--yango-white)}
-  
-  .group-matches-list{
-    padding:12px;
-    background:var(--yango-gray-soft);
-  }
-  .group-match-row{
-    background:var(--yango-white);
-    border:2px solid var(--yango-black);
-    padding:10px 14px;
-    margin-bottom:8px;
-    display:grid;
-    grid-template-columns:1fr 60px 14px 60px 1fr;
-    gap:8px;
-    align-items:center;
-  }
-  .group-match-row .team-block{
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .group-match-row .team-block.right{justify-content:flex-end;text-align:right}
-  .group-match-row .team-flag{font-size:20px}
-  .group-match-row .team-name{
-    font-family:'Yango Text',sans-serif;
-    font-weight:800;
-    font-size:13px;
-    text-transform:uppercase;
-  }
-  .group-match-row input[type="number"]{
-    width:100%;
-    padding:8px;
-    border:2px solid var(--yango-black);
-    font-family:'Yango Headline',sans-serif;
-    font-size:18px;
-    text-align:center;
-    background:var(--yango-white);
-  }
-  .group-match-row input[type="number"]:focus{
-    outline:none;
-    border-color:var(--yango-red);
-  }
-  .group-match-row .vs{
-    text-align:center;
-    font-family:'Yango Headline',sans-serif;
-    font-size:14px;
-    color:#999;
-  }
-  
-  /* GROUP STANDINGS (auto-calculated) */
-  .group-standings{
-    background:var(--yango-yellow);
-    padding:14px;
-    border-top:2px solid var(--yango-black);
-  }
-  .group-standings-title{
-    font-family:'Yango Headline',sans-serif;
-    font-size:14px;
-    text-transform:uppercase;
-    margin-bottom:8px;
-    letter-spacing:0.02em;
-  }
-  .standings-row{
-    display:grid;
-    grid-template-columns:30px 1fr 40px 40px 40px 40px;
-    gap:8px;
-    padding:6px 8px;
-    background:var(--yango-white);
-    margin-bottom:4px;
-    font-size:12px;
-    border-left:4px solid #ccc;
-  }
-  .standings-row.pos-1{border-left-color:var(--yango-success)}
-  .standings-row.pos-2{border-left-color:#5DA9E9}
-  .standings-row.pos-3{border-left-color:var(--yango-warning)}
-  .standings-row.pos-4{border-left-color:#999;opacity:0.6}
-  .standings-row.header{
+  .top-nav .logo-mini{height:128px;width:auto}
+  .top-nav button{
     background:var(--yango-black);
     color:var(--yango-white);
-    font-family:'Yango Text',sans-serif;
-    font-weight:800;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:0.04em;
     border:none;
-  }
-  .standings-row .pos{
+    padding:8px 14px;
     font-family:'Yango Headline',sans-serif;
-    text-align:center;
-  }
-  .standings-row .team{
-    font-family:'Yango Text',sans-serif;
-    font-weight:800;
+    font-size:15px;
+    letter-spacing:0.02em;
+    cursor:pointer;
     text-transform:uppercase;
-    font-size:11px;
   }
-  .standings-row .stat{
+
+
+  /* PENALTY UI */
+  .penalty-block{background:var(--yango-yellow);border:2px dashed var(--yango-black);padding:14px;margin-top:12px}
+  .penalty-title{font-family:'Yango Headline',sans-serif;font-size:16px;text-transform:uppercase;text-align:center;margin-bottom:10px;color:var(--yango-black)}
+  .penalty-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .penalty-btn{background:var(--yango-white);border:2px solid var(--yango-black);padding:10px 8px;cursor:pointer;text-align:center;font-weight:800;text-transform:uppercase;font-size:12px;transition:all 0.15s;user-select:none}
+  .penalty-btn:hover{background:#f5f5f5}
+  .penalty-btn.selected{background:var(--yango-red);color:var(--yango-white);border-color:var(--yango-black)}
+  .penalty-btn .pen-flag{font-size:18px;display:block;margin-bottom:2px}
+  .penalty-callout{background:var(--yango-yellow);border:3px solid var(--yango-black);padding:14px 18px;margin-top:16px;font-family:'Yango Text',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;line-height:1.5}
+  .penalty-callout b{color:var(--yango-red)}
+
+  /* SCORER GRID */
+  .scorer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-bottom:16px}
+  .scorer-card{background:var(--yango-gray-soft);border:2px solid var(--yango-black);padding:12px 10px;cursor:pointer;text-align:center;transition:all 0.15s;user-select:none}
+  .scorer-card:hover{background:#e8e8e8}
+  .scorer-card.selected{background:var(--yango-red);color:var(--yango-white)}
+  .scorer-card .scorer-flag{font-size:22px;display:block;margin-bottom:2px}
+  .scorer-card .scorer-name{font-weight:800;font-size:12px;text-transform:uppercase;line-height:1.2}
+  .scorer-card .scorer-team{font-size:10px;color:#999;margin-top:2px;font-weight:800;text-transform:uppercase}
+  .scorer-card.selected .scorer-team{color:#FFD6CC}
+  .scorer-other-input{width:100%;padding:14px 16px;border:2px solid var(--yango-black);font-family:'Yango Text',sans-serif;font-size:16px;background:var(--yango-white);margin-top:10px}
+  .scorer-other-input:focus{outline:none;border-color:var(--yango-red);box-shadow:4px 4px 0 var(--yango-red)}
+
+  /* PROMO CODE BLOCK */
+  .prizes-conditions{
     text-align:center;
+    color:var(--yango-white);
     font-family:'Yango Text',sans-serif;
-    font-weight:800;
     font-size:11px;
+    line-height:1.4;
+    margin:0 auto 28px;
+    max-width:500px;
+    opacity:0.9;
   }
-  .standings-row .pts{
-    font-family:'Yango Headline',sans-serif;
-    color:var(--yango-red);
-    text-align:center;
+  .prizes-conditions a{
+    color:var(--yango-yellow);
+    text-decoration:underline;
+    font-weight:800;
   }
-  
-  /* THIRDS AUTO-COMPUTED */
-  .thirds-auto-banner{
+  .promo-block{background:var(--yango-white);color:var(--yango-black);border:4px solid var(--yango-black);padding:24px 20px;margin:0 auto 36px;max-width:480px;text-align:center;box-shadow:8px 8px 0 var(--yango-yellow)}
+  .promo-headline{font-family:'Yango Headline',sans-serif;font-size:22px;text-transform:uppercase;line-height:1.05;margin-bottom:10px}
+  .promo-sub{font-family:'Yango Text',sans-serif;font-weight:400;font-size:14px;line-height:1.4;margin-bottom:16px;color:#333}
+  .promo-firsttime{font-family:'Yango Headline',sans-serif;font-size:28px;text-transform:uppercase;line-height:1.05;margin-bottom:14px;color:var(--yango-red)}
+  .promo-cta-line{font-family:'Yango Text',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:14px}
+  .promo-tag-link{
+    text-decoration:none;
+    display:inline-block;
+  }
+  .promo-tag-link:hover .promo-tag{
+    transform:rotate(-2deg) translate(-2px,-2px);
+    box-shadow:6px 6px 0 var(--yango-black);
+  }
+  .promo-tag{
+    display:inline-block;
     background:var(--yango-yellow);
-    border:3px solid var(--yango-black);
+    color:var(--yango-black);
+    font-family:'Yango Headline',sans-serif;
+    font-size:34px;
+    padding:10px 24px;
+    transform:rotate(-2deg);
+    margin:6px 0 14px;
+    box-shadow:4px 4px 0 var(--yango-black);
+    letter-spacing:0.02em;
+  }
+  .promo-discount{font-family:'Yango Headline',sans-serif;font-size:15px;text-transform:uppercase;color:var(--yango-black);letter-spacing:0.02em;line-height:1.2;margin-top:10px}
+
+
+  /* ELIGIBILITY & DISCLAIMERS */
+  .eligibility-box{
+    background:var(--yango-gray-soft);
+    border-left:4px solid var(--yango-red);
     padding:14px 18px;
     margin-bottom:20px;
     font-family:'Yango Text',sans-serif;
-    font-weight:800;
     font-size:13px;
-    line-height:1.4;
+    line-height:1.5;
+    color:#333;
   }
-  .thirds-auto-banner b{
-    font-family:'Yango Headline',sans-serif;
-    font-size:14px;
+  .eligibility-box b{
+    font-weight:800;
+    text-transform:uppercase;
+    color:var(--yango-black);
+    letter-spacing:0.04em;
+    font-size:12px;
+  }
+  .data-disclaimer{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:12px 14px;
+    margin:14px 0;
+    font-size:12px;
+    line-height:1.5;
+    color:#555;
+    font-family:'Yango Text',sans-serif;
+  }
+  .data-disclaimer a{
     color:var(--yango-red);
-    display:block;
-    margin-bottom:4px;
+    text-decoration:underline;
+    font-weight:800;
+  }
+  .checkbox-group{
+    margin:14px 0;
+  }
+  .checkbox-label{
+    display:flex !important;
+    align-items:flex-start;
+    gap:10px;
+    text-transform:none !important;
+    font-size:13px !important;
+    font-weight:400 !important;
+    letter-spacing:0 !important;
+    line-height:1.4;
+    cursor:pointer;
+    color:#333;
+  }
+  .checkbox-label input[type="checkbox"]{
+    width:18px;
+    height:18px;
+    margin-top:2px;
+    flex-shrink:0;
+    cursor:pointer;
+    accent-color:var(--yango-red);
+  }
+  .checkbox-label a{
+    color:var(--yango-red);
+    text-decoration:underline;
+    font-weight:800;
+  }
+  
+  /* TERMS MODAL */
+  .terms-modal{
+    display:none;
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    background:rgba(0,0,0,0.85);
+    z-index:9999;
+    overflow-y:auto;
+    padding:20px;
+  }
+  .terms-modal.active{display:block}
+  .terms-modal-content{
+    background:white;
+    max-width:800px;
+    margin:20px auto;
+    padding:32px 28px;
+    border:4px solid var(--yango-black);
+    box-shadow:8px 8px 0 var(--yango-red);
+  }
+  .terms-modal-content h2{
+    font-family:'Yango Headline',sans-serif;
+    font-size:28px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+    color:var(--yango-black);
+  }
+  .terms-modal-content h3{
+    font-family:'Yango Headline',sans-serif;
+    font-size:16px;
+    text-transform:uppercase;
+    margin:20px 0 8px;
+    color:var(--yango-red);
+  }
+  .terms-modal-content p, .terms-modal-content li{
+    font-family:'Yango Text',sans-serif;
+    font-size:13px;
+    line-height:1.6;
+    margin-bottom:10px;
+    color:#333;
+  }
+  .terms-modal-content ul, .terms-modal-content ol{padding-left:20px}
+  .terms-modal-content table{
+    width:100%;
+    border-collapse:collapse;
+    margin:12px 0;
+    font-size:12px;
+  }
+  .terms-modal-content table th, .terms-modal-content table td{
+    border:1px solid #ccc;
+    padding:8px;
+    text-align:left;
+  }
+  .terms-modal-content table th{
+    background:var(--yango-gray-soft);
+    font-weight:800;
+    text-transform:uppercase;
+    font-size:11px;
+  }
+  .terms-close-btn{
+    background:var(--yango-black);
+    color:white;
+    border:none;
+    padding:14px 28px;
+    font-family:'Yango Headline',sans-serif;
+    font-size:16px;
+    text-transform:uppercase;
+    cursor:pointer;
+    margin-top:16px;
+    width:100%;
+  }
+  .terms-close-btn:hover{background:var(--yango-red)}
+  .terms-intro-warning{
+    background:var(--yango-yellow);
+    border:2px solid var(--yango-black);
+    padding:12px;
+    margin-bottom:16px;
+    font-size:12px;
+    line-height:1.4;
+    font-weight:800;
+  }
+  
+  /* LEGAL FOOTER */
+  .legal-footer{
+    background:#0a0a0a;
+    color:#888;
+    padding:32px 20px;
+    font-family:'Yango Text',sans-serif;
+    font-size:11px;
+    line-height:1.6;
+    border-top:1px solid #333;
+  }
+  .legal-footer .legal-container{
+    max-width:900px;
+    margin:0 auto;
+  }
+  .legal-footer .legal-block{
+    margin-bottom:16px;
+  }
+  .legal-footer .legal-block:last-child{margin-bottom:0}
+  .legal-footer b{color:#ccc;font-weight:800;display:block;margin-bottom:4px;text-transform:uppercase;font-size:10px;letter-spacing:0.04em}
+  .legal-footer a{color:var(--yango-yellow);text-decoration:underline}
+  .legal-links{
+    margin-top:20px;
+    padding-top:16px;
+    border-top:1px solid #333;
+    text-align:center;
+  }
+  .legal-links a{
+    color:var(--yango-yellow);
+    margin:0 12px;
+    text-decoration:underline;
+    font-weight:800;
+    font-size:12px;
+    text-transform:uppercase;
   }
 
   @media (max-width:600px){
-    .group-match-row{
-      grid-template-columns:1fr 50px 10px 50px 1fr;
-      gap:4px;
-      font-size:11px;
-    }
-    .group-match-row .team-name{font-size:11px}
-    .group-match-row .team-flag{font-size:16px}
-  }
-
-  /* RESPONSIVE */
-  @media (max-width:700px){
-    .match-row-admin{
-      grid-template-columns:1fr;
-      gap:6px;
-    }
-    .match-num{display:none}
-    .ranking-row{
-      grid-template-columns:50px 1fr 80px 60px;
-      font-size:11px;
-    }
-    .ranking-row .email,
-    .ranking-row .header-email,
-    .ranking-row .campeon,
-    .ranking-row .header-campeon{display:none}
+    .top-nav .logo-mini{height:96px}
+    .promo-tag{font-size:26px;padding:8px 18px}
+    .match-row{grid-template-columns:1fr auto 1fr;gap:6px}
+    .team-block{padding:8px}
+    .team-name{font-size:12px}
+    .team-flag{font-size:18px}
+    .score-input{width:38px;height:38px;font-size:18px}
+    .prize{min-width:100%;max-width:100%}
+    .champion-display{font-size:28px}
+    .group-team .team-name{font-size:13px}
   }
 </style>
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
-<div class="login-screen" id="loginScreen">
-  <div class="login-box">
-    <h1>ADMIN<br><span class="red">PANEL</span></h1>
-    <p>Temporada Fútbol Yango 2026</p>
-    <input type="password" id="loginPassword" placeholder="Contraseña" onkeypress="if(event.key==='Enter')tryLogin()">
-    <button onclick="tryLogin()">ENTRAR</button>
-    <div class="login-error" id="loginError">CONTRASEÑA INCORRECTA</div>
+<nav class="top-nav">
+  <a href="#" onclick="goHome();return false;" style="cursor:pointer;line-height:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" class="logo-mini"><text x="130" y="58" text-anchor="middle" font-family="'Yango Headline',Impact,sans-serif" font-size="70" font-style="italic" font-weight="900" fill="#FC3F1D">YANGO</text><text x="130" y="122" text-anchor="middle" font-family="'Yango Headline',Impact,sans-serif" font-size="70" font-style="italic" font-weight="900" fill="#FC3F1D">PRO</text></svg></a>
+  <button onclick="showLeaderboard()">RANKING 🏆</button>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>TEMPORADA<br><span class="yellow">FÚTBOL</span><br><span class="stroke">YANGO PRO 2026</span></h1>
+    <p class="hero-sub">La emoción del fútbol se vive en cada recorrido. Maneja con Yango Pro y compite por premios exclusivos para conductores.</p>
+
+    <div class="prizes">
+      <div class="prize">
+        <div class="prize-pos">1ER LUGAR</div>
+        <div class="prize-amount">MOTO</div>
+        <div class="prize-text">GRATIS</div>
+      </div>
+      <div class="prize">
+        <div class="prize-pos">2DO LUGAR</div>
+        <div class="prize-amount">TV SAMSUNG</div>
+        <div class="prize-text">55 PULGADAS</div>
+      </div>
+      <div class="prize">
+        <div class="prize-pos">3ER LUGAR</div>
+        <div class="prize-amount">CELULAR</div>
+        <div class="prize-text">SAMSUNG</div>
+      </div>
+    </div>
+    <div class="prizes-conditions"><a href="#" onclick="openTerms();return false;">Aplican términos y condiciones</a>.</div>
+
+    <div class="cta-row">
+      <button class="btn-primary" onclick="startQuiniela()">PARTICIPAR →</button>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>⚡ TEMPORADA FÚTBOL <i>•</i> 48 EQUIPOS <i>•</i> 12 GRUPOS <i>•</i> 32 CLASIFICAN <i>•</i> GANA PREMIOS YANGO PRO <i>•</i></span>
+    <span>⚡ TEMPORADA FÚTBOL <i>•</i> 48 EQUIPOS <i>•</i> 12 GRUPOS <i>•</i> 32 CLASIFICAN <i>•</i> GANA PREMIOS YANGO PRO <i>•</i></span>
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
-<div id="adminPanel" style="display:none">
-  <div class="admin-header">
-    <div class="admin-header-inner">
-      <h1>YANGO <span class="yellow">ADMIN</span><span class="admin-badge">FÚTBOL 2026</span></h1>
-      <button class="calc-ranking-btn" onclick="calculateRanking()" id="calcBtn">
-        🏆 CALCULAR RANKING
-      </button>
+<section class="section" id="intro">
+  <h2 class="section-title">CÓMO <span class="red">FUNCIONA</span></h2>
+  <p class="section-sub">3 PASOS. CERO COMPLICACIONES.</p>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <h3>REGÍSTRATE</h3>
+      <p>Nombre, email y teléfono. Listo.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <h3>PREDICE</h3>
+      <p>Desde la fase de grupos hasta la final del torneo.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <h3>GANA</h3>
+      <p>Top 3 se llevan premios exclusivos. Ranking en vivo.</p>
     </div>
   </div>
 
-  <div class="tabs-container">
-    <div class="tabs">
-      <button class="tab active" data-tab="grupos" onclick="showTab('grupos')">
-        GRUPOS
-        <span class="tab-status" id="status-grupos">0/12</span>
-      </button>
-      <button class="tab" data-tab="terceros" onclick="showTab('terceros')">
-        TERCEROS
-        <span class="tab-status" id="status-terceros">0/8</span>
-      </button>
-      <button class="tab" data-tab="bracket" onclick="showTab('bracket')">
-        ELIMINATORIAS
-        <span class="tab-status" id="status-bracket">0/31</span>
-      </button>
-      <button class="tab" data-tab="goleador" onclick="showTab('goleador')">
-        GOLEADOR
-        <span class="tab-status" id="status-goleador">-</span>
-      </button>
-      <button class="tab" data-tab="ranking" onclick="showTab('ranking')">
-        RANKING
-        <span class="tab-status" id="status-ranking">0</span>
-      </button>
+  <div class="rules-box">
+    <h3>SISTEMA DE PUNTOS</h3>
+    <div class="rules-grid">
+      <div class="rule-block">
+        <h4>FASE DE GRUPOS</h4>
+        <ul>
+          <li><b>5 pts</b> primer lugar correcto</li>
+          <li><b>5 pts</b> segundo lugar correcto</li>
+          <li><b>2 pts</b> si los acertaste invertidos</li>
+          <li><b>3 pts</b> cada tercero acertado</li>
+        </ul>
+      </div>
+      <div class="rule-block">
+        <h4>16AVOS Y 8VOS</h4>
+        <ul>
+          <li><b>4 pts</b> ganador correcto</li>
+          <li><b>2 pts bono</b> llave correcta</li>
+        </ul>
+      </div>
+      <div class="rule-block">
+        <h4>4TOS Y SEMIS</h4>
+        <ul>
+          <li><b>7-10 pts</b> ganador correcto</li>
+          <li><b>4-5 pts bono</b> marcador exacto</li>
+          <li><b>1 pt</b> llave correcta</li>
+        </ul>
+      </div>
+      <div class="rule-block">
+        <h4>BONOS ESPECIALES</h4>
+        <ul>
+          <li><b>15 pts</b> finalista correcto</li>
+          <li><b>10 pts</b> bono marcador final</li>
+          <li><b>30 pts</b> CAMPEÓN DEL TORNEO</li>
+          <li><b>10 pts</b> goleador del torneo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="penalty-callout">
+      ⚽ <b>SOBRE LOS PENALES (4tos en adelante):</b> Si predices un empate, te aparecerá una pregunta extra para que selecciones quién ganaría en la tanda de penales. El marcador exacto es solo el del juego (ej: 1-1 vale 1-1, no 2-1). Si aciertas el ganador de penales, ganas puntos extra.
+    </div>
+  </div>
+</section>
+
+<section class="section hidden" id="quiniela">
+
+  <div class="steps">
+    <div class="step active" data-step="1"><div class="step-num">1</div><div class="step-label">DATOS</div></div>
+    <div class="step" data-step="2"><div class="step-num">2</div><div class="step-label">GRUPOS</div></div>
+    <div class="step" data-step="3"><div class="step-num">3</div><div class="step-label">3ROS</div></div>
+    <div class="step" data-step="4"><div class="step-num">4</div><div class="step-label">16VOS</div></div>
+    <div class="step" data-step="5"><div class="step-num">5</div><div class="step-label">8VOS</div></div>
+    <div class="step" data-step="6"><div class="step-num">6</div><div class="step-label">4TOS</div></div>
+    <div class="step" data-step="7"><div class="step-num">7</div><div class="step-label">SEMI</div></div>
+    <div class="step" data-step="8"><div class="step-num">8</div><div class="step-label">FINAL</div></div>
+  </div>
+
+  <div class="step-content" data-content="1">
+    <h2 class="section-title">TUS <span class="red">DATOS</span></h2>
+    <p class="section-sub">PARA AVISARTE SI GANAS.</p>
+    
+    <div class="eligibility-box">
+      <b>ELEGIBILIDAD:</b> Actividad válida únicamente para conductores de Yango Pro, mayores de 18 años, residentes en Gran Caracas, que hayan completado al menos un viaje en Yango Pro en los últimos 15 días. No se requiere realizar viajes adicionales durante la Promoción para participar.
+    </div>
+    
+    <div class="card">
+      <div class="form-group">
+        <label>NOMBRE COMPLETO</label>
+        <input type="text" id="userName" placeholder="Ej: Isabella Pérez">
+      </div>
+      <div class="form-group">
+        <label>EMAIL</label>
+        <input type="email" id="userEmail" placeholder="tucorreo@gmail.com">
+      </div>
+      <div class="form-group">
+        <label>TELÉFONO</label>
+        <input type="tel" id="userPhone" placeholder="+58 412 1234567">
+      </div>
+      
+      <div class="data-disclaimer">
+        Al completar este formulario, autorizo a Yango a procesar mis datos personales para el propósito de mi participación en la campaña y para contactarme respecto a la misma. Para conocer más sobre el procesamiento de tus datos, consulta nuestra <a href="https://yango.com/legal/yango_privacy_notice" target="_blank" rel="noopener">Política de Privacidad</a>.
+      </div>
+      
+      <div class="checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="acceptTerms">
+          <span>He leído y acepto los <a href="#" onclick="openTerms();return false;">Términos y Condiciones</a> de la actividad Temporada Fútbol Yango Pro.</span>
+        </label>
+      </div>
+      
+      <div class="checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="acceptPrivacy">
+          <span>Autorizo el tratamiento de mis datos personales conforme a la <a href="https://yango.com/legal/yango_privacy_notice" target="_blank" rel="noopener">Política de Privacidad</a> de Yango.</span>
+        </label>
+      </div>
+      
+      <button class="btn-primary" onclick="nextStep(1)" style="background:var(--yango-red);margin-top:8px">CONTINUAR →</button>
     </div>
   </div>
 
-  <div class="content">
-    <!-- GRUPOS TAB -->
-    <div class="tab-content active" data-tab="grupos">
-      <h2 class="section-title">FASE DE <span class="red">GRUPOS</span></h2>
-      <p class="section-sub">Llena los marcadores de cada partido. Las posiciones se calculan automáticamente (puntos → diferencia goles → goles a favor).</p>
-      <div class="info-banner">
-        💡 Los 6 partidos por grupo se generan automáticamente (cada equipo juega contra los otros 3). Puedes llenarlos en el orden que quieras a medida que se vayan jugando.
+  <div class="step-content hidden" data-content="2">
+    <h2 class="section-title">FASE DE <span class="red">GRUPOS</span></h2>
+    <p class="section-sub">TOCA LOS EQUIPOS EN ORDEN: 1°, 2°, 3°, 4°.</p>
+    <div id="groupsContainer"></div>
+    <div class="cta-row" style="justify-content:flex-start">
+      <button class="btn-secondary" style="color:var(--yango-black);border-color:var(--yango-black)" onclick="prevStep(2)">← ATRÁS</button>
+      <button class="btn-primary" style="background:var(--yango-red)" onclick="nextStep(2)">CONTINUAR →</button>
+    </div>
+  </div>
+
+  <div class="step-content hidden" data-content="3">
+    <h2 class="section-title">MEJORES <span class="red">TERCEROS</span></h2>
+    <p class="section-sub">ELIGE LOS 8 TERCEROS QUE PASAN A 16AVOS.</p>
+    <div class="thirds-counter" id="thirdsCounter">SELECCIONADOS: 0 / 8</div>
+    <div class="thirds-grid" id="thirdsGrid"></div>
+    <div class="cta-row" style="justify-content:flex-start">
+      <button class="btn-secondary" style="color:var(--yango-black);border-color:var(--yango-black)" onclick="prevStep(3)">← ATRÁS</button>
+      <button class="btn-primary" style="background:var(--yango-red)" onclick="nextStep(3)">CONTINUAR →</button>
+    </div>
+  </div>
+
+  <div class="step-content hidden" data-content="4">
+    <h2 class="section-title">DIECISÉIS<span class="red">AVOS</span></h2>
+    <p class="section-sub">CRUCES DEL TORNEO. ELIGE EL GANADOR.</p>
+    <div id="r32Container"></div>
+    <div class="cta-row" style="justify-content:flex-start">
+      <button class="btn-secondary" style="color:var(--yango-black);border-color:var(--yango-black)" onclick="prevStep(4)">← ATRÁS</button>
+      <button class="btn-primary" style="background:var(--yango-red)" onclick="nextStep(4)">CONTINUAR →</button>
+    </div>
+  </div>
+
+  <div class="step-content hidden" data-content="5">
+    <h2 class="section-title">OCTAVOS DE <span class="red">FINAL</span></h2>
+    <p class="section-sub">8 GANADORES. ELIGE QUIÉN PASA.</p>
+    <div id="r16Container"></div>
+    <div class="cta-row" style="justify-content:flex-start">
+      <button class="btn-secondary" style="color:var(--yango-black);border-color:var(--yango-black)" onclick="prevStep(5)">← ATRÁS</button>
+      <button class="btn-primary" style="background:var(--yango-red)" onclick="nextStep(5)">CONTINUAR →</button>
+    </div>
+  </div>
+
+  <div class="step-content hidden" data-content="6">
+    <h2 class="section-title">CUARTOS DE <span class="red">FINAL</span></h2>
+    <p class="section-sub">PREDICE MARCADOR + GANADOR.</p>
+    <div id="qfContainer"></div>
+    <div class="cta-row" style="justify-content:flex-start">
+      <button class="btn-secondary" style="color:var(--yango-black);border-color:var(--yango-black)" onclick="prevStep(6)">← ATRÁS</button>
+      <button class="btn-primary" style="background:var(--yango-red)" onclick="nextStep(6)">CONTINUAR →</button>
+    </div>
+  </div>
+
+  <div class="step-content hidden" data-content="7">
+    <h2 class="section-title">SEMI<span class="red">FINALES</span></h2>
+    <p class="section-sub">PREDICE MARCADOR + GANADOR.</p>
+    <div id="sfContainer"></div>
+    <div class="cta-row" style="justify-content:flex-start">
+      <button class="btn-secondary" style="color:var(--yango-black);border-color:var(--yango-black)" onclick="prevStep(7)">← ATRÁS</button>
+      <button class="btn-primary" style="background:var(--yango-red)" onclick="nextStep(7)">CONTINUAR →</button>
+    </div>
+  </div>
+
+  <div class="step-content hidden" data-content="8">
+    <h2 class="section-title">LA <span class="red">FINAL</span></h2>
+    <p class="section-sub">¿QUIÉN LEVANTA LA COPA?</p>
+    <div id="finalContainer"></div>
+
+    <h3 style="font-size:24px;text-transform:uppercase;margin:24px 0 8px">3ER PUESTO</h3>
+    <p class="section-sub" style="margin-bottom:16px">¿QUIÉN GANA EL BRONCE?</p>
+    <div id="thirdContainer"></div>
+
+    <div class="champion-card">
+      <h3>TU CAMPEÓN DEL TORNEO</h3>
+      <div class="champion-display" id="championDisplay">
+        <span class="empty">SELECCIÓNALO ARRIBA</span>
       </div>
-      <div id="groupsContainer"></div>
-      <button class="save-btn" onclick="saveGroupMatches()">💾 GUARDAR PARTIDOS</button>
     </div>
 
-    <!-- TERCEROS TAB -->
-    <div class="tab-content" data-tab="terceros">
-      <h2 class="section-title">8 MEJORES <span class="red">TERCEROS</span></h2>
-      <p class="section-sub">FIFA escoge los 8 mejores terceros entre los 12 grupos. Cuando terminen los partidos de grupos, ajusta manualmente cuáles 8 pasaron según el ranking oficial FIFA.</p>
-      
-      <div class="thirds-auto-banner">
-        <b>📌 NOTA IMPORTANTE</b>
-        Los terceros se calculan según los criterios FIFA (puntos → diferencia de goles → goles a favor entre todos los terceros de todos los grupos). El sistema te sugiere los 8 mejores automáticamente, pero PUEDES ajustar manualmente si el desempate FIFA real es distinto. Confirma con la página oficial FIFA al final de la fase de grupos.
-      </div>
-      
-      <div class="thirds-counter" id="thirdsCounter">SELECCIONADOS: 0 / 8</div>
-      <div class="thirds-grid" id="thirdsGrid"></div>
-      <button class="save-btn" onclick="saveThirds()">💾 GUARDAR TERCEROS</button>
-    </div>
-
-    <!-- BRACKET TAB -->
-    <div class="tab-content" data-tab="bracket">
-      <h2 class="section-title">ELIMINA<span class="red">TORIAS</span></h2>
-      <p class="section-sub">Ingresa resultados de cada partido (con marcador). Si hay empate, se habilita selector de penales.</p>
-      
-      <div class="round-section">
-        <div class="round-title">DIECISEISAVOS · 16 partidos</div>
-        <div id="r32Container"></div>
-      </div>
-      <div class="round-section">
-        <div class="round-title">OCTAVOS · 8 partidos</div>
-        <div id="r16Container"></div>
-      </div>
-      <div class="round-section">
-        <div class="round-title">CUARTOS · 4 partidos</div>
-        <div id="qfContainer"></div>
-      </div>
-      <div class="round-section">
-        <div class="round-title">SEMIFINALES · 2 partidos</div>
-        <div id="sfContainer"></div>
-      </div>
-      <div class="round-section">
-        <div class="round-title">🥉 3ER PUESTO</div>
-        <div id="thirdMatchContainer"></div>
-      </div>
-      <div class="round-section">
-        <div class="round-title">🏆 FINAL</div>
-        <div id="finalContainer"></div>
-      </div>
-      
-      <button class="save-btn" onclick="saveBracket()">💾 GUARDAR ELIMINATORIAS</button>
-    </div>
-
-    <!-- GOLEADOR TAB -->
-    <div class="tab-content" data-tab="goleador">
-      <h2 class="section-title">GOLEADOR DEL <span class="red">TORNEO</span></h2>
-      <p class="section-sub">Ingresa el nombre del Pichichi (10 pts de bono para quien lo acierte).</p>
-      <div class="scorer-input-box">
-        <label>NOMBRE DEL GOLEADOR</label>
-        <input type="text" id="topScorerInput" placeholder="Ej: KYLIAN MBAPPÉ">
-        <button class="save-btn" onclick="saveGoleador()">💾 GUARDAR GOLEADOR</button>
+    <div class="card">
+      <div class="form-group">
+        <label>GOLEADOR DEL TORNEO (PICHICHI) — 10 PTS BONO</label>
+        <p style="font-size:13px;color:#666;margin-bottom:12px">Selecciona uno de los favoritos o escribe otro nombre.</p>
+        <div class="scorer-grid" id="scorerGrid"></div>
+        <input type="text" id="scorerOther" class="scorer-other-input" placeholder="ESCRIBE EL NOMBRE DEL JUGADOR" style="display:none">
       </div>
     </div>
 
-    <!-- RANKING TAB -->
-    <div class="tab-content" data-tab="ranking">
-      <h2 class="section-title">RANKING <span class="red">GENERAL</span></h2>
-      <p class="section-sub">Resultado del último cálculo. Presiona "Calcular Ranking" arriba para actualizar.</p>
+    <div class="cta-row" style="justify-content:flex-start">
+      <button class="btn-secondary" style="color:var(--yango-black);border-color:var(--yango-black)" onclick="prevStep(8)">← ATRÁS</button>
+      <button class="btn-primary" onclick="submitQuiniela()">ENVIAR PARTICIPACIÓN 🚀</button>
+    </div>
+  </div>
+</section>
 
-      <div class="ranking-subtabs">
-        <button class="ranking-subtab active" id="subtab-usuarios" onclick="switchRankingView('usuarios')">USUARIOS</button>
-        <button class="ranking-subtab" id="subtab-drivers" onclick="switchRankingView('drivers')">DRIVERS</button>
-      </div>
+<section class="section hidden" id="success">
+  <div class="success">
+    <div class="success-emoji">🏆</div>
+    <h2>¡PARTICIPACIÓN<br><span style="color:var(--yango-red)">ENVIADA!</span></h2>
+    <p style="font-family:'Yango Text',sans-serif;font-weight:800;font-size:18px;margin:12px 0;text-transform:uppercase">YA ESTÁS COMPITIENDO POR VIAJES GRATIS</p>
+    <!-- código guardado internamente, oculto al usuario -->
+    <span id="successCode" style="display:none"></span>
+    <p style="font-size:14px;max-width:400px;margin:16px auto;color:#555">Te avisaremos por email y WhatsApp si quedas en el top 3. Comparte con tus amigos para invitarlos a participar 👇</p>
+    <div class="cta-row">
+      <button class="btn-primary" style="background:var(--yango-red)" onclick="shareQuiniela()">COMPARTIR 📲</button>
+      <button class="btn-secondary" style="color:var(--yango-black);border-color:var(--yango-black)" onclick="showLeaderboard()">VER RANKING</button>
+    </div>
+  </div>
+</section>
 
-      <div class="stats-bar" id="statsBar"></div>
+<section class="leaderboard hidden" id="leaderboard">
+  <div style="max-width:800px;margin:0 auto">
+    <h2 class="section-title" style="color:var(--yango-white)">RANKING <span style="color:var(--yango-yellow)">EN VIVO</span></h2>
+    <p class="section-sub" style="color:#999">TOP 20 PARTICIPANTES</p>
+    <div id="leaderboardList"></div>
+    <div style="margin-top:24px;text-align:center">
+      <button class="btn-secondary" onclick="hideLeaderboard()">VOLVER ←</button>
+    </div>
+  </div>
+</section>
 
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Buscar por código o nombre" oninput="filterRanking()">
-        <button onclick="exportCSV()">📥 EXPORTAR CSV</button>
-      </div>
 
-      <div class="ranking-table" id="rankingTable">
-        <div class="ranking-row header">
-          <div>POS</div>
-          <div>NOMBRE</div>
-          <div class="header-email">EMAIL</div>
-          <div class="header-campeon">CAMPEÓN</div>
-          <div style="text-align:right">PUNTOS</div>
-          <div></div>
-        </div>
-        <div id="rankingBody"></div>
-      </div>
+<!-- TERMS & CONDITIONS MODAL -->
+<div class="terms-modal" id="termsModal">
+  <div class="terms-modal-content">
+    <h2>TÉRMINOS Y CONDICIONES</h2>
+    <p style="font-style:italic;color:#666">Promoción "Temporada Fútbol Yango Pro"</p>
+    
+    <div class="terms-intro-warning">
+      IMPORTANTE: La presente promoción comercial no constituye rifa, sorteo, lotería, quiniela, polla, apuesta deportiva, juego de envite o azar, ni actividad de captación, intermediación, explotación u organización de apuestas. La participación no implica pago de entrada, apuesta, stake, cuota, odd, jackpot, bolsa común, promesa de retorno económico ni selección aleatoria de ganadores. Los ganadores serán determinados exclusivamente mediante un sistema objetivo de puntuación previamente publicado.
+    </div>
+    
+    <h3>1. Organizador</h3>
+    <p>La presente promoción comercial denominada "Temporada Fútbol Yango Pro" (la "Promoción") es organizada por <b>Booster Company C.A.</b> (el "Organizador"). La Promoción se realizará a través de la página web habilitada por el Organizador (la "Página Web").</p>
+    
+    <h3>2. Naturaleza de la Promoción</h3>
+    <p>La Promoción consiste en una actividad promocional de temporada, en la cual los Participantes completan selecciones sobre determinados partidos del torneo internacional de fútbol habilitados en la Página Web. La asignación de puntos se realizará únicamente conforme a un Sistema de Puntuación objetivo, verificable y previamente publicado.</p>
+    <p>La Promoción no constituye apuesta deportiva, quiniela, polla, rifa, sorteo, lotería, juego de azar ni actividad patrocinada, avalada, administrada o asociada con FIFA, la Copa Mundial de la FIFA, el torneo internacional de fútbol correspondiente, federaciones, selecciones, jugadores, clubes, patrocinadores oficiales ni titulares de derechos deportivos.</p>
+    
+    <h3>3. Vigencia</h3>
+    <p>La Promoción tendrá vigencia hasta el 10 de junio de 2026 a las 23:59 horas, hora legal de la República Bolivariana de Venezuela. Las selecciones enviadas con posterioridad al cierre no serán consideradas.</p>
+    
+    <h3>4. Territorio</h3>
+    <p>La Promoción será válida únicamente en la República Bolivariana de Venezuela, específicamente en Gran Caracas.</p>
+    
+    <h3>5. Participantes elegibles</h3>
+    <p>Podrán participar únicamente personas naturales que cumplan con: (i) ser mayores de 18 años; (ii) residir en Gran Caracas; (iii) haber completado al menos un viaje en Yango Pro en los últimos 15 días previos al registro; (iv) registrarse en la Página Web dentro de la vigencia; (v) aceptar estos Términos y Condiciones; (vi) autorizar el tratamiento de sus datos personales.</p>
+    <p>No será necesario realizar viajes adicionales durante la Promoción para registrar selecciones o ser elegible a premios.</p>
+    <p>No podrán participar empleados, directores, contratistas o personas vinculadas al Organizador, ni sus familiares hasta el segundo grado.</p>
+    
+    <h3>6. Registro</h3>
+    <p>Cada Participante podrá registrarse una sola vez. El Organizador podrá limitar la participación a un registro por persona, número telefónico, correo electrónico, dispositivo o cuenta Yango.</p>
+    
+    <h3>7. Sistema de Puntuación</h3>
+    <p>Los Participantes acumularán puntos según el sistema publicado en la Página Web. El Sistema de Puntuación es objetivo, verificable y aplicable de manera uniforme a todos los Participantes.</p>
+    <p>El Ranking visible durante la Promoción es provisional y estará sujeto a validación final por parte del Organizador.</p>
+    
+    <h3>8. Determinación de ganadores</h3>
+    <p>Serán ganadores los tres (3) Participantes con las mayores puntuaciones acumuladas al finalizar la Promoción. Los ganadores serán determinados exclusivamente por puntuación objetiva. No habrá sorteo, rifa ni selección aleatoria.</p>
+    
+    <h3>9. Criterios de desempate</h3>
+    <p>En caso de empate: (i) mayor número de marcadores exactos acertados; (ii) mayor número de resultados acertados; (iii) mayor número de clasificados acertados; (iv) menor diferencia acumulada entre goles predichos y goles reales; (v) fecha y hora más temprana de envío.</p>
+    
+    <h3>10. Premios</h3>
+    <p>Los Premios consistirán en los siguientes artículos físicos, asignados de la siguiente manera:</p>
+    <table>
+      <thead><tr><th>Puesto</th><th>Premio</th><th>Condiciones</th></tr></thead>
+      <tbody>
+        <tr><td><b>1er lugar</b></td><td>Moto Gratis</td><td>Sujeto a disponibilidad y condiciones del Organizador</td></tr>
+        <tr><td><b>2do lugar</b></td><td>TV Samsung 55"</td><td>Sujeto a disponibilidad y condiciones del Organizador</td></tr>
+        <tr><td><b>3er lugar</b></td><td>Celular Samsung</td><td>Sujeto a disponibilidad y condiciones del Organizador</td></tr>
+      </tbody>
+    </table>
+    <p>Los Premios son personales, intransferibles, no negociables y no podrán canjearse por dinero en efectivo, saldo, transferencia bancaria, bienes ni cualquier otra contraprestación.</p>
+    <p>Los Premios están sujetos a disponibilidad, verificación de identidad y validación final por parte del Organizador. Los premios son personales, intransferibles y no canjeables por dinero en efectivo.</p>
+    
+    <h3>11. Notificación de ganadores</h3>
+    <p>Los potenciales ganadores serán contactados por correo electrónico o teléfono. Deberán aceptar el Premio y acreditar su identidad dentro del plazo indicado. Si no responde, perderá el derecho al Premio sin compensación.</p>
+    
+    <h3>12. Causales de descalificación</h3>
+    <p>El Organizador podrá descalificar a cualquier Participante que: incumpla estos Términos; suministre información falsa; participe con múltiples cuentas o teléfonos; utilice bots o automatizaciones; intente alterar la Página Web o el Sistema de Puntuación; o actúe de forma fraudulenta.</p>
+    
+    <h3>13. Tratamiento de datos personales</h3>
+    <p>El Organizador recolectará datos personales (nombre, teléfono, correo, datos de cuenta Yango, selecciones, puntuación) con la finalidad de administrar la Promoción, verificar requisitos, calcular puntuaciones, contactar ganadores y prevenir fraude. El tratamiento se rige por la <a href="https://yango.com/legal/yango_privacy_notice" target="_blank">Política de Privacidad</a> de Yango.</p>
+    
+    <h3>14. No afiliación</h3>
+    <p>La Promoción es organizada exclusivamente por el Organizador y no es patrocinada, avalada, administrada ni asociada con FIFA, la Copa Mundial de la FIFA, el torneo internacional de fútbol correspondiente, confederaciones, federaciones, selecciones nacionales, jugadores, clubes ni patrocinadores oficiales.</p>
+    
+    <h3>15. Fallas técnicas</h3>
+    <p>El Organizador no será responsable por fallas de internet, errores de transmisión, interrupciones de servicio, fallas de la Página Web ni cualquier circunstancia técnica fuera de su control razonable.</p>
+    
+    <h3>16. Modificaciones</h3>
+    <p>El Organizador podrá modificar estos Términos cuando sea necesario para corregir errores materiales, preservar la integridad de la Promoción o atender circunstancias no previstas. Cualquier modificación será publicada en la Página Web.</p>
+    
+    <h3>17. Ley aplicable</h3>
+    <p>Estos Términos se rigen por las leyes de la República Bolivariana de Venezuela. Cualquier controversia será sometida a los tribunales competentes.</p>
+
+    <h3>18. Naturaleza de la plataforma</h3>
+    <p>Yango presta servicios exclusivamente como plataforma tecnológica que conecta a conductores independientes con usuarios. Los servicios de transporte son prestados por terceros independientes y no por Yango. Yango no es responsable de los servicios de transporte ni de las condiciones de prestación de los mismos.</p>
+
+    <h3>SISTEMA DE PUNTUACIÓN (ANEXO A)</h3>
+    <table>
+      <thead><tr><th>Fase / Selección</th><th>Criterio</th><th>Puntos</th></tr></thead>
+      <tbody>
+        <tr><td>Fase de grupos</td><td>1er o 2do lugar correcto en cada grupo</td><td>5 c/u</td></tr>
+        <tr><td>Fase de grupos</td><td>1er y 2do invertidos</td><td>4 (2+2)</td></tr>
+        <tr><td>Fase de grupos</td><td>Cada tercero acertado de los 8 que pasan</td><td>3</td></tr>
+        <tr><td>16avos / 8vos</td><td>Ganador correcto</td><td>4</td></tr>
+        <tr><td>Cuartos</td><td>Ganador correcto + marcador exacto</td><td>7 + 4</td></tr>
+        <tr><td>Semifinales</td><td>Ganador correcto + marcador exacto</td><td>10 + 5</td></tr>
+        <tr><td>3er Puesto</td><td>Ganador correcto + marcador exacto</td><td>8 + 5</td></tr>
+        <tr><td>Final</td><td>Finalista correcto + marcador exacto</td><td>15 + 10</td></tr>
+        <tr><td>Premio especial</td><td>Campeón del torneo</td><td>30</td></tr>
+        <tr><td>Premio especial</td><td>Subcampeón</td><td>15</td></tr>
+        <tr><td>Premio especial</td><td>Goleador del torneo</td><td>10</td></tr>
+      </tbody>
+    </table>
+    
+    <button class="terms-close-btn" onclick="closeTerms()">CERRAR</button>
+  </div>
+</div>
+
+<!-- LEGAL FOOTER -->
+<div class="legal-footer">
+  <div class="legal-container">
+    <div class="legal-block">
+      <b>Disclaimer general</b>
+      Actividad válida únicamente para personas naturales mayores de 18 años, residentes en Gran Caracas, que cumplan los requisitos de elegibilidad establecidos en los Términos y Condiciones. No constituye apuesta deportiva, quiniela, polla, rifa, sorteo, lotería, juego de azar ni actividad de envite o azar. Premios sujetos a verificación, límites, vigencia y disponibilidad del servicio. Aplican Términos y Condiciones y Política de Privacidad.
+    </div>
+    <div class="legal-block">
+      <b>No afiliación</b>
+      Esta actividad no es patrocinada, avalada, administrada ni asociada con FIFA, la Copa Mundial de la FIFA, el torneo internacional de fútbol correspondiente ni ninguna federación de fútbol.
+    </div>
+    <div class="legal-block">
+      <b>Ranking provisional</b>
+      El Ranking mostrado durante la actividad es provisional y estará sujeto a verificación final por parte del Organizador.
+    </div>
+    <div class="legal-links">
+      <a href="#" onclick="openTerms();return false;">Términos y Condiciones</a>
+      <a href="https://yango.com/legal/yango_privacy_notice" target="_blank" rel="noopener">Política de Privacidad</a>
     </div>
   </div>
 </div>
 
-<!-- DETAIL MODAL -->
-<div class="modal" id="detailModal">
-  <div class="modal-content" id="detailContent"></div>
-</div>
+<footer>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" class="logo-foot"><text x="130" y="58" text-anchor="middle" font-family="'Yango Headline',Impact,sans-serif" font-size="70" font-style="italic" font-weight="900" fill="#FC3F1D">YANGO</text><text x="130" y="122" text-anchor="middle" font-family="'Yango Headline',Impact,sans-serif" font-size="70" font-style="italic" font-weight="900" fill="#FC3F1D">PRO</text></svg>
+  <p>TEMPORADA FÚTBOL YANGO <i style="color:var(--yango-red);font-style:normal">●</i> CARACAS</p>
+  <p style="font-size:11px;color:#888;margin-top:12px;text-transform:none;letter-spacing:0;font-weight:400">Promoción válida solo para usuarios mayores de 18 años en Gran Caracas. Aplican términos y condiciones.</p>
+</footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ============================================
-// CONFIGURACIÓN
-// ============================================
-const ADMIN_PASSWORD = 'Yango2026Admin!';
-const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxHSwzDNWdOJ-C6tMIkKFB7iMMqUZ-elRI8V54LkIQgpV-Ykfsc1XaeZyV760ZvwKjT/exec';
-const GOOGLE_SHEETS_URL_DRIVERS = 'https://script.google.com/macros/s/AKfycbwAWBCstI2Oso0y4PwwETdx-YmqZyW8I1-ht-MMzpGB1iOEHjLEQShdmaaeH9P4FfIzxg/exec';
+// Fecha y hora límite para enviar quiniela (10 de junio 2026, 23:59 hora Caracas)
+// Caracas es UTC-4, entonces 23:59 Caracas = 03:59 UTC del 11 jun 2026
+const QUINIELA_CLOSES_AT = new Date('2026-06-11T03:59:00Z');
 
-// Datos de grupos (mismos del index)
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwAWBCstI2Oso0y4PwwETdx-YmqZyW8I1-ht-MMzpGB1iOEHjLEQShdmaaeH9P4FfIzxg/exec';
+
+// 12 grupos del Mundial 2026 (oficial FIFA según sorteo)
+const SCORERS = [
+  {flag:'🇫🇷', name:'KYLIAN MBAPPÉ', team:'FRANCIA'},
+  {flag:'🇦🇷', name:'LIONEL MESSI', team:'ARGENTINA'},
+  {flag:'🇳🇴', name:'ERLING HAALAND', team:'NORUEGA'},
+  {flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', name:'HARRY KANE', team:'INGLATERRA'},
+  {flag:'🇵🇹', name:'CRISTIANO RONALDO', team:'PORTUGAL'},
+  {flag:'🇧🇷', name:'VINICIUS JR.', team:'BRASIL'},
+  {flag:'🇪🇸', name:'LAMINE YAMAL', team:'ESPAÑA'},
+  {flag:'🇦🇷', name:'LAUTARO MARTÍNEZ', team:'ARGENTINA'},
+  {flag:'🇦🇷', name:'JULIÁN ÁLVAREZ', team:'ARGENTINA'},
+  {flag:'🇧🇷', name:'RAPHINHA', team:'BRASIL'},
+  {flag:'🇫🇷', name:'OUSMANE DEMBÉLÉ', team:'FRANCIA'},
+  {flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', name:'BUKAYO SAKA', team:'INGLATERRA'},
+  {flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', name:'PHIL FODEN', team:'INGLATERRA'},
+  {flag:'🇩🇪', name:'FLORIAN WIRTZ', team:'ALEMANIA'},
+  {flag:'🇩🇪', name:'JAMAL MUSIALA', team:'ALEMANIA'},
+  {flag:'🇳🇱', name:'CODY GAKPO', team:'HOLANDA'},
+  {flag:'🇳🇱', name:'MEMPHIS DEPAY', team:'HOLANDA'},
+  {flag:'🇧🇪', name:'ROMELU LUKAKU', team:'BÉLGICA'},
+  {flag:'🇪🇬', name:'MOHAMED SALAH', team:'EGIPTO'},
+  {flag:'❓', name:'OTRO JUGADOR', team:'ESCRIBIR NOMBRE'}
+];
+
 const GROUPS = {
   A: [{flag:'🇲🇽',name:'MÉXICO'},{flag:'🇿🇦',name:'SUDÁFRICA'},{flag:'🇰🇷',name:'COREA'},{flag:'🇨🇿',name:'CHEQUIA'}],
   B: [{flag:'🇨🇦',name:'CANADÁ'},{flag:'🇧🇦',name:'BOSNIA'},{flag:'🇶🇦',name:'QATAR'},{flag:'🇨🇭',name:'SUIZA'}],
@@ -1050,1012 +1377,826 @@ const GROUPS = {
   L: [{flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'INGLATERRA'},{flag:'🇭🇷',name:'CROACIA'},{flag:'🇬🇭',name:'GHANA'},{flag:'🇵🇦',name:'PANAMÁ'}]
 };
 
-// Estado del admin
-const adminState = {
-  groupMatches: {}, // {A_m1: {letter, aIdx, bIdx, scoreA, scoreB}, ...}
-  groupRankings: {}, // calculado automáticamente {A: [idx1ro, idx2do, idx3ro, idx4to], B: ...}
-  groupStandings: {}, // {A: [{idx, name, pts, dg, ...}, ...], ...}
-  selectedThirds: [], // calculado automáticamente: 8 mejores terceros
-  bracket: {
-    r32: {}, r16: {}, qf: {}, sf: {}, third: {}, final: {}
-  },
-  topScorer: '',
-  ranking: [],
-  allQuinielas: [],
-  rankingDrivers: [],
-  allQuinielasDrivers: []
+// Plantillas oficiales FIFA Round of 32
+// Cada partido tiene un slot fijo (1A, 2B...) y un slot de tercero con grupos elegibles
+const R32_TEMPLATE = [
+  {id:'r32_1', slotA:{type:'pos',pos:1,group:'A'}, slotB:{type:'third',eligibleGroups:['C','E','F','H','I']}},
+  {id:'r32_2', slotA:{type:'pos',pos:2,group:'A'}, slotB:{type:'pos',pos:2,group:'B'}},
+  {id:'r32_3', slotA:{type:'pos',pos:1,group:'B'}, slotB:{type:'third',eligibleGroups:['E','F','G','I','J']}},
+  {id:'r32_4', slotA:{type:'pos',pos:2,group:'D'}, slotB:{type:'pos',pos:2,group:'G'}},
+  {id:'r32_5', slotA:{type:'pos',pos:1,group:'C'}, slotB:{type:'pos',pos:2,group:'F'}},
+  {id:'r32_6', slotA:{type:'pos',pos:2,group:'E'}, slotB:{type:'pos',pos:2,group:'I'}},
+  {id:'r32_7', slotA:{type:'pos',pos:1,group:'D'}, slotB:{type:'third',eligibleGroups:['B','E','F','I','J']}},
+  {id:'r32_8', slotA:{type:'pos',pos:1,group:'G'}, slotB:{type:'third',eligibleGroups:['A','E','H','I','J']}},
+  {id:'r32_9', slotA:{type:'pos',pos:1,group:'E'}, slotB:{type:'third',eligibleGroups:['A','B','C','D','F']}},
+  {id:'r32_10', slotA:{type:'pos',pos:1,group:'F'}, slotB:{type:'pos',pos:2,group:'C'}},
+  {id:'r32_11', slotA:{type:'pos',pos:1,group:'H'}, slotB:{type:'pos',pos:2,group:'J'}},
+  {id:'r32_12', slotA:{type:'pos',pos:1,group:'J'}, slotB:{type:'pos',pos:2,group:'H'}},
+  {id:'r32_13', slotA:{type:'pos',pos:1,group:'I'}, slotB:{type:'third',eligibleGroups:['C','D','F','G','H']}},
+  {id:'r32_14', slotA:{type:'pos',pos:2,group:'K'}, slotB:{type:'pos',pos:2,group:'L'}},
+  {id:'r32_15', slotA:{type:'pos',pos:1,group:'K'}, slotB:{type:'third',eligibleGroups:['D','E','I','J','L']}},
+  {id:'r32_16', slotA:{type:'pos',pos:1,group:'L'}, slotB:{type:'third',eligibleGroups:['E','H','I','J','K']}}
+];
+
+const state = {
+  currentStep: 1,
+  user: {},
+  groupRankings: {}, // { A: [team1Idx, team2Idx, team3Idx, team4Idx] in pos order }
+  selectedThirds: [], // [{group, team}]
+  predictions: {
+    r32: {}, r16: {}, qf: {}, sf: {}, final: {}, third: {},
+    champion: null, topScorer: ''
+  }
 };
 
-// ============================================
-// LOGIN
-// ============================================
-function tryLogin(){
-  const pwd = document.getElementById('loginPassword').value;
-  if(pwd === ADMIN_PASSWORD){
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('adminPanel').style.display = 'block';
-    localStorage.setItem('yango_admin_logged', '1');
-    initAdmin();
-  } else {
-    document.getElementById('loginError').classList.add('show');
+function startQuiniela(){
+  // Verificar si la quiniela ya cerró
+  if(new Date() > QUINIELA_CLOSES_AT){
+    showClosedScreen();
+    return;
   }
-}
-
-// Auto-login si ya estuvo loggeado antes (sesión)
-if(localStorage.getItem('yango_admin_logged') === '1'){
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('adminPanel').style.display = 'block';
-  setTimeout(initAdmin, 100);
-}
-
-async function initAdmin(){
-  await loadSavedData();
+  document.getElementById('quiniela').classList.remove('hidden');
+  document.getElementById('intro').classList.add('hidden');
+  setTimeout(()=>{document.getElementById('quiniela').scrollIntoView({behavior:'smooth'});},200);
   renderGroups();
-  renderThirds();
-  renderBracket();
-  updateAllStatuses();
 }
 
-// ============================================
-// TABS
-// ============================================
-function showTab(tab){
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  document.querySelector('[data-tab="'+tab+'"]').classList.add('active');
-  document.querySelectorAll('.tab-content[data-tab="'+tab+'"]').forEach(c => c.classList.add('active'));
+function showClosedScreen(){
+  document.getElementById('hero').classList.add('hidden');
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiniela').classList.add('hidden');
+  document.getElementById('success').classList.add('hidden');
+  document.getElementById('closedScreen').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ============================================
-// GRUPOS - PARTIDO POR PARTIDO
-// ============================================
-// Generar los 6 partidos de cada grupo: cada equipo vs los otros 3
-function getGroupMatches(letter){
-  const teams = GROUPS[letter];
-  // 4 equipos → 6 partidos: (0v1)(0v2)(0v3)(1v2)(1v3)(2v3)
-  return [
-    {id: letter+'_m1', aIdx: 0, bIdx: 1},
-    {id: letter+'_m2', aIdx: 0, bIdx: 2},
-    {id: letter+'_m3', aIdx: 0, bIdx: 3},
-    {id: letter+'_m4', aIdx: 1, bIdx: 2},
-    {id: letter+'_m5', aIdx: 1, bIdx: 3},
-    {id: letter+'_m6', aIdx: 2, bIdx: 3}
-  ];
+// Auto-check al cargar: si ya cerró, mostrar pantalla de cerrado en vez del hero
+window.addEventListener('DOMContentLoaded', ()=>{
+  if(new Date() > QUINIELA_CLOSES_AT){
+    // Cambiar el botón "Jugar ahora" a "Ver Ranking"
+    const btn = document.querySelector('.cta-row .btn-primary');
+    if(btn){
+      btn.textContent = '🔒 PROMOCIÓN CERRADA — VER RANKING';
+      btn.onclick = showLeaderboard;
+    }
+  } else {
+    // Si todavía no ha cerrado, mostrar countdown discreto en el ticker
+    const daysUntil = Math.ceil((QUINIELA_CLOSES_AT - new Date()) / (1000*60*60*24));
+    if(daysUntil > 0 && daysUntil <= 30){
+      const ticker = document.querySelector('.ticker-track span');
+      if(ticker){
+        const countdownText = ' ⏰ CIERRA EN '+daysUntil+' DÍAS ';
+        document.querySelectorAll('.ticker-track span').forEach(s => {
+          s.innerHTML = s.innerHTML.replace('⚡ MUNDIAL 2026', '⚡ MUNDIAL 2026 <i>•</i>'+countdownText);
+        });
+      }
+    }
+  }
+});
+
+function showStep(n){
+  document.querySelectorAll('.step-content').forEach(el=>el.classList.add('hidden'));
+  document.querySelector(`[data-content="${n}"]`).classList.remove('hidden');
+  document.querySelectorAll('.step').forEach(s=>{
+    const num = parseInt(s.dataset.step);
+    s.classList.remove('active','completed');
+    if(num < n) s.classList.add('completed');
+    if(num === n) s.classList.add('active');
+  });
+  state.currentStep = n;
+  window.scrollTo({top:document.getElementById('quiniela').offsetTop - 60,behavior:'smooth'});
 }
 
+function nextStep(current){
+  if(current === 1){
+    const name = document.getElementById('userName').value.trim();
+    const email = document.getElementById('userEmail').value.trim();
+    const phone = document.getElementById('userPhone').value.trim();
+    const acceptTerms = document.getElementById('acceptTerms').checked;
+    const acceptPrivacy = document.getElementById('acceptPrivacy').checked;
+    if(!name || !email || !phone){showToast('Completa todos los campos');return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Email inválido');return;}
+    if(!acceptTerms){showToast('Debes aceptar los Términos y Condiciones');return;}
+    if(!acceptPrivacy){showToast('Debes autorizar el tratamiento de datos');return;}
+    state.user = {name, email, phone, acceptedTerms:true, acceptedPrivacy:true};
+  }
+  if(current === 2){
+    if(!validateGroups()){showToast('Ordena los 4 equipos en cada grupo');return;}
+    renderThirds();
+  }
+  if(current === 3){
+    if(state.selectedThirds.length !== 8){showToast('Selecciona exactamente 8 terceros');return;}
+    renderR32();
+  }
+  if(current === 4){
+    if(!validateRound('r32', 16, false)){showToast('Selecciona ganador en los 16 partidos');return;}
+    renderR16();
+  }
+  if(current === 5){
+    if(!validateRound('r16', 8, false)){showToast('Selecciona ganador en los 8 partidos');return;}
+    renderQF();
+  }
+  if(current === 6){
+    if(!validateRound('qf', 4, true)){showToast('Completa marcador y ganador en los 4 partidos');return;}
+    renderSF();
+  }
+  if(current === 7){
+    if(!validateRound('sf', 2, true)){showToast('Completa marcador y ganador en los 2 partidos');return;}
+    renderFinal();
+    renderThird();
+    renderScorers();
+  }
+  showStep(current + 1);
+}
+
+function prevStep(current){showStep(current - 1);}
+
+// ========== GROUPS ==========
 function renderGroups(){
   let html = '';
-  Object.keys(GROUPS).forEach(letter => {
-    const teams = GROUPS[letter];
-    const matches = getGroupMatches(letter);
-    
-    // Contar cuántos partidos están llenos
-    let filledCount = 0;
-    matches.forEach(m => {
-      const saved = adminState.groupMatches && adminState.groupMatches[m.id];
-      if(saved && saved.scoreA !== '' && saved.scoreA != null && saved.scoreB !== '' && saved.scoreB != null) filledCount++;
+  Object.entries(GROUPS).forEach(([letter, teams])=>{
+    if(!state.groupRankings[letter]) state.groupRankings[letter] = [];
+    const completed = state.groupRankings[letter].length === 4;
+    html += `<div class="group-card">
+      <div class="group-header">
+        GRUPO ${letter}
+        <span class="group-status ${completed?'complete':''}" id="status_${letter}">${completed?'✓ LISTO':'PENDIENTE'}</span>
+      </div>
+      <div class="group-teams" id="group_${letter}">`;
+    teams.forEach((team, idx)=>{
+      const pos = state.groupRankings[letter].indexOf(idx);
+      const posDisplay = pos === -1 ? '?' : (pos + 1) + '°';
+      const dataPos = pos === -1 ? '' : `data-pos="${pos+1}"`;
+      html += `<div class="group-team" ${dataPos} onclick="selectGroupTeam('${letter}',${idx})">
+        <span class="team-flag">${team.flag}</span>
+        <span class="team-name">${team.name}</span>
+        <span class="position-badge">${posDisplay}</span>
+      </div>`;
     });
-    const isComplete = filledCount === 6;
-    
-    html += '<div class="group-block">';
-    html += '<div class="group-block-header">';
-    html += '<div class="group-block-title">GRUPO '+letter+'</div>';
-    html += '<span class="group-block-progress '+(isComplete?'complete':'')+'">'+filledCount+'/6 PARTIDOS</span>';
-    html += '</div>';
-    
-    html += '<div class="group-matches-list">';
-    matches.forEach((m, idx) => {
-      const teamA = teams[m.aIdx];
-      const teamB = teams[m.bIdx];
-      const saved = (adminState.groupMatches && adminState.groupMatches[m.id]) || {};
-      
-      html += '<div class="group-match-row" data-match="'+m.id+'">';
-      html += '<div class="team-block"><span class="team-flag">'+teamA.flag+'</span><span class="team-name">'+teamA.name+'</span></div>';
-      html += '<input type="number" min="0" max="20" placeholder="-" value="'+(saved.scoreA ?? '')+'" oninput="updateGroupMatch(\''+m.id+'\',\''+letter+'\','+m.aIdx+','+m.bIdx+',\'a\',this.value)">';
-      html += '<div class="vs">vs</div>';
-      html += '<input type="number" min="0" max="20" placeholder="-" value="'+(saved.scoreB ?? '')+'" oninput="updateGroupMatch(\''+m.id+'\',\''+letter+'\','+m.aIdx+','+m.bIdx+',\'b\',this.value)">';
-      html += '<div class="team-block right"><span class="team-name">'+teamB.name+'</span><span class="team-flag">'+teamB.flag+'</span></div>';
-      html += '</div>';
-    });
-    html += '</div>';
-    
-    // Standings auto-calculadas
-    html += renderGroupStandings(letter);
-    
-    html += '</div>';
+    html += `</div>
+      <div class="group-tip">Toca cada equipo en orden: 1° → 2° → 3° → 4°. Toca de nuevo para resetear.</div>
+    </div>`;
   });
   document.getElementById('groupsContainer').innerHTML = html;
 }
 
-function updateGroupMatch(matchId, letter, aIdx, bIdx, side, value){
-  if(!adminState.groupMatches) adminState.groupMatches = {};
-  if(!adminState.groupMatches[matchId]) adminState.groupMatches[matchId] = {letter, aIdx, bIdx};
-  const m = adminState.groupMatches[matchId];
-  m[side === 'a' ? 'scoreA' : 'scoreB'] = value === '' ? '' : parseInt(value);
-  
-  // Recalcular posiciones del grupo y re-renderizar standings
-  calculateGroupStandings(letter);
-  updateGroupStandingsUI(letter);
-  // Actualizar progress badge
-  renderGroups();
-  // Re-render terceros porque pueden cambiar
-  renderThirds();
-  updateAllStatuses();
-}
-
-// Calcular posiciones del grupo según partidos
-function calculateGroupStandings(letter){
-  const teams = GROUPS[letter];
-  const matches = getGroupMatches(letter);
-  
-  // Inicializar estadísticas
-  const stats = teams.map((t, idx) => ({
-    idx, name: t.name, flag: t.flag,
-    pj:0, g:0, e:0, p:0, gf:0, gc:0, dg:0, pts:0
-  }));
-  
-  // Procesar cada partido
-  matches.forEach(m => {
-    const saved = adminState.groupMatches && adminState.groupMatches[m.id];
-    if(!saved || saved.scoreA === '' || saved.scoreA == null || saved.scoreB === '' || saved.scoreB == null) return;
-    
-    const sa = parseInt(saved.scoreA);
-    const sb = parseInt(saved.scoreB);
-    
-    stats[m.aIdx].pj++;
-    stats[m.bIdx].pj++;
-    stats[m.aIdx].gf += sa;
-    stats[m.aIdx].gc += sb;
-    stats[m.bIdx].gf += sb;
-    stats[m.bIdx].gc += sa;
-    
-    if(sa > sb){
-      stats[m.aIdx].g++;
-      stats[m.aIdx].pts += 3;
-      stats[m.bIdx].p++;
-    } else if(sb > sa){
-      stats[m.bIdx].g++;
-      stats[m.bIdx].pts += 3;
-      stats[m.aIdx].p++;
-    } else {
-      stats[m.aIdx].e++;
-      stats[m.bIdx].e++;
-      stats[m.aIdx].pts++;
-      stats[m.bIdx].pts++;
-    }
-  });
-  
-  stats.forEach(s => s.dg = s.gf - s.gc);
-  
-  // Ordenar: pts → dg → gf → nombre
-  stats.sort((a, b) => {
-    if(b.pts !== a.pts) return b.pts - a.pts;
-    if(b.dg !== a.dg) return b.dg - a.dg;
-    if(b.gf !== a.gf) return b.gf - a.gf;
-    return a.name.localeCompare(b.name);
-  });
-  
-  // Guardar el ranking calculado
-  adminState.groupRankings[letter] = stats.map(s => s.idx);
-  adminState.groupStandings = adminState.groupStandings || {};
-  adminState.groupStandings[letter] = stats;
-  
-  return stats;
-}
-
-function renderGroupStandings(letter){
-  const stats = calculateGroupStandings(letter);
-  let html = '<div class="group-standings" id="standings-'+letter+'">';
-  html += '<div class="group-standings-title">📊 TABLA DEL GRUPO '+letter+'</div>';
-  html += '<div class="standings-row header"><div class="pos">#</div><div class="team">EQUIPO</div><div class="stat">PJ</div><div class="stat">DG</div><div class="stat">GF</div><div class="pts">PTS</div></div>';
-  stats.forEach((s, i) => {
-    const posClass = 'pos-' + (i+1);
-    html += '<div class="standings-row '+posClass+'">';
-    html += '<div class="pos">'+(i+1)+'°</div>';
-    html += '<div class="team">'+s.flag+' '+s.name+'</div>';
-    html += '<div class="stat">'+s.pj+'</div>';
-    html += '<div class="stat">'+(s.dg >= 0 ? '+'+s.dg : s.dg)+'</div>';
-    html += '<div class="stat">'+s.gf+'</div>';
-    html += '<div class="pts">'+s.pts+'</div>';
-    html += '</div>';
-  });
-  html += '</div>';
-  return html;
-}
-
-function updateGroupStandingsUI(letter){
-  const el = document.getElementById('standings-'+letter);
-  if(!el) return;
-  el.outerHTML = renderGroupStandings(letter);
-}
-
-async function saveGroupMatches(){
-  showToast('Guardando partidos...');
-  // Asegurar que todos los rankings están actualizados
-  Object.keys(GROUPS).forEach(g => calculateGroupStandings(g));
-  
-  const data = {
-    action:'save_group_matches',
-    groupMatches: adminState.groupMatches || {},
-    groupRankings: adminState.groupRankings
-  };
-  const ok = await sendToSheets(data);
-  if(ok){
-    showToast('✓ Partidos guardados', 'success');
-    renderThirds();
+function selectGroupTeam(letter, teamIdx){
+  const ranking = state.groupRankings[letter];
+  const existingPos = ranking.indexOf(teamIdx);
+  if(existingPos !== -1){
+    // Resetear: si ya está, quitarlo y todos los siguientes
+    state.groupRankings[letter] = ranking.slice(0, existingPos);
   } else {
-    showToast('Error al guardar', 'error');
+    if(ranking.length < 4){
+      state.groupRankings[letter].push(teamIdx);
+    }
   }
+  renderGroups();
 }
 
-// ============================================
-// TERCEROS
-// ============================================
+function validateGroups(){
+  for(const letter of Object.keys(GROUPS)){
+    if(!state.groupRankings[letter] || state.groupRankings[letter].length !== 4) return false;
+  }
+  return true;
+}
+
+// ========== THIRDS ==========
 function renderThirds(){
   const grid = document.getElementById('thirdsGrid');
-  if(!grid) return;
-  
-  // Sugerir automáticamente los 8 mejores terceros si no hay selección manual
-  autoSuggestBestThirds();
-  
-  // Mostrar todos los terceros con sus stats
-  const thirdsList = getThirdsWithStats();
-  
   let html = '';
-  thirdsList.forEach(t => {
-    const isSelected = adminState.selectedThirds.some(x => x.group === t.group);
-    const cls = isSelected ? 'selected' : '';
-    const opacity = t.thirdIdx === -1 ? 'style="opacity:0.3;cursor:not-allowed"' : '';
-    html += '<div class="third-card '+cls+'" '+opacity+' onclick="toggleThird(\''+t.group+'\')">';
-    if(t.thirdIdx === -1){
-      html += '<span class="third-flag">❓</span>';
-      html += '<div class="third-name">PENDIENTE</div>';
-      html += '<div class="third-group">GRUPO '+t.group+'</div>';
-    } else {
-      html += '<span class="third-flag">'+t.flag+'</span>';
-      html += '<div class="third-name">'+t.name+'</div>';
-      html += '<div class="third-group">3° GRUPO '+t.group+' · '+t.pts+'pts · '+(t.dg>=0?'+':'')+t.dg+'dg · '+t.gf+'gf</div>';
-    }
-    html += '</div>';
+  Object.entries(GROUPS).forEach(([letter, teams])=>{
+    const thirdIdx = state.groupRankings[letter][2];
+    const team = teams[thirdIdx];
+    const isSelected = state.selectedThirds.some(t => t.group === letter);
+    html += `<div class="third-card ${isSelected?'selected':''}" 
+      onclick="toggleThird('${letter}',${thirdIdx})">
+      <span class="third-flag">${team.flag}</span>
+      <div class="third-name">${team.name}</div>
+      <div class="third-group">3° GRUPO ${letter}</div>
+    </div>`;
   });
   grid.innerHTML = html;
   updateThirdsCounter();
 }
 
-function getThirdsWithStats(){
-  return Object.keys(GROUPS).map(letter => {
-    const ranking = adminState.groupRankings[letter];
-    const standings = adminState.groupStandings && adminState.groupStandings[letter];
-    if(!ranking || ranking.length < 3 || !standings){
-      return {group: letter, thirdIdx: -1, name: '?', flag: '?', pts: 0, dg: 0, gf: 0};
-    }
-    const thirdStats = standings[2]; // 3er lugar después del sort
-    return {
-      group: letter,
-      thirdIdx: thirdStats.idx,
-      name: thirdStats.name,
-      flag: thirdStats.flag,
-      pts: thirdStats.pts,
-      dg: thirdStats.dg,
-      gf: thirdStats.gf
-    };
-  });
-}
-
-function autoSuggestBestThirds(){
-  // Si ya hay 8 seleccionados, no hacer nada (respetar selección manual)
-  if(adminState.selectedThirds.length === 8) return;
-  
-  // Si no hay nada seleccionado y todos los grupos están completos, sugerir los 8 mejores
-  const allComplete = Object.keys(GROUPS).every(g => {
-    const matches = getGroupMatches(g);
-    return matches.every(m => {
-      const saved = adminState.groupMatches && adminState.groupMatches[m.id];
-      return saved && saved.scoreA != null && saved.scoreA !== '' && saved.scoreB != null && saved.scoreB !== '';
-    });
-  });
-  
-  if(!allComplete || adminState.selectedThirds.length > 0) return;
-  
-  // Obtener todos los terceros y ordenar por pts, dg, gf
-  const thirds = getThirdsWithStats().filter(t => t.thirdIdx !== -1);
-  thirds.sort((a, b) => {
-    if(b.pts !== a.pts) return b.pts - a.pts;
-    if(b.dg !== a.dg) return b.dg - a.dg;
-    return b.gf - a.gf;
-  });
-  
-  // Tomar los 8 mejores
-  adminState.selectedThirds = thirds.slice(0, 8).map(t => ({group: t.group}));
-}
-
-function toggleThird(group){
-  const existing = adminState.selectedThirds.findIndex(t => t.group === group);
+function toggleThird(group, teamIdx){
+  const existing = state.selectedThirds.findIndex(t => t.group === group);
   if(existing !== -1){
-    adminState.selectedThirds.splice(existing, 1);
+    state.selectedThirds.splice(existing, 1);
   } else {
-    if(adminState.selectedThirds.length >= 8){
-      showToast('Solo 8 terceros', 'error');
+    if(state.selectedThirds.length >= 8){
+      showToast('Solo puedes elegir 8 terceros');
       return;
     }
-    adminState.selectedThirds.push({group});
+    state.selectedThirds.push({group, teamIdx});
   }
   renderThirds();
-  updateAllStatuses();
 }
 
 function updateThirdsCounter(){
-  const el = document.getElementById('thirdsCounter');
-  if(el) el.textContent = 'SELECCIONADOS: '+adminState.selectedThirds.length+' / 8';
+  document.getElementById('thirdsCounter').textContent = `SELECCIONADOS: ${state.selectedThirds.length} / 8`;
 }
 
-async function saveThirds(){
-  if(adminState.selectedThirds.length !== 8){
-    showToast('Selecciona exactamente 8 terceros', 'error');
-    return;
+// ========== R32 BRACKET (FIFA OFFICIAL CROSSES) ==========
+function getTeamForSlot(slot){
+  if(slot.type === 'pos'){
+    const teamIdx = state.groupRankings[slot.group][slot.pos - 1];
+    const team = GROUPS[slot.group][teamIdx];
+    return {flag:team.flag, name:team.name, label:`${slot.pos}${slot.group}`};
   }
-  showToast('Guardando terceros...');
-  const data = {action:'save_thirds', selectedThirds: adminState.selectedThirds};
-  const ok = await sendToSheets(data);
-  if(ok){
-    showToast('✓ Terceros guardados', 'success');
-  } else {
-    showToast('Error al guardar', 'error');
-  }
+  // Third place: encontrar tercero asignable de los grupos elegibles
+  const eligibleSelectedThirds = state.selectedThirds.filter(t => slot.eligibleGroups.includes(t.group));
+  return eligibleSelectedThirds; // array de candidatos
 }
 
-// ============================================
-// BRACKET (eliminatorias)
-// ============================================
-function getAllTeamsFlat(){
-  // Retorna lista de todos los equipos para los dropdowns
-  const all = [];
-  Object.entries(GROUPS).forEach(([letter, teams])=>{
-    teams.forEach((team, idx)=>{
-      all.push({letter, idx, ...team});
-    });
+function assignThirdsToSlots(){
+  // Asignar los 8 terceros seleccionados a los 8 slots de tercero
+  // Estrategia: para cada slot (en orden), asignar el primer tercero elegible no asignado
+  const thirdSlots = R32_TEMPLATE.filter(m => m.slotB.type === 'third');
+  const availableThirds = [...state.selectedThirds];
+  const assignments = {};
+
+  // Greedy: ordenar slots por flexibilidad (slots con menos opciones primero)
+  const slotsWithOptions = thirdSlots.map(slot => {
+    const opts = availableThirds.filter(t => slot.slotB.eligibleGroups.includes(t.group));
+    return {slot, opts: opts.length};
   });
-  return all;
+  slotsWithOptions.sort((a,b)=> a.opts - b.opts);
+
+  for(const {slot} of slotsWithOptions){
+    const assigned = availableThirds.find(t => slot.slotB.eligibleGroups.includes(t.group));
+    if(assigned){
+      assignments[slot.id] = assigned;
+      const idx = availableThirds.indexOf(assigned);
+      availableThirds.splice(idx, 1);
+    }
+  }
+  return assignments;
 }
 
-function renderBracket(){
-  const allTeams = getAllTeamsFlat();
-  renderRound('r32', 16, 'r32Container', allTeams);
-  renderRound('r16', 8, 'r16Container', allTeams);
-  renderRound('qf', 4, 'qfContainer', allTeams);
-  renderRound('sf', 2, 'sfContainer', allTeams);
-  renderRound('third', 1, 'thirdMatchContainer', allTeams);
-  renderRound('final', 1, 'finalContainer', allTeams);
-}
+function renderR32(){
+  const thirdAssignments = assignThirdsToSlots();
+  state.r32Assignments = thirdAssignments;
 
-function renderRound(roundKey, count, containerId, allTeams){
   let html = '';
-  for(let i = 1; i <= count; i++){
-    const matchId = roundKey + '_' + i;
-    const m = adminState.bracket[roundKey][matchId] || {};
-    
-    let teamOptions = '<option value="">-- equipo --</option>';
-    allTeams.forEach(t => {
-      const sel = (m.teamA === t.name || m.teamB === t.name) ? '' : '';
-      teamOptions += '<option value="'+t.name+'">'+t.flag+' '+t.name+'</option>';
-    });
-    
-    html += '<div class="match-row-admin" data-match="'+matchId+'">';
-    html += '<div class="match-num">P'+i+'</div>';
-    html += '<select onchange="updateMatch(\''+roundKey+'\',\''+matchId+'\',\'teamA\',this.value)">'+teamOptions+'</select>';
-    html += '<input type="number" min="0" max="20" placeholder="0" oninput="updateMatch(\''+roundKey+'\',\''+matchId+'\',\'scoreA\',this.value)" value="'+(m.scoreA ?? '')+'">';
-    html += '<input type="number" min="0" max="20" placeholder="0" oninput="updateMatch(\''+roundKey+'\',\''+matchId+'\',\'scoreB\',this.value)" value="'+(m.scoreB ?? '')+'">';
-    html += '<select onchange="updateMatch(\''+roundKey+'\',\''+matchId+'\',\'teamB\',this.value)">'+teamOptions+'</select>';
-    html += '<div></div>';
-    html += '<div class="penalty-select" id="penalty-'+matchId+'">';
-    html += '<label>EMPATE — ¿Quién ganó en penales?</label>';
-    html += '<select onchange="updateMatch(\''+roundKey+'\',\''+matchId+'\',\'penaltyWinner\',this.value)">';
-    html += '<option value="">-- selecciona --</option>';
-    html += '</select>';
-    html += '</div>';
-    html += '</div>';
-  }
-  document.getElementById(containerId).innerHTML = html;
-  
-  // Restaurar valores seleccionados en los dropdowns
-  for(let i = 1; i <= count; i++){
-    const matchId = roundKey + '_' + i;
-    const m = adminState.bracket[roundKey][matchId];
-    if(m){
-      const row = document.querySelector('[data-match="'+matchId+'"]');
-      if(!row) continue;
-      const selects = row.querySelectorAll('select');
-      if(m.teamA) selects[0].value = m.teamA;
-      if(m.teamB) selects[1].value = m.teamB;
-      // Show penalty if tied
-      if(m.scoreA !== '' && m.scoreB !== '' && m.scoreA != null && m.scoreB != null && parseInt(m.scoreA) === parseInt(m.scoreB)){
-        showPenaltySelector(roundKey, matchId);
-      }
-    }
-  }
-}
-
-function updateMatch(roundKey, matchId, field, value){
-  if(!adminState.bracket[roundKey][matchId]) adminState.bracket[roundKey][matchId] = {};
-  const m = adminState.bracket[roundKey][matchId];
-  if(field === 'scoreA' || field === 'scoreB'){
-    m[field] = value === '' ? '' : parseInt(value);
-  } else {
-    m[field] = value;
-  }
-  
-  // Si hay marcador y es empate, mostrar selector de penales
-  if(field === 'scoreA' || field === 'scoreB' || field === 'teamA' || field === 'teamB'){
-    if(m.scoreA !== '' && m.scoreB !== '' && m.scoreA != null && m.scoreB != null){
-      if(parseInt(m.scoreA) === parseInt(m.scoreB) && m.teamA && m.teamB){
-        showPenaltySelector(roundKey, matchId);
-      } else {
-        hidePenaltySelector(matchId);
-        m.penaltyWinner = '';
-      }
-    }
-  }
-  
-  updateAllStatuses();
-}
-
-function showPenaltySelector(roundKey, matchId){
-  const pen = document.getElementById('penalty-'+matchId);
-  if(!pen) return;
-  pen.classList.add('show');
-  const m = adminState.bracket[roundKey][matchId];
-  const sel = pen.querySelector('select');
-  if(m.teamA && m.teamB){
-    sel.innerHTML = '<option value="">-- selecciona --</option>'+
-                    '<option value="'+m.teamA+'"'+(m.penaltyWinner === m.teamA ? ' selected' : '')+'>'+m.teamA+'</option>'+
-                    '<option value="'+m.teamB+'"'+(m.penaltyWinner === m.teamB ? ' selected' : '')+'>'+m.teamB+'</option>';
-  }
-}
-
-function hidePenaltySelector(matchId){
-  const pen = document.getElementById('penalty-'+matchId);
-  if(pen) pen.classList.remove('show');
-}
-
-async function saveBracket(){
-  showToast('Guardando eliminatorias...');
-  const data = {action:'save_bracket', bracket: adminState.bracket};
-  const ok = await sendToSheets(data);
-  if(ok){
-    showToast('✓ Eliminatorias guardadas', 'success');
-  } else {
-    showToast('Error al guardar', 'error');
-  }
-}
-
-// ============================================
-// GOLEADOR
-// ============================================
-async function saveGoleador(){
-  const val = document.getElementById('topScorerInput').value.trim().toUpperCase();
-  if(!val){
-    showToast('Escribe un nombre', 'error');
-    return;
-  }
-  adminState.topScorer = val;
-  showToast('Guardando goleador...');
-  const data = {action:'save_goleador', topScorer: val};
-  const ok = await sendToSheets(data);
-  if(ok){
-    showToast('✓ Goleador guardado', 'success');
-    updateAllStatuses();
-  } else {
-    showToast('Error al guardar', 'error');
-  }
-}
-
-// ============================================
-// STATUS UPDATES
-// ============================================
-function updateAllStatuses(){
-  // Grupos (contar partidos llenos)
-  let partidosLlenos = 0;
-  Object.keys(GROUPS).forEach(g => {
-    const matches = getGroupMatches(g);
-    matches.forEach(m => {
-      const saved = adminState.groupMatches && adminState.groupMatches[m.id];
-      if(saved && saved.scoreA != null && saved.scoreA !== '' && saved.scoreB != null && saved.scoreB !== '') partidosLlenos++;
-    });
-  });
-  document.getElementById('status-grupos').textContent = partidosLlenos + '/72';
-  document.querySelector('[data-tab="grupos"]').classList.toggle('complete', partidosLlenos === 72);
-  
-  // Terceros
-  const tercerosCount = adminState.selectedThirds.length;
-  document.getElementById('status-terceros').textContent = tercerosCount + '/8';
-  document.querySelector('[data-tab="terceros"]').classList.toggle('complete', tercerosCount === 8);
-  
-  // Bracket
-  let bracketCount = 0;
-  const expected = {r32:16, r16:8, qf:4, sf:2, third:1, final:1};
-  Object.entries(expected).forEach(([round, num])=>{
-    for(let i = 1; i <= num; i++){
-      const m = adminState.bracket[round]['{0}_{1}'.replace('{0}',round).replace('{1}',i)];
-      if(m && m.teamA && m.teamB && m.scoreA !== '' && m.scoreA != null && m.scoreB !== '' && m.scoreB != null){
-        // Si es empate, también requiere penaltyWinner
-        if(parseInt(m.scoreA) === parseInt(m.scoreB) && !m.penaltyWinner) continue;
-        bracketCount++;
-      }
-    }
-  });
-  document.getElementById('status-bracket').textContent = bracketCount + '/31';
-  document.querySelector('[data-tab="bracket"]').classList.toggle('complete', bracketCount === 31);
-  
-  // Goleador
-  document.getElementById('status-goleador').textContent = adminState.topScorer ? '✓' : '-';
-  document.querySelector('[data-tab="goleador"]').classList.toggle('complete', !!adminState.topScorer);
-  
-  // Ranking (U = usuarios, D = drivers)
-  const dCount = adminState.rankingDrivers.length;
-  document.getElementById('status-ranking').textContent =
-    adminState.ranking.length + (dCount > 0 ? '+'+dCount+'D' : '');
-}
-
-// ============================================
-// LOAD SAVED DATA + QUINIELAS
-// ============================================
-async function loadSavedData(){
-  if(!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL.indexOf('PEGA_AQUI') !== -1){
-    showToast('Configura GOOGLE_SHEETS_URL', 'error');
-    return;
-  }
-  try{
-    const r = await fetch(GOOGLE_SHEETS_URL + '?action=load_admin');
-    if(!r.ok) return;
-    const data = await r.json();
-    if(data.groupMatches) adminState.groupMatches = data.groupMatches;
-    if(data.groupRankings) adminState.groupRankings = data.groupRankings;
-    if(data.selectedThirds) adminState.selectedThirds = data.selectedThirds;
-    if(data.bracket){
-      ['r32','r16','qf','sf','third','final'].forEach(k => {
-        if(!data.bracket[k]) data.bracket[k] = {};
-      });
-      adminState.bracket = data.bracket;
-    }
-    if(data.topScorer){
-      adminState.topScorer = data.topScorer;
-      const inp = document.getElementById('topScorerInput');
-      if(inp) inp.value = data.topScorer;
-    }
-    if(data.quinielas) adminState.allQuinielas = data.quinielas;
-    if(data.ranking) {
-      adminState.ranking = data.ranking;
-      renderRanking();
-    }
-
-    // Cargar ranking de drivers si el URL está configurado
-    if(GOOGLE_SHEETS_URL_DRIVERS && GOOGLE_SHEETS_URL_DRIVERS.indexOf('PEGA_AQUI') === -1){
-      try{
-        const rd = await fetch(GOOGLE_SHEETS_URL_DRIVERS + '?action=get_ranking');
-        if(rd.ok){
-          const dd = await rd.json();
-          if(dd.ranking && dd.ranking.length > 0){
-            adminState.rankingDrivers = dd.ranking;
-          }
-        }
-      }catch(e){ /* drivers ranking no disponible aún */ }
-    }
-
-    // Recalcular standings de todos los grupos al cargar
-    Object.keys(GROUPS).forEach(g => calculateGroupStandings(g));
-  }catch(e){
-    console.warn('No se pudo cargar data previa:', e);
-  }
-}
-
-async function sendToSheets(payload){
-  if(!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL.indexOf('PEGA_AQUI') !== -1){
-    showToast('Configura GOOGLE_SHEETS_URL primero', 'error');
-    return false;
-  }
-  try{
-    await fetch(GOOGLE_SHEETS_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type': 'text/plain;charset=utf-8'},
-      body: JSON.stringify(payload)
-    });
-    return true;
-  }catch(e){
-    console.error('Error enviando a Sheets:', e);
-    return false;
-  }
-}
-
-async function sendToSheetsDrivers(payload){
-  if(!GOOGLE_SHEETS_URL_DRIVERS || GOOGLE_SHEETS_URL_DRIVERS.indexOf('PEGA_AQUI') !== -1) return false;
-  try{
-    await fetch(GOOGLE_SHEETS_URL_DRIVERS, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type': 'text/plain;charset=utf-8'},
-      body: JSON.stringify(payload)
-    });
-    return true;
-  }catch(e){
-    console.error('Error enviando a Sheets Drivers:', e);
-    return false;
-  }
-}
-
-// ============================================
-// CÁLCULO DE RANKING
-// ============================================
-function buildRankingFromQuinielas(quinielas){
-  return quinielas.map(q => {
-    try{
-      const datos = JSON.parse(q.json);
-      const puntos = calcularPuntosQuiniela(datos);
-      return {
-        code: q.code,
-        nombre: datos.user.name,
-        email: datos.user.email,
-        telefono: datos.user.phone,
-        campeon: (datos.predictions && datos.predictions.champion) ? datos.predictions.champion.name : '',
-        goleador: datos.predictions.topScorer || '',
-        puntos: puntos,
-        datos: datos
-      };
-    }catch(e){ return null; }
-  }).filter(x => x !== null).sort((a, b) => b.puntos - a.puntos);
-}
-
-async function fetchQuinielas(url){
-  const r = await fetch(url + '?action=get_quinielas');
-  if(!r.ok) throw new Error('No se pudo cargar quinielas de ' + url);
-  const result = await r.json();
-  return result.quinielas || [];
-}
-
-async function calculateRanking(){
-  const btn = document.getElementById('calcBtn');
-  btn.disabled = true;
-  btn.textContent = '⏳ CALCULANDO...';
-  showToast('Cargando quinielas...');
-
-  try{
-    // ── Usuarios ──
-    adminState.allQuinielas = await fetchQuinielas(GOOGLE_SHEETS_URL);
-    const rankingUsuarios = buildRankingFromQuinielas(adminState.allQuinielas);
-    adminState.ranking = rankingUsuarios;
-    await sendToSheets({action:'save_ranking', ranking: rankingUsuarios.map(r => ({
-      code: r.code, nombre: r.nombre, email: r.email, telefono: r.telefono,
-      campeon: r.campeon, goleador: r.goleador, puntos: r.puntos
-    }))});
-
-    // ── Drivers ──
-    let driversMsg = '';
-    if(GOOGLE_SHEETS_URL_DRIVERS && GOOGLE_SHEETS_URL_DRIVERS.indexOf('PEGA_AQUI') === -1){
-      adminState.allQuinielasDrivers = await fetchQuinielas(GOOGLE_SHEETS_URL_DRIVERS);
-      const rankingDrivers = buildRankingFromQuinielas(adminState.allQuinielasDrivers);
-      adminState.rankingDrivers = rankingDrivers;
-      await sendToSheetsDrivers({action:'save_ranking', ranking: rankingDrivers.map(r => ({
-        code: r.code, nombre: r.nombre, email: r.email, telefono: r.telefono,
-        campeon: r.campeon, goleador: r.goleador, puntos: r.puntos
-      }))});
-      driversMsg = ' · Drivers: '+rankingDrivers.length;
+  R32_TEMPLATE.forEach((match, i)=>{
+    const teamA = getTeamForSlot(match.slotA);
+    let teamB;
+    if(match.slotB.type === 'pos'){
+      teamB = getTeamForSlot(match.slotB);
     } else {
-      driversMsg = ' · (Drivers URL no configurada)';
+      const assignedThird = thirdAssignments[match.id];
+      if(assignedThird){
+        const team = GROUPS[assignedThird.group][assignedThird.teamIdx];
+        teamB = {flag:team.flag, name:team.name, label:`3${assignedThird.group}`};
+      } else {
+        teamB = {flag:'❓', name:'TBD', label:'3?'};
+      }
     }
+    if(!state.predictions.r32[match.id]) state.predictions.r32[match.id] = {teamA, teamB};
+    state.predictions.r32[match.id].teamA = teamA;
+    state.predictions.r32[match.id].teamB = teamB;
+    html += renderKOMatch('r32', match.id, teamA, teamB, `PARTIDO ${i+1} · ${teamA.label} VS ${teamB.label}`, false);
+  });
+  document.getElementById('r32Container').innerHTML = html;
+  restoreSelections('r32');
+}
 
-    renderRanking();
-    updateAllStatuses();
-    showTab('ranking');
-    showToast('✓ Usuarios: '+rankingUsuarios.length+driversMsg, 'success');
+// ========== KNOCKOUT MATCH RENDERING ==========
+function renderKOMatch(round, matchId, teamA, teamB, label, withScore){
+  const m = state.predictions[round][matchId] || {};
+  const scoreInputs = withScore ? `
+    <div class="score-block">
+      <input type="number" min="0" max="20" class="score-input" 
+        oninput="setScore('${round}','${matchId}','a',this.value)"
+        value="${m.scoreA ?? ''}">
+      <span class="vs-text">VS</span>
+      <input type="number" min="0" max="20" class="score-input" 
+        oninput="setScore('${round}','${matchId}','b',this.value)"
+        value="${m.scoreB ?? ''}">
+    </div>` : `<div class="vs-text-only">VS</div>`;
+
+  return `<div class="match-card" data-round="${round}" data-match="${matchId}">
+    <div class="match-header">${label}</div>
+    <div class="match-row">
+      <div class="team-block" onclick="setWinner('${round}','${matchId}','a')">
+        <span class="team-flag">${teamA.flag}</span>
+        <span class="team-name">${teamA.name}</span>
+      </div>
+      ${scoreInputs}
+      <div class="team-block right" onclick="setWinner('${round}','${matchId}','b')">
+        <span class="team-flag" style="display:block;text-align:right">${teamB.flag}</span>
+        <span class="team-name">${teamB.name}</span>
+      </div>
+    </div>
+    <div class="winner-hint" id="hint_${matchId}">${withScore?'INGRESA EL MARCADOR Y SE ELIGE GANADOR':'TOCA UN EQUIPO PARA ELEGIR GANADOR'}</div>
+    <div id="penalty_${matchId}" class="penalty-block" style="display:none">
+      <div class="penalty-title">⚽ EMPATE EN EL JUEGO — ¿QUIÉN GANA EN PENALES?</div>
+      <div class="penalty-options">
+        <div class="penalty-btn" id="pen_${matchId}_a" onclick="setPenaltyWinner('${round}','${matchId}','a')">
+          <span class="pen-flag">${teamA.flag}</span>${teamA.name}
+        </div>
+        <div class="penalty-btn" id="pen_${matchId}_b" onclick="setPenaltyWinner('${round}','${matchId}','b')">
+          <span class="pen-flag">${teamB.flag}</span>${teamB.name}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function setPenaltyWinner(round, matchId, side){
+  const m = state.predictions[round][matchId];
+  if(!m) return;
+  m.penaltyWinnerSide = side;
+  m.winnerSide = side;
+  const winner = side === 'a' ? m.teamA : m.teamB;
+  m.winner = winner;
+  document.getElementById('pen_'+matchId+'_a').classList.remove('selected');
+  document.getElementById('pen_'+matchId+'_b').classList.remove('selected');
+  document.getElementById('pen_'+matchId+'_'+side).classList.add('selected');
+  const card = document.querySelector('[data-match="'+matchId+'"]');
+  const teamBlocks = card.querySelectorAll('.team-block');
+  teamBlocks.forEach(t=>t.classList.remove('winner'));
+  teamBlocks[side === 'a' ? 0 : 1].classList.add('winner');
+  const hint = document.getElementById('hint_'+matchId);
+  if(hint){hint.textContent = '✓ GANA EN PENALES: '+winner.name;hint.classList.add('set');}
+  if(round === 'final'){
+    state.predictions.champion = winner;
+    document.getElementById('championDisplay').innerHTML = winner.flag+' '+winner.name;
+  }
+}
+
+function checkAndShowPenalty(round, matchId){
+  const m = state.predictions[round][matchId];
+  if(!m) return;
+  const penaltyBlock = document.getElementById('penalty_'+matchId);
+  if(!penaltyBlock) return;
+  if(!['qf','sf','final','third'].includes(round)) return;
+  if(m.scoreA !== '' && m.scoreB !== '' && m.scoreA != null && m.scoreB != null){
+    if(parseInt(m.scoreA) === parseInt(m.scoreB)){
+      penaltyBlock.style.display = 'block';
+      const card = document.querySelector('[data-match="'+matchId+'"]');
+      if(card && !m.penaltyWinnerSide){
+        const teamBlocks = card.querySelectorAll('.team-block');
+        teamBlocks.forEach(t=>t.classList.remove('winner'));
+        m.winner = null;
+        m.winnerSide = null;
+        const hint = document.getElementById('hint_'+matchId);
+        if(hint){hint.textContent = 'EMPATE — SELECCIONA QUIÉN GANA EN PENALES ABAJO';hint.classList.remove('set');}
+      }
+      if(m.penaltyWinnerSide){
+        document.getElementById('pen_'+matchId+'_'+m.penaltyWinnerSide).classList.add('selected');
+      }
+    } else {
+      penaltyBlock.style.display = 'none';
+      m.penaltyWinnerSide = null;
+      document.getElementById('pen_'+matchId+'_a').classList.remove('selected');
+      document.getElementById('pen_'+matchId+'_b').classList.remove('selected');
+    }
+  } else {
+    penaltyBlock.style.display = 'none';
+  }
+}
+
+function setScore(round, matchId, side, value){
+  if(!state.predictions[round][matchId]) state.predictions[round][matchId] = {};
+  const m = state.predictions[round][matchId];
+  m[side === 'a' ? 'scoreA' : 'scoreB'] = value === '' ? '' : parseInt(value);
+  if(m.scoreA !== '' && m.scoreB !== '' && m.scoreA != null && m.scoreB != null){
+    if(parseInt(m.scoreA) > parseInt(m.scoreB)){
+      autoSelectWinner(round, matchId, 'a');
+      checkAndShowPenalty(round, matchId);
+    } else if(parseInt(m.scoreB) > parseInt(m.scoreA)){
+      autoSelectWinner(round, matchId, 'b');
+      checkAndShowPenalty(round, matchId);
+    } else {
+      checkAndShowPenalty(round, matchId);
+    }
+  } else {
+    checkAndShowPenalty(round, matchId);
+  }
+}
+
+function autoSelectWinner(round, matchId, side){
+  const card = document.querySelector(`[data-match="${matchId}"]`);
+  if(!card) return;
+  const teamBlocks = card.querySelectorAll('.team-block');
+  teamBlocks.forEach(t=>t.classList.remove('winner'));
+  teamBlocks[side === 'a' ? 0 : 1].classList.add('winner');
+  if(!state.predictions[round][matchId]) state.predictions[round][matchId] = {};
+  const m = state.predictions[round][matchId];
+  const winner = side === 'a' ? m.teamA : m.teamB;
+  m.winner = winner;
+  m.winnerSide = side;
+  const hint = document.getElementById(`hint_${matchId}`);
+  if(hint){hint.textContent = `✓ GANADOR: ${winner.name}`;hint.classList.add('set');}
+  if(round === 'final'){
+    state.predictions.champion = winner;
+    document.getElementById('championDisplay').innerHTML = `${winner.flag} ${winner.name}`;
+  }
+}
+
+function setWinner(round, matchId, side){
+  const m = state.predictions[round][matchId];
+  if(!m) return;
+  // En rondas con marcador, no permitir cambiar ganador si los marcadores ya lo determinan a favor del otro
+  // Pero permitir si están empatados (penales)
+  const card = document.querySelector(`[data-match="${matchId}"]`);
+  const teamBlocks = card.querySelectorAll('.team-block');
+  teamBlocks.forEach(t=>t.classList.remove('winner'));
+  teamBlocks[side === 'a' ? 0 : 1].classList.add('winner');
+  const winner = side === 'a' ? m.teamA : m.teamB;
+  m.winner = winner;
+  m.winnerSide = side;
+  const hint = document.getElementById(`hint_${matchId}`);
+  if(hint){hint.textContent = `✓ GANADOR: ${winner.name}`;hint.classList.add('set');}
+  if(round === 'final'){
+    state.predictions.champion = winner;
+    document.getElementById('championDisplay').innerHTML = `${winner.flag} ${winner.name}`;
+  }
+}
+
+function restoreSelections(round){
+  Object.keys(state.predictions[round]).forEach(mid=>{
+    const m = state.predictions[round][mid];
+    if(m.winnerSide){
+      const card = document.querySelector('[data-match="'+mid+'"]');
+      if(card){
+        const blocks = card.querySelectorAll('.team-block');
+        blocks[m.winnerSide === 'a' ? 0 : 1].classList.add('winner');
+        const hint = document.getElementById('hint_'+mid);
+        if(hint && m.winner){
+          if(m.penaltyWinnerSide){
+            hint.textContent = '✓ GANA EN PENALES: '+m.winner.name;
+          } else {
+            hint.textContent = '✓ GANADOR: '+m.winner.name;
+          }
+          hint.classList.add('set');
+        }
+      }
+    }
+    if(['qf','sf','final','third'].includes(round)){
+      checkAndShowPenalty(round, mid);
+    }
+  });
+}
+
+function validateRound(round, expected, requiresScore){
+  const matches = state.predictions[round];
+  const keys = Object.keys(matches);
+  if(keys.length < expected) return false;
+  for(const k of keys){
+    const m = matches[k];
+    if(requiresScore){
+      if(m.scoreA === undefined || m.scoreA === null || m.scoreA === '') return false;
+      if(m.scoreB === undefined || m.scoreB === null || m.scoreB === '') return false;
+      if(parseInt(m.scoreA) === parseInt(m.scoreB) && !m.penaltyWinnerSide) return false;
+    }
+    if(!m.winner) return false;
+  }
+  return true;
+}
+
+// Render next rounds based on previous winners
+function renderR16(){
+  let html = '';
+  for(let i=0; i<8; i++){
+    const prevA = state.predictions.r32[`r32_${(i*2)+1}`];
+    const prevB = state.predictions.r32[`r32_${(i*2)+2}`];
+    const teamA = prevA?.winner ? prevA.winner : {flag:'❓',name:'TBD'};
+    const teamB = prevB?.winner ? prevB.winner : {flag:'❓',name:'TBD'};
+    const matchId = `r16_${i+1}`;
+    if(!state.predictions.r16[matchId]) state.predictions.r16[matchId] = {};
+    state.predictions.r16[matchId].teamA = teamA;
+    state.predictions.r16[matchId].teamB = teamB;
+    html += renderKOMatch('r16', matchId, teamA, teamB, `OCTAVOS · PARTIDO ${i+1}`, false);
+  }
+  document.getElementById('r16Container').innerHTML = html;
+  restoreSelections('r16');
+}
+
+function renderQF(){
+  let html = '';
+  for(let i=0; i<4; i++){
+    const prevA = state.predictions.r16[`r16_${(i*2)+1}`];
+    const prevB = state.predictions.r16[`r16_${(i*2)+2}`];
+    const teamA = prevA?.winner ? prevA.winner : {flag:'❓',name:'TBD'};
+    const teamB = prevB?.winner ? prevB.winner : {flag:'❓',name:'TBD'};
+    const matchId = `qf_${i+1}`;
+    if(!state.predictions.qf[matchId]) state.predictions.qf[matchId] = {};
+    state.predictions.qf[matchId].teamA = teamA;
+    state.predictions.qf[matchId].teamB = teamB;
+    html += renderKOMatch('qf', matchId, teamA, teamB, `CUARTOS · PARTIDO ${i+1}`, true);
+  }
+  document.getElementById('qfContainer').innerHTML = html;
+  restoreSelections('qf');
+}
+
+function renderSF(){
+  let html = '';
+  for(let i=0; i<2; i++){
+    const prevA = state.predictions.qf[`qf_${(i*2)+1}`];
+    const prevB = state.predictions.qf[`qf_${(i*2)+2}`];
+    const teamA = prevA?.winner ? prevA.winner : {flag:'❓',name:'TBD'};
+    const teamB = prevB?.winner ? prevB.winner : {flag:'❓',name:'TBD'};
+    const matchId = `sf_${i+1}`;
+    if(!state.predictions.sf[matchId]) state.predictions.sf[matchId] = {};
+    state.predictions.sf[matchId].teamA = teamA;
+    state.predictions.sf[matchId].teamB = teamB;
+    html += renderKOMatch('sf', matchId, teamA, teamB, `SEMIFINAL ${i+1}`, true);
+  }
+  document.getElementById('sfContainer').innerHTML = html;
+  restoreSelections('sf');
+}
+
+function renderFinal(){
+  const sf1 = state.predictions.sf['sf_1'];
+  const sf2 = state.predictions.sf['sf_2'];
+  const teamA = sf1?.winner ? sf1.winner : {flag:'❓',name:'TBD'};
+  const teamB = sf2?.winner ? sf2.winner : {flag:'❓',name:'TBD'};
+  const matchId = 'final_1';
+  if(!state.predictions.final[matchId]) state.predictions.final[matchId] = {};
+  state.predictions.final[matchId].teamA = teamA;
+  state.predictions.final[matchId].teamB = teamB;
+  document.getElementById('finalContainer').innerHTML = renderKOMatch('final', matchId, teamA, teamB, '🏆 GRAN FINAL', true);
+  restoreSelections('final');
+  if(state.predictions.final[matchId].winner){
+    state.predictions.champion = state.predictions.final[matchId].winner;
+    document.getElementById('championDisplay').innerHTML = `${state.predictions.champion.flag} ${state.predictions.champion.name}`;
+  }
+}
+
+function renderThird(){
+  // Perdedores de las semis
+  const losers = [];
+  for(let i=0; i<2; i++){
+    const sf = state.predictions.sf[`sf_${i+1}`];
+    if(sf && sf.winnerSide){
+      const loser = sf.winnerSide === 'a' ? sf.teamB : sf.teamA;
+      losers.push(loser);
+    } else {
+      losers.push({flag:'❓',name:'TBD'});
+    }
+  }
+  const matchId = 'third_1';
+  if(!state.predictions.third[matchId]) state.predictions.third[matchId] = {};
+  state.predictions.third[matchId].teamA = losers[0];
+  state.predictions.third[matchId].teamB = losers[1];
+  document.getElementById('thirdContainer').innerHTML = renderKOMatch('third', matchId, losers[0], losers[1], '🥉 PARTIDO POR EL BRONCE', true);
+  restoreSelections('third');
+}
+
+async function submitQuiniela(){
+  // VALIDACIÓN: Check si ya hay una participación con este email o teléfono
+  if(GOOGLE_SHEETS_URL && GOOGLE_SHEETS_URL.indexOf('PEGA_AQUI') === -1){
+    try{
+      const checkUrl = GOOGLE_SHEETS_URL + '?check=1&email=' + encodeURIComponent(state.user.email) + '&phone=' + encodeURIComponent(state.user.phone);
+      const r = await fetch(checkUrl);
+      const result = await r.json();
+      if(result.exists){
+        showToast('Ya participaste con este email o teléfono. Solo se permite 1 participación por persona.');
+        return;
+      }
+    }catch(err){
+      console.warn('Validation check failed, allowing submission:', err);
+      // Si falla la validación, dejamos que se envíe (mejor experiencia)
+    }
+  }
+  
+  const matchId = 'final_1';
+  const finalMatch = state.predictions.final[matchId];
+  if(!finalMatch || !finalMatch.winner){showToast('Define el campeón en la final');return;}
+  const thirdMatch = state.predictions.third['third_1'];
+  if(!thirdMatch || !thirdMatch.winner){showToast('Define el ganador del tercer puesto');return;}
+  if(finalMatch.scoreA === '' || finalMatch.scoreB === ''){showToast('Completa el marcador de la final');return;}
+  if(thirdMatch.scoreA === '' || thirdMatch.scoreB === ''){showToast('Completa el marcador del 3er puesto');return;}
+
+  if(state.predictions.topScorerSelected === undefined || state.predictions.topScorerSelected === null){
+    showToast('Selecciona el goleador');return;
+  }
+  if(state.predictions.topScorerSelected === SCORERS.length - 1){
+    const custom = document.getElementById('scorerOther').value.trim();
+    if(!custom){showToast('Escribe el nombre del jugador');return;}
+    state.predictions.topScorer = custom.toUpperCase();
+    state.predictions.topScorerCustom = custom;
+  }
+
+  const code = 'YNG' + Math.random().toString(36).substring(2,8).toUpperCase();
+  const submission = {
+    code, user: state.user,
+    groupRankings: state.groupRankings,
+    selectedThirds: state.selectedThirds,
+    predictions: state.predictions,
+    submittedAt: new Date().toISOString(),
+    score: 0
+  };
+
+  try{await window.storage.set('quiniela:'+code, JSON.stringify(submission), true);}
+  catch(e){console.warn('Local storage failed:', e);}
+
+  if(GOOGLE_SHEETS_URL && GOOGLE_SHEETS_URL.indexOf('PEGA_AQUI') === -1){
+    try{
+      fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'text/plain;charset=utf-8'},
+        body: JSON.stringify(submission)
+      });
+    }catch(err){console.warn('Sheets failed:', err);}
+  }
+
+  document.getElementById('successCode').textContent = code;
+  document.getElementById('quiniela').classList.add('hidden');
+  document.getElementById('success').classList.remove('hidden');
+  // Scroll suave al inicio de la pantalla de éxito
+  setTimeout(()=>{
+    document.getElementById('success').scrollIntoView({behavior:'smooth', block:'start'});
+  }, 100);
+}
+
+// Fecha de inicio del Mundial - antes de esto el ranking público está oculto
+const RANKING_PUBLIC_FROM = new Date('2026-06-11T00:00:00-04:00'); // 11 jun 2026 medianoche Caracas
+
+async function showLeaderboard(){
+  document.getElementById('leaderboard').classList.remove('hidden');
+  document.getElementById('hero').classList.add('hidden');
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiniela').classList.add('hidden');
+  document.getElementById('success').classList.add('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  const list = document.getElementById('leaderboardList');
+  
+  // Si todavía no es 11 jun 2026, mostrar mensaje "Pronto"
+  if(new Date() < RANKING_PUBLIC_FROM){
+    list.innerHTML = `
+      <div style="text-align:center;padding:48px 24px;background:var(--yango-yellow);border:4px solid var(--yango-black);box-shadow:8px 8px 0 var(--yango-red);max-width:500px;margin:0 auto">
+        <div style="font-size:72px;margin-bottom:16px">⏰</div>
+        <h3 style="font-family:'Yango Headline',sans-serif;font-size:36px;text-transform:uppercase;line-height:0.95;margin-bottom:16px;color:var(--yango-black)">RANKING<br><span style="color:var(--yango-red)">PRÓXIMAMENTE</span></h3>
+        <p style="font-family:'Yango Text',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.04em;line-height:1.4;color:var(--yango-black)">El ranking se activa el 11 de junio cuando arranque el torneo.</p>
+        <p style="font-size:13px;color:#555;margin-top:16px;line-height:1.5">Mientras tanto, asegúrate de completar tu participación y comparte con tus amigos.</p>
+      </div>
+    `;
+    return;
+  }
+  
+  list.innerHTML = '<p style="color:#888;font-family:Yango Headline,sans-serif;font-size:20px;text-transform:uppercase">CARGANDO RANKING...</p>';
+
+  try{
+    // Intentar cargar del Google Sheet (calculado por el admin)
+    if(GOOGLE_SHEETS_URL && GOOGLE_SHEETS_URL.indexOf('PEGA_AQUI') === -1){
+      const r = await fetch(GOOGLE_SHEETS_URL + '?action=get_ranking');
+      if(r.ok){
+        const data = await r.json();
+        if(data.ranking && data.ranking.length > 0){
+          renderPublicRanking(data.ranking.slice(0, 20));
+          return;
+        }
+      }
+    }
+    
+    // Fallback: mensaje si no hay ranking calculado todavía
+    list.innerHTML = `
+      <div style="text-align:center;padding:48px 24px;background:#fff;border:4px solid var(--yango-black);max-width:500px;margin:0 auto">
+        <div style="font-size:60px;margin-bottom:16px">🏆</div>
+        <h3 style="font-family:'Yango Headline',sans-serif;font-size:28px;text-transform:uppercase;line-height:0.95;margin-bottom:12px">RANKING EN<br><span style="color:var(--yango-red)">PREPARACIÓN</span></h3>
+        <p style="font-family:'Yango Text',sans-serif;font-weight:800;font-size:13px;color:#555;line-height:1.5">Los puntos se actualizan después de cada jornada del torneo. Vuelve pronto.</p>
+      </div>
+    `;
   }catch(e){
     console.error(e);
-    showToast('Error: '+e.message, 'error');
-  }finally{
-    btn.disabled = false;
-    btn.textContent = '🏆 CALCULAR RANKING';
+    list.innerHTML = '<p style="color:#FFE44D;font-family:Yango Headline,sans-serif;font-size:22px;text-align:center">ERROR AL CARGAR EL RANKING.</p>';
   }
 }
 
-function calcularPuntosQuiniela(datos){
-  let total = 0;
-  const grupos = ['A','B','C','D','E','F','G','H','I','J','K','L'];
-  
-  // ===== Grupos =====
-  grupos.forEach(g => {
-    const userRanking = datos.groupRankings && datos.groupRankings[g];
-    const realRanking = adminState.groupRankings[g];
-    if (!userRanking || userRanking.length < 2 || !realRanking || realRanking.length < 2) return;
-    
-    const userTeams = GROUPS[g];
-    const realTeams = GROUPS[g];
-    
-    const user1 = userTeams[userRanking[0]].name;
-    const user2 = userTeams[userRanking[1]].name;
-    const real1 = realTeams[realRanking[0]].name;
-    const real2 = realTeams[realRanking[1]].name;
-    
-    if (user1 === real1) total += 5;
-    if (user2 === real2) total += 5;
-    if (user1 === real2 && user2 === real1) total += 4; // invertidos (2+2)
-  });
-  
-  // ===== Terceros =====
-  const realThirds = adminState.selectedThirds.map(t => t.group);
-  const userThirds = (datos.selectedThirds || []).map(t => t.group);
-  userThirds.forEach(g => {
-    if (realThirds.includes(g)) total += 3;
-  });
-  
-  // ===== KO rounds =====
-  function puntosKO(round, ptsGanador, ptsExacto, ptsLlave, requireScore){
-    let pts = 0;
-    const userRound = datos.predictions && datos.predictions[round];
-    const realRound = adminState.bracket[round];
-    if (!userRound || !realRound) return 0;
-    
-    Object.keys(realRound).forEach(matchId => {
-      const realMatch = realRound[matchId];
-      if (!realMatch || !realMatch.teamA || !realMatch.teamB) return;
-      if (realMatch.scoreA == null || realMatch.scoreA === '' || realMatch.scoreB == null || realMatch.scoreB === '') return;
-      
-      // Determinar ganador real
-      let realWinner = '';
-      if (parseInt(realMatch.scoreA) > parseInt(realMatch.scoreB)) realWinner = realMatch.teamA;
-      else if (parseInt(realMatch.scoreB) > parseInt(realMatch.scoreA)) realWinner = realMatch.teamB;
-      else realWinner = realMatch.penaltyWinner;
-      
-      if (!realWinner) return;
-      
-      // Buscar la predicción del usuario para este match
-      // Como las rondas posteriores dependen de las anteriores, buscamos por matchId
-      const userMatch = userRound[matchId];
-      if (!userMatch) return;
-      
-      const userWinner = userMatch.winner ? userMatch.winner.name : '';
-      
-      // Pts por acertar ganador (independiente de quién jugó)
-      if (userWinner === realWinner) pts += ptsGanador;
-      
-      // Pts extras si los equipos coincidieron y requiere marcador
-      if (requireScore && userMatch.teamA && userMatch.teamB){
-        const userTeamA = userMatch.teamA.name;
-        const userTeamB = userMatch.teamB.name;
-        if ((userTeamA === realMatch.teamA && userTeamB === realMatch.teamB) ||
-            (userTeamA === realMatch.teamB && userTeamB === realMatch.teamA)){
-          pts += ptsLlave;
-          // Marcador exacto
-          let userSA = userMatch.scoreA, userSB = userMatch.scoreB;
-          let realSA = realMatch.scoreA, realSB = realMatch.scoreB;
-          if (userTeamA === realMatch.teamB){
-            // están invertidos, swap user
-            userSA = userMatch.scoreB; userSB = userMatch.scoreA;
-          }
-          if (parseInt(userSA) === parseInt(realSA) && parseInt(userSB) === parseInt(realSB)){
-            pts += ptsExacto;
-          }
-        }
-      }
-    });
-    return pts;
-  }
-  
-  total += puntosKO('r32', 4, 2, 1, true);
-  total += puntosKO('r16', 4, 3, 1, true);
-  total += puntosKO('qf', 7, 4, 1, true);
-  total += puntosKO('sf', 10, 5, 1, true);
-  total += puntosKO('third', 8, 5, 0, true);
-  total += puntosKO('final', 15, 10, 1, true);
-  
-  // ===== Bonos (campeón, subcampeón, goleador) =====
-  const finalMatch = adminState.bracket.final && adminState.bracket.final.final_1;
-  if (finalMatch && finalMatch.teamA && finalMatch.teamB && datos.predictions.champion){
-    let realChamp = '';
-    if (parseInt(finalMatch.scoreA) > parseInt(finalMatch.scoreB)) realChamp = finalMatch.teamA;
-    else if (parseInt(finalMatch.scoreB) > parseInt(finalMatch.scoreA)) realChamp = finalMatch.teamB;
-    else realChamp = finalMatch.penaltyWinner;
-    
-    const realRunner = realChamp === finalMatch.teamA ? finalMatch.teamB : finalMatch.teamA;
-    
-    if (datos.predictions.champion.name === realChamp) total += 30;
-    
-    // Subcampeón: si finalista correcto pero no fue campeón
-    if (datos.predictions.final && datos.predictions.final.final_1){
-      const userFinal = datos.predictions.final.final_1;
-      const userFinalists = [userFinal.teamA ? userFinal.teamA.name : '', userFinal.teamB ? userFinal.teamB.name : ''];
-      if (userFinalists.includes(realRunner) && datos.predictions.champion.name !== realRunner) total += 15;
-    }
-  }
-  
-  // Goleador
-  if (adminState.topScorer && datos.predictions.topScorer){
-    const userScorer = String(datos.predictions.topScorer).toUpperCase().trim();
-    const realScorer = String(adminState.topScorer).toUpperCase().trim();
-    if (userScorer === realScorer) total += 10;
-  }
-  
-  return total;
-}
-
-// ============================================
-// RENDER RANKING
-// ============================================
-let currentFilter = '';
-let currentRankingView = 'usuarios';
-
-function switchRankingView(view){
-  currentRankingView = view;
-  document.getElementById('subtab-usuarios').classList.toggle('active', view === 'usuarios');
-  document.getElementById('subtab-drivers').classList.toggle('active', view === 'drivers');
-  currentFilter = '';
-  document.getElementById('searchInput').value = '';
-  renderRanking();
-}
-
-function renderRanking(){
-  const body = document.getElementById('rankingBody');
-  let ranking = currentRankingView === 'drivers' ? adminState.rankingDrivers : adminState.ranking;
-  
-  if (currentFilter){
-    const f = currentFilter.toLowerCase();
-    ranking = ranking.filter(r => 
-      (r.code || '').toLowerCase().includes(f) ||
-      (r.nombre || '').toLowerCase().includes(f)
-    );
-  }
-  
+function renderPublicRanking(ranking){
+  const list = document.getElementById('leaderboardList');
   let html = '';
-  if (ranking.length === 0){
-    html = '<div style="padding:24px;text-align:center;color:#666;font-weight:800;text-transform:uppercase">SIN RESULTADOS</div>';
-  } else {
-    ranking.forEach((p, idx)=>{
-      const posClass = idx === 0 ? 'gold' : idx === 1 ? 'silver' : idx === 2 ? 'bronze' : '';
-      const firstName = (p.nombre || 'Anónimo').split(' ')[0];
-      html += '<div class="ranking-row '+posClass+'">';
-      html += '<div class="pos">'+(idx+1)+'°</div>';
-      html += '<div><b>'+firstName+'</b><br><span style="font-size:10px;color:#999">'+(p.code || '')+'</span></div>';
-      html += '<div class="email" style="font-size:11px">'+(p.email || '')+'</div>';
-      html += '<div class="campeon" style="font-size:11px">'+(p.campeon || '-')+'</div>';
-      html += '<div class="pts">'+(p.puntos || 0)+'</div>';
-      html += '<div><button class="view-btn" onclick="viewDetail(\''+(p.code || '')+'\')">VER</button></div>';
-      html += '</div>';
-    });
-  }
-  body.innerHTML = html;
-  
-  // Stats (basadas en la vista activa, sin filtro)
-  const stats = document.getElementById('statsBar');
-  if (stats){
-    const fullRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : adminState.ranking;
-    const total = fullRanking.length;
-    const conPuntos = fullRanking.filter(r => r.puntos > 0).length;
-    const maxPts = fullRanking[0] ? fullRanking[0].puntos : 0;
-    const promedio = total > 0 ? Math.round(fullRanking.reduce((s, r) => s + r.puntos, 0) / total) : 0;
-    stats.innerHTML =
-      '<div class="stat-card"><div class="num">'+total+'</div><div class="lbl">Participantes</div></div>'+
-      '<div class="stat-card"><div class="num">'+conPuntos+'</div><div class="lbl">Con puntos</div></div>'+
-      '<div class="stat-card"><div class="num">'+maxPts+'</div><div class="lbl">Pts máximos</div></div>'+
-      '<div class="stat-card"><div class="num">'+promedio+'</div><div class="lbl">Promedio</div></div>';
-  }
-}
-
-function filterRanking(){
-  currentFilter = document.getElementById('searchInput').value;
-  renderRanking();
-}
-
-// ============================================
-// DETAIL MODAL
-// ============================================
-function viewDetail(code){
-  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : adminState.ranking;
-  const p = activeRanking.find(r => r.code === code);
-  if (!p) return;
-  const d = p.datos;
-  
-  let html = '<h2>'+p.nombre+'</h2>';
-  html += '<div class="meta"><b>Código:</b> '+p.code+' &nbsp;·&nbsp; <b>Email:</b> '+p.email+' &nbsp;·&nbsp; <b>Tel:</b> '+(p.telefono||'')+' &nbsp;·&nbsp; <b>Puntos:</b> '+p.puntos+'</div>';
-  
-  // Grupos
-  html += '<h3>Grupos</h3><div class="detail-grid">';
-  if (d.groupRankings){
-    Object.entries(d.groupRankings).forEach(([g, r])=>{
-      if (r.length >= 4){
-        const teams = GROUPS[g];
-        html += '<div class="detail-item"><span class="lbl">Grupo '+g+'</span><span class="val">';
-        html += '1°'+teams[r[0]].name+' / 2°'+teams[r[1]].name;
-        html += '</span></div>';
-      }
-    });
-  }
-  html += '</div>';
-  
-  // Terceros
-  if (d.selectedThirds && d.selectedThirds.length){
-    html += '<h3>Terceros que pasan</h3><div class="detail-grid">';
-    d.selectedThirds.forEach(t => {
-      const teams = GROUPS[t.group];
-      const third = teams[d.groupRankings[t.group][2]];
-      html += '<div class="detail-item"><span class="lbl">Grupo '+t.group+'</span><span class="val">'+(third ? third.name : '')+'</span></div>';
-    });
-    html += '</div>';
-  }
-  
-  // Bracket
-  ['r32','r16','qf','sf','third','final'].forEach(round => {
-    const labels = {r32:'16avos', r16:'8vos', qf:'Cuartos', sf:'Semis', third:'3er Puesto', final:'Final'};
-    const rData = d.predictions && d.predictions[round];
-    if (rData && Object.keys(rData).length){
-      html += '<h3>'+labels[round]+'</h3><div class="detail-grid">';
-      Object.entries(rData).forEach(([mid, m])=>{
-        const score = (m.scoreA !== undefined && m.scoreA !== null) ? ' ('+m.scoreA+'-'+m.scoreB+')' : '';
-        const winner = m.winner ? m.winner.name : '';
-        html += '<div class="detail-item"><span class="lbl">'+mid+score+'</span><span class="val">🏆 '+winner+'</span></div>';
-      });
-      html += '</div>';
+  ranking.forEach((p, idx)=>{
+    const posClass = idx === 0 ? 'gold' : idx === 1 ? 'silver' : idx === 2 ? 'bronze' : '';
+    const fullName = p.nombre || 'Anónimo';
+    const parts = fullName.trim().split(/\s+/);
+    // Formato: "I. Oropeza" - inicial del primer nombre + apellido completo
+    let displayName = fullName;
+    if(parts.length >= 2){
+      const initial = parts[0].charAt(0).toUpperCase();
+      const lastName = parts[parts.length - 1];
+      // Capitalizar apellido
+      const lastNameCap = lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase();
+      displayName = initial + '. ' + lastNameCap;
+    } else if(parts.length === 1){
+      // Solo un nombre, mostrar inicial + nombre
+      displayName = parts[0];
     }
+    
+    html += `<div class="lb-row">
+      <div class="lb-pos ${posClass}">${idx+1}°</div>
+      <div class="lb-name">${displayName}</div>
+      <div class="lb-score">${p.puntos || 0} pts</div>
+    </div>`;
   });
-  
-  if (d.predictions && d.predictions.topScorer){
-    html += '<h3>Goleador</h3><div class="detail-item"><span class="val">'+d.predictions.topScorer+'</span></div>';
-  }
-  
-  if (d.predictions && d.predictions.champion){
-    html += '<h3>Campeón</h3><div class="detail-item"><span class="val">'+d.predictions.champion.flag+' '+d.predictions.champion.name+'</span></div>';
-  }
-  
-  html += '<button class="modal-close" onclick="closeDetail()">CERRAR</button>';
-  
-  document.getElementById('detailContent').innerHTML = html;
-  document.getElementById('detailModal').classList.add('active');
+  html += '<p style="color:#888;font-size:12px;margin-top:16px;text-align:center;font-family:Yango Text,sans-serif">El ranking se actualiza después de cada jornada del torneo.</p>';
+  list.innerHTML = html;
 }
 
-function closeDetail(){
-  document.getElementById('detailModal').classList.remove('active');
+function hideLeaderboard(){
+  document.getElementById('leaderboard').classList.add('hidden');
+  document.getElementById('hero').classList.remove('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-document.addEventListener('click', e => {
-  if (e.target.id === 'detailModal') closeDetail();
-});
-
-// ============================================
-// EXPORT CSV
-// ============================================
-function exportCSV(){
-  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : adminState.ranking;
-  if (activeRanking.length === 0){
-    showToast('No hay datos para exportar', 'error');
-    return;
-  }
-  const label = currentRankingView === 'drivers' ? 'drivers' : 'usuarios';
-  let csv = 'Posicion,Codigo,Nombre,Email,Telefono,Campeon,Goleador,Puntos\n';
-  activeRanking.forEach((p, i) => {
-    csv += (i+1)+',';
-    csv += '"'+(p.code||'')+'",';
-    csv += '"'+(p.nombre||'').replace(/"/g,'""')+'",';
-    csv += '"'+(p.email||'')+'",';
-    csv += '"'+(p.telefono||'')+'",';
-    csv += '"'+(p.campeon||'')+'",';
-    csv += '"'+(p.goleador||'')+'",';
-    csv += (p.puntos||0)+'\n';
-  });
-  const blob = new Blob([csv], {type:'text/csv'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'ranking_'+label+'_'+new Date().toISOString().split('T')[0]+'.csv';
-  a.click();
-  showToast('✓ CSV descargado', 'success');
-}
-
-// ============================================
-// TOAST
-// ============================================
-function showToast(msg, type){
+function showToast(msg){
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.className = 'toast' + (type ? ' '+type : '');
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+
+function renderScorers(){
+  const grid = document.getElementById('scorerGrid');
+  if(!grid) return;
+  let h = '';
+  SCORERS.forEach((s, i)=>{
+    const isSelected = state.predictions.topScorerSelected === i;
+    h += '<div class="scorer-card '+(isSelected?'selected':'')+'" onclick="selectScorer('+i+')">';
+    h += '<span class="scorer-flag">'+s.flag+'</span>';
+    h += '<div class="scorer-name">'+s.name+'</div>';
+    h += '<div class="scorer-team">'+s.team+'</div>';
+    h += '</div>';
+  });
+  grid.innerHTML = h;
+  const otherInput = document.getElementById('scorerOther');
+  if(state.predictions.topScorerSelected === SCORERS.length - 1){
+    otherInput.style.display = 'block';
+    otherInput.value = state.predictions.topScorerCustom || '';
+  } else {
+    otherInput.style.display = 'none';
+  }
+}
+
+function selectScorer(idx){
+  state.predictions.topScorerSelected = idx;
+  if(idx === SCORERS.length - 1){
+    state.predictions.topScorer = '';
+  } else {
+    state.predictions.topScorer = SCORERS[idx].name;
+    state.predictions.topScorerCustom = '';
+  }
+  renderScorers();
+}
+
+function copyPromoCode(){
+  const code = 'QUINIELAYANGO';
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(code).then(()=>{
+      const text = document.getElementById('promoCodeText');
+      const original = text.textContent;
+      text.textContent = '✓ COPIADO';
+      setTimeout(()=>{text.textContent = original;}, 1500);
+    }).catch(()=>{showToast('Código: QUINIELAYANGO');});
+  } else {
+    showToast('Código: QUINIELAYANGO');
+  }
+}
+
+function goHome(){
+  // Volver a la pantalla principal (hero + intro)
+  document.getElementById('hero').classList.remove('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('quiniela').classList.add('hidden');
+  document.getElementById('success').classList.add('hidden');
+  document.getElementById('leaderboard').classList.add('hidden');
+  const closedScreen = document.getElementById('closedScreen');
+  if(closedScreen) closedScreen.classList.add('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function openTerms(){
+  document.getElementById('termsModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTerms(){
+  document.getElementById('termsModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Cerrar modal con click fuera
+document.addEventListener('click', function(e){
+  if(e.target.id === 'termsModal'){closeTerms();}
+});
+
+function shareQuiniela(){
+  const url = window.location.href;
+  const text = '¡Participé en la Temporada Fútbol Yango! Participa tú también y compite por viajes Yango 🏆⚽';
+  if(navigator.share){
+    navigator.share({title:'Temporada Fútbol Yango 2026', text, url});
+  } else {
+    navigator.clipboard.writeText(`${text} ${url}`);
+    showToast('Link copiado');
+  }
 }
 </script>
 </body>
