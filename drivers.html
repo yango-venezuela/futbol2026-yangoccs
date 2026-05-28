@@ -1611,27 +1611,28 @@ function getTeamForSlot(slot){
 }
 
 function assignThirdsToSlots(){
-  // Asignar los 8 terceros seleccionados a los 8 slots de tercero
-  // Estrategia: para cada slot (en orden), asignar el primer tercero elegible no asignado
   const thirdSlots = R32_TEMPLATE.filter(m => m.slotB.type === 'third');
-  const availableThirds = [...state.selectedThirds];
-  const assignments = {};
-
-  // Greedy: ordenar slots por flexibilidad (slots con menos opciones primero)
-  const slotsWithOptions = thirdSlots.map(slot => {
-    const opts = availableThirds.filter(t => slot.slotB.eligibleGroups.includes(t.group));
-    return {slot, opts: opts.length};
+  const sorted = [...thirdSlots].sort((a,b)=>{
+    const ao = state.selectedThirds.filter(t=>a.slotB.eligibleGroups.includes(t.group)).length;
+    const bo = state.selectedThirds.filter(t=>b.slotB.eligibleGroups.includes(t.group)).length;
+    return ao-bo;
   });
-  slotsWithOptions.sort((a,b)=> a.opts - b.opts);
-
-  for(const {slot} of slotsWithOptions){
-    const assigned = availableThirds.find(t => slot.slotB.eligibleGroups.includes(t.group));
-    if(assigned){
-      assignments[slot.id] = assigned;
-      const idx = availableThirds.indexOf(assigned);
-      availableThirds.splice(idx, 1);
+  const assignments = {};
+  function backtrack(idx, available){
+    if(idx === sorted.length) return true;
+    const slot = sorted[idx];
+    for(let i=0;i<available.length;i++){
+      const third = available[i];
+      if(slot.slotB.eligibleGroups.includes(third.group)){
+        assignments[slot.id] = third;
+        const rest = available.filter((_,j)=>j!==i);
+        if(backtrack(idx+1, rest)) return true;
+        delete assignments[slot.id];
+      }
     }
+    return false;
   }
+  backtrack(0, [...state.selectedThirds]);
   return assignments;
 }
 
