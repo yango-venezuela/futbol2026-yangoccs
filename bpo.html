@@ -963,7 +963,7 @@
     </div>
 
     <div class="cta-row">
-      <button class="btn-primary" onclick="startQuiniela()">PARTICIPAR →</button>
+      <button class="btn-primary" onclick="startQuiniela()" style="background:#FFFFFF;color:#1B2A4A;border:3px solid #FFFFFF">PARTICIPAR →</button>
     </div>
   </div>
 </section>
@@ -1061,10 +1061,6 @@
       <div class="form-group">
         <label>NOMBRE COMPLETO</label>
         <input type="text" id="userName" placeholder="Ej: Juan Pérez">
-      </div>
-      <div class="form-group">
-        <label>DEPARTAMENTO / CARGO</label>
-        <input type="text" id="userEmail" placeholder="Ej: Operaciones">
       </div>
       <div class="form-group">
         <label>TELÉFONO</label>
@@ -1341,10 +1337,9 @@ function showStep(n){
 function nextStep(current){
   if(current === 1){
     const name = document.getElementById('userName').value.trim();
-    const email = document.getElementById('userEmail').value.trim();
     const phone = document.getElementById('userPhone').value.trim();
-    if(!name || !email || !phone){showToast('Completa todos los campos');return;}
-    state.user = {name, email, phone};
+    if(!name || !phone){showToast('Completa todos los campos');return;}
+    state.user = {name, email: '', phone};
   }
   if(current === 2){
     if(!validateGroups()){showToast('Ordena los 4 equipos en cada grupo');return;}
