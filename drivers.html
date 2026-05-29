@@ -866,18 +866,6 @@
     font-weight:800;
   }
   
-  /* SUNDDE STRIP */
-  .sundde-strip{
-    background:#0a0a0a;
-    color:#fff;
-    text-align:center;
-    padding:10px 20px;
-    font-family:'Yango Text',sans-serif;
-    font-size:10px;
-    letter-spacing:0.03em;
-    border-top:1px solid #222;
-  }
-
   /* LEGAL FOOTER */
   .legal-footer{
     background:#0a0a0a;
@@ -914,7 +902,7 @@
   }
 
   @media (max-width:600px){
-    .top-nav .logo-mini{height:44px}
+    .top-nav .logo-mini{height:96px}
     .promo-tag{font-size:26px;padding:8px 18px}
     .match-row{grid-template-columns:1fr auto 1fr;gap:6px}
     .team-block{padding:8px}
@@ -930,7 +918,7 @@
 <body>
 
 <nav class="top-nav">
-  <a href="#" onclick="goHome();return false;" style="cursor:pointer;line-height:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" class="logo-mini"><text x="130" y="58" text-anchor="middle" font-family="'Yango Headline',Arial,sans-serif" font-size="70" font-style="italic" fill="#FC3F1D">YANGO</text><text x="130" y="122" text-anchor="middle" font-family="'Yango Headline',Arial,sans-serif" font-size="70" font-style="italic" fill="#FC3F1D">PRO</text></svg></a>
+  <a href="#" onclick="goHome();return false;" style="cursor:pointer;line-height:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" class="logo-mini"><text x="130" y="58" text-anchor="middle" font-family="'Yango Headline',Impact,sans-serif" font-size="70" font-style="italic" font-weight="900" fill="#FC3F1D">YANGO</text><text x="130" y="122" text-anchor="middle" font-family="'Yango Headline',Impact,sans-serif" font-size="70" font-style="italic" font-weight="900" fill="#FC3F1D">PRO</text></svg></a>
   <button onclick="showLeaderboard()">RANKING 🏆</button>
 </nav>
 
@@ -948,7 +936,7 @@
       <div class="prize">
         <div class="prize-pos">2DO LUGAR</div>
         <div class="prize-amount">TV SAMSUNG</div>
-        <div class="prize-text">50 PULGADAS</div>
+        <div class="prize-text">55 PULGADAS</div>
       </div>
       <div class="prize">
         <div class="prize-pos">3ER LUGAR</div>
@@ -1054,17 +1042,17 @@
     <p class="section-sub">PARA AVISARTE SI GANAS.</p>
     
     <div class="eligibility-box">
-      <b>ELEGIBILIDAD:</b> Actividad válida únicamente para conductores de Yango Pro, mayores de 18 años, residentes en Gran Caracas, que hayan completado al menos un viaje en Yango Pro en los últimos 15 días.
+      <b>ELEGIBILIDAD:</b> Actividad válida únicamente para conductores de Yango Pro, mayores de 18 años, residentes en Gran Caracas, que hayan completado al menos un viaje en Yango Pro en los últimos 15 días. No se requiere realizar viajes adicionales durante la Promoción para participar.
     </div>
     
     <div class="card">
       <div class="form-group">
         <label>NOMBRE COMPLETO</label>
-        <input type="text" id="userName" placeholder="Ej: Juan Pérez">
+        <input type="text" id="userName" placeholder="Ej: Isabella Pérez">
       </div>
       <div class="form-group">
-        <label>NÚMERO DE PLACA</label>
-        <input type="text" id="userEmail" placeholder="Ej: ABC123">
+        <label>EMAIL</label>
+        <input type="email" id="userEmail" placeholder="tucorreo@gmail.com">
       </div>
       <div class="form-group">
         <label>TELÉFONO</label>
@@ -1260,7 +1248,7 @@
       <thead><tr><th>Puesto</th><th>Premio</th><th>Condiciones</th></tr></thead>
       <tbody>
         <tr><td><b>1er lugar</b></td><td>Moto Gratis</td><td>Sujeto a disponibilidad y condiciones del Organizador</td></tr>
-        <tr><td><b>2do lugar</b></td><td>TV Samsung 50"</td><td>Sujeto a disponibilidad y condiciones del Organizador</td></tr>
+        <tr><td><b>2do lugar</b></td><td>TV Samsung 55"</td><td>Sujeto a disponibilidad y condiciones del Organizador</td></tr>
         <tr><td><b>3er lugar</b></td><td>Celular Samsung</td><td>Sujeto a disponibilidad y condiciones del Organizador</td></tr>
       </tbody>
     </table>
@@ -1309,12 +1297,10 @@
       </tbody>
     </table>
     
-    <p style="text-align:center;font-size:11px;color:#888;margin-top:24px">Promoción autorizada por la SUNDDE bajo el código SUNDDE/ICGPJ/PROMOCIÓN/00981/2026</p>
     <button class="terms-close-btn" onclick="closeTerms()">CERRAR</button>
   </div>
 </div>
 
-<div class="sundde-strip">Promoción autorizada por la SUNDDE bajo el código SUNDDE/ICGPJ/PROMOCIÓN/00981/2026</div>
 <!-- LEGAL FOOTER -->
 <div class="legal-footer">
   <div class="legal-container">
@@ -1338,7 +1324,7 @@
 </div>
 
 <footer>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" class="logo-foot"><text x="130" y="58" text-anchor="middle" font-family="'Yango Headline',Arial,sans-serif" font-size="70" font-style="italic" fill="#FC3F1D">YANGO</text><text x="130" y="122" text-anchor="middle" font-family="'Yango Headline',Arial,sans-serif" font-size="70" font-style="italic" fill="#FC3F1D">PRO</text></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" class="logo-foot"><text x="130" y="58" text-anchor="middle" font-family="'Yango Headline',Impact,sans-serif" font-size="70" font-style="italic" font-weight="900" fill="#FC3F1D">YANGO</text><text x="130" y="122" text-anchor="middle" font-family="'Yango Headline',Impact,sans-serif" font-size="70" font-style="italic" font-weight="900" fill="#FC3F1D">PRO</text></svg>
   <p>TEMPORADA FÚTBOL YANGO <i style="color:var(--yango-red);font-style:normal">●</i> CARACAS</p>
   <p style="font-size:11px;color:#888;margin-top:12px;text-transform:none;letter-spacing:0;font-weight:400">Promoción válida solo para usuarios mayores de 18 años en Gran Caracas. Aplican términos y condiciones.</p>
 </footer>
@@ -1489,6 +1475,7 @@ function nextStep(current){
     const acceptTerms = document.getElementById('acceptTerms').checked;
     const acceptPrivacy = document.getElementById('acceptPrivacy').checked;
     if(!name || !email || !phone){showToast('Completa todos los campos');return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Email inválido');return;}
     if(!acceptTerms){showToast('Debes aceptar los Términos y Condiciones');return;}
     if(!acceptPrivacy){showToast('Debes autorizar el tratamiento de datos');return;}
     state.user = {name, email, phone, acceptedTerms:true, acceptedPrivacy:true};
@@ -1623,512 +1610,27 @@ function getTeamForSlot(slot){
   return eligibleSelectedThirds; // array de candidatos
 }
 
-const THIRDS_TABLE={
-'ABCDEFGH':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'E'},
-'ABCDEFGI':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'I'},
-'ABCDEFGJ':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'J'},
-'ABCDEFGK':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'K'},
-'ABCDEFGL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'E'},
-'ABCDEFHI':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'I'},
-'ABCDEFHJ':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'E'},
-'ABCDEFHK':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'K'},
-'ABCDEFHL':{r32_1:'H',r32_3:'F',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'E'},
-'ABCDEFIJ':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'I'},
-'ABCDEFIK':{r32_1:'C',r32_3:'E',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABCDEFIL':{r32_1:'C',r32_3:'E',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABCDEFJK':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'K'},
-'ABCDEFJL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'E'},
-'ABCDEFKL':{r32_1:'C',r32_3:'E',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCDEGHI':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'E',r32_16:'I'},
-'ABCDEGHJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'E',r32_16:'J'},
-'ABCDEGHK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'E',r32_16:'K'},
-'ABCDEGHL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'E'},
-'ABCDEGIJ':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'J'},
-'ABCDEGIK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ABCDEGIL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ABCDEGJK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'J',r32_16:'K'},
-'ABCDEGJL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'J'},
-'ABCDEGKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABCDEHIJ':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'E',r32_16:'I'},
-'ABCDEHIK':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ABCDEHIL':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ABCDEHJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'E',r32_16:'K'},
-'ABCDEHJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'E'},
-'ABCDEHKL':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABCDEIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ABCDEIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ABCDEIKL':{r32_1:'E',r32_3:'I',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABCDEJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABCDFGHI':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'I'},
-'ABCDFGHJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'J'},
-'ABCDFGHK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'K'},
-'ABCDFGHL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'H'},
-'ABCDFGIJ':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'J'},
-'ABCDFGIK':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABCDFGIL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABCDFGJK':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'J',r32_16:'K'},
-'ABCDFGJL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'J'},
-'ABCDFGKL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCDFHIJ':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'I'},
-'ABCDFHIK':{r32_1:'H',r32_3:'F',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ABCDFHIL':{r32_1:'H',r32_3:'F',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ABCDFHJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'K'},
-'ABCDFHJL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'H'},
-'ABCDFHKL':{r32_1:'H',r32_3:'F',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABCDFIJK':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABCDFIJL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABCDFIKL':{r32_1:'C',r32_3:'I',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCDFJKL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCDGHIJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'J'},
-'ABCDGHIK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ABCDGHIL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ABCDGHJK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'J',r32_16:'K'},
-'ABCDGHJL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'J'},
-'ABCDGHKL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABCDGIJK':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'I',r32_16:'K'},
-'ABCDGIJL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'I'},
-'ABCDGIKL':{r32_1:'I',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABCDGJKL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABCDHIJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ABCDHIJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ABCDHIKL':{r32_1:'H',r32_3:'I',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABCDHJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABCDIJKL':{r32_1:'I',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABCEFGHI':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'I'},
-'ABCEFGHJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'J'},
-'ABCEFGHK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'K'},
-'ABCEFGHL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'E'},
-'ABCEFGIJ':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'J'},
-'ABCEFGIK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABCEFGIL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABCEFGJK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'J',r32_16:'K'},
-'ABCEFGJL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'J'},
-'ABCEFGKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCEFHIJ':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'I'},
-'ABCEFHIK':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABCEFHIL':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABCEFHJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'K'},
-'ABCEFHJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'E'},
-'ABCEFHKL':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCEFIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABCEFIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABCEFIKL':{r32_1:'E',r32_3:'I',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCEFJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCEGHIJ':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'E',r32_16:'I'},
-'ABCEGHIK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'I',r32_16:'K'},
-'ABCEGHIL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'I'},
-'ABCEGHJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'E',r32_16:'K'},
-'ABCEGHJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'E'},
-'ABCEGHKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABCEGIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'I',r32_16:'K'},
-'ABCEGIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'I'},
-'ABCEGIKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'C',r32_15:'L',r32_16:'K'},
-'ABCEGJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABCEHIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'I',r32_16:'K'},
-'ABCEHIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'I'},
-'ABCEHIKL':{r32_1:'E',r32_3:'I',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABCEHJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABCEIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'C',r32_15:'L',r32_16:'K'},
-'ABCFGHIJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'J'},
-'ABCFGHIK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABCFGHIL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABCFGHJK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'J',r32_16:'K'},
-'ABCFGHJL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'J'},
-'ABCFGHKL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCFGIJK':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'I',r32_16:'K'},
-'ABCFGIJL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'I'},
-'ABCFGIKL':{r32_1:'I',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCFGJKL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABCFHIJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABCFHIJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABCFHIKL':{r32_1:'H',r32_3:'I',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCFHJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCFIJKL':{r32_1:'I',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABCGHIJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'I',r32_16:'K'},
-'ABCGHIJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'I'},
-'ABCGHIKL':{r32_1:'I',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABCGHJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABCGIJKL':{r32_1:'I',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABCHIJKL':{r32_1:'I',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABDEFGHI':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'I'},
-'ABDEFGHJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'J'},
-'ABDEFGHK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'K'},
-'ABDEFGHL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'E'},
-'ABDEFGIJ':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'J'},
-'ABDEFGIK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABDEFGIL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABDEFGJK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'J',r32_16:'K'},
-'ABDEFGJL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'J'},
-'ABDEFGKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABDEFHIJ':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'I'},
-'ABDEFHIK':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABDEFHIL':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABDEFHJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'K'},
-'ABDEFHJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'E'},
-'ABDEFHKL':{r32_1:'H',r32_3:'E',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABDEFIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABDEFIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABDEFIKL':{r32_1:'E',r32_3:'I',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABDEFJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABDEGHIJ':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'E',r32_16:'I'},
-'ABDEGHIK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'I',r32_16:'K'},
-'ABDEGHIL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'I'},
-'ABDEGHJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'E',r32_16:'K'},
-'ABDEGHJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'E'},
-'ABDEGHKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABDEGIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'I',r32_16:'K'},
-'ABDEGIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'I'},
-'ABDEGIKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABDEGJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABDEHIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'I',r32_16:'K'},
-'ABDEHIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'I'},
-'ABDEHIKL':{r32_1:'E',r32_3:'I',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABDEHJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABDEIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ABDFGHIJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'J'},
-'ABDFGHIK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABDFGHIL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABDFGHJK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'J',r32_16:'K'},
-'ABDFGHJL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'J'},
-'ABDFGHKL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABDFGIJK':{r32_1:'F',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'I',r32_16:'K'},
-'ABDFGIJL':{r32_1:'F',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'I'},
-'ABDFGIKL':{r32_1:'I',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABDFGJKL':{r32_1:'F',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABDFHIJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ABDFHIJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ABDFHIKL':{r32_1:'H',r32_3:'I',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABDFHJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABDFIJKL':{r32_1:'I',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABDGHIJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'I',r32_16:'K'},
-'ABDGHIJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'I'},
-'ABDGHIKL':{r32_1:'I',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABDGHJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABDGIJKL':{r32_1:'I',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABDHIJKL':{r32_1:'I',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABEFGHIJ':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'E',r32_16:'I'},
-'ABEFGHIK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'I',r32_16:'K'},
-'ABEFGHIL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'I'},
-'ABEFGHJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'E',r32_16:'K'},
-'ABEFGHJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'E'},
-'ABEFGHKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABEFGIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'I',r32_16:'K'},
-'ABEFGIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'I'},
-'ABEFGIKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABEFGJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABEFHIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'I',r32_16:'K'},
-'ABEFHIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'I'},
-'ABEFHIKL':{r32_1:'E',r32_3:'I',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABEFHJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABEFIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABEGHIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'A',r32_8:'H',r32_13:'G',r32_15:'I',r32_16:'K'},
-'ABEGHIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'A',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'I'},
-'ABEGHIKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABEGHJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'A',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABEGIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABEHIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ABFGHIJK':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'I',r32_16:'K'},
-'ABFGHIJL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'I'},
-'ABFGHIKL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABFGHJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABFGIJKL':{r32_1:'I',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ABFHIJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ABGHIJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'A',r32_8:'I',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ACDEFGHI':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'I'},
-'ACDEFGHJ':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'E'},
-'ACDEFGHK':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'K'},
-'ACDEFGHL':{r32_1:'H',r32_3:'G',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'E'},
-'ACDEFGIJ':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'I'},
-'ACDEFGIK':{r32_1:'C',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ACDEFGIL':{r32_1:'C',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ACDEFGJK':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'K'},
-'ACDEFGJL':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'E'},
-'ACDEFGKL':{r32_1:'C',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACDEFHIJ':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'I'},
-'ACDEFHIK':{r32_1:'H',r32_3:'E',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ACDEFHIL':{r32_1:'H',r32_3:'E',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ACDEFHJK':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'K'},
-'ACDEFHJL':{r32_1:'H',r32_3:'J',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'E'},
-'ACDEFHKL':{r32_1:'H',r32_3:'E',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDEFIJK':{r32_1:'C',r32_3:'J',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ACDEFIJL':{r32_1:'C',r32_3:'J',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ACDEFIKL':{r32_1:'C',r32_3:'E',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACDEFJKL':{r32_1:'C',r32_3:'J',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACDEGHIJ':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'E',r32_16:'I'},
-'ACDEGHIK':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ACDEGHIL':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ACDEGHJK':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'E',r32_16:'K'},
-'ACDEGHJL':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'E'},
-'ACDEGHKL':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDEGIJK':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ACDEGIJL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ACDEGIKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDEGJKL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDEHIJK':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ACDEHIJL':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ACDEHIKL':{r32_1:'H',r32_3:'E',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDEHJKL':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDEIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDFGHIJ':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'I'},
-'ACDFGHIK':{r32_1:'H',r32_3:'G',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ACDFGHIL':{r32_1:'H',r32_3:'G',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ACDFGHJK':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'D',r32_16:'K'},
-'ACDFGHJL':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'H'},
-'ACDFGHKL':{r32_1:'H',r32_3:'G',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDFGIJK':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ACDFGIJL':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ACDFGIKL':{r32_1:'C',r32_3:'G',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACDFGJKL':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACDFHIJK':{r32_1:'H',r32_3:'J',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ACDFHIJL':{r32_1:'H',r32_3:'J',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ACDFHIKL':{r32_1:'H',r32_3:'F',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDFHJKL':{r32_1:'H',r32_3:'J',r32_7:'F',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDFIJKL':{r32_1:'C',r32_3:'J',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACDGHIJK':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'I',r32_16:'K'},
-'ACDGHIJL':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'I'},
-'ACDGHIKL':{r32_1:'H',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDGHJKL':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDGIJKL':{r32_1:'I',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACDHIJKL':{r32_1:'H',r32_3:'J',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'D',r32_15:'L',r32_16:'K'},
-'ACEFGHIJ':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'I'},
-'ACEFGHIK':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ACEFGHIL':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ACEFGHJK':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'K'},
-'ACEFGHJL':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'E'},
-'ACEFGHKL':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACEFGIJK':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ACEFGIJL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ACEFGIKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACEFGJKL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACEFHIJK':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ACEFHIJL':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ACEFHIKL':{r32_1:'H',r32_3:'E',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACEFHJKL':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACEFIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACEGHIJK':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'I',r32_16:'K'},
-'ACEGHIJL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'I'},
-'ACEGHIKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ACEGHJKL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ACEGIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ACEHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ACFGHIJK':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ACFGHIJL':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ACFGHIKL':{r32_1:'H',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACFGHJKL':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACFGIJKL':{r32_1:'I',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACFHIJKL':{r32_1:'H',r32_3:'J',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ACGHIJKL':{r32_1:'H',r32_3:'J',r32_7:'I',r32_9:'C',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ADEFGHIJ':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'I'},
-'ADEFGHIK':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ADEFGHIL':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ADEFGHJK':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'E',r32_16:'K'},
-'ADEFGHJL':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'E'},
-'ADEFGHKL':{r32_1:'H',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ADEFGIJK':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ADEFGIJL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ADEFGIKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ADEFGJKL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ADEFHIJK':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ADEFHIJL':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ADEFHIKL':{r32_1:'H',r32_3:'E',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ADEFHJKL':{r32_1:'H',r32_3:'J',r32_7:'E',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ADEFIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ADEGHIJK':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'I',r32_16:'K'},
-'ADEGHIJL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'I'},
-'ADEGHIKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ADEGHJKL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ADEGIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'ADEHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'ADFGHIJK':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'I',r32_16:'K'},
-'ADFGHIJL':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'I'},
-'ADFGHIKL':{r32_1:'H',r32_3:'G',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ADFGHJKL':{r32_1:'H',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ADFGIJKL':{r32_1:'I',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ADFHIJKL':{r32_1:'H',r32_3:'J',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'F',r32_15:'L',r32_16:'K'},
-'ADGHIJKL':{r32_1:'H',r32_3:'J',r32_7:'I',r32_9:'D',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'AEFGHIJK':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'I',r32_16:'K'},
-'AEFGHIJL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'I'},
-'AEFGHIKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'AEFGHJKL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'AEFGIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'AEFHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'F',r32_8:'A',r32_13:'H',r32_15:'L',r32_16:'K'},
-'AEGHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'A',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'K'},
-'AFGHIJKL':{r32_1:'H',r32_3:'J',r32_7:'I',r32_9:'F',r32_8:'A',r32_13:'G',r32_15:'L',r32_16:'K'},
-'BCDEFGHI':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'E',r32_16:'I'},
-'BCDEFGHJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'D',r32_16:'E'},
-'BCDEFGHK':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'E',r32_16:'K'},
-'BCDEFGHL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'E'},
-'BCDEFGIJ':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'E',r32_16:'I'},
-'BCDEFGIK':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'E',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BCDEFGIL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'E',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BCDEFGJK':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'E',r32_16:'K'},
-'BCDEFGJL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'E'},
-'BCDEFGKL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'E',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCDEFHIJ':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'E',r32_16:'I'},
-'BCDEFHIK':{r32_1:'C',r32_3:'E',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BCDEFHIL':{r32_1:'C',r32_3:'E',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BCDEFHJK':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'E',r32_16:'K'},
-'BCDEFHJL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'E'},
-'BCDEFHKL':{r32_1:'C',r32_3:'E',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCDEFIJK':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'E',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BCDEFIJL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'E',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BCDEFIKL':{r32_1:'C',r32_3:'E',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCDEFJKL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'E',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCDEGHIJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'E',r32_16:'I'},
-'BCDEGHIK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'I',r32_16:'K'},
-'BCDEGHIL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'L',r32_16:'I'},
-'BCDEGHJK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'E',r32_16:'K'},
-'BCDEGHJL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'L',r32_16:'E'},
-'BCDEGHKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'L',r32_16:'K'},
-'BCDEGIJK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'I',r32_16:'K'},
-'BCDEGIJL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'L',r32_16:'I'},
-'BCDEGIKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'D',r32_15:'L',r32_16:'K'},
-'BCDEGJKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'L',r32_16:'K'},
-'BCDEHIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'I',r32_16:'K'},
-'BCDEHIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'L',r32_16:'I'},
-'BCDEHIKL':{r32_1:'E',r32_3:'I',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'L',r32_16:'K'},
-'BCDEHJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'L',r32_16:'K'},
-'BCDEIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'D',r32_15:'L',r32_16:'K'},
-'BCDFGHIJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'D',r32_16:'I'},
-'BCDFGHIK':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BCDFGHIL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BCDFGHJK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'D',r32_16:'K'},
-'BCDFGHJL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'J'},
-'BCDFGHKL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCDFGIJK':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BCDFGIJL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BCDFGIKL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCDFGJKL':{r32_1:'C',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCDFHIJK':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BCDFHIJL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BCDFHIKL':{r32_1:'C',r32_3:'I',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCDFHJKL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCDFIJKL':{r32_1:'C',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCDGHIJK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'I',r32_16:'K'},
-'BCDGHIJL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'L',r32_16:'I'},
-'BCDGHIKL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'D',r32_15:'L',r32_16:'K'},
-'BCDGHJKL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'L',r32_16:'K'},
-'BCDGIJKL':{r32_1:'I',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'L',r32_16:'K'},
-'BCDHIJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'D',r32_15:'L',r32_16:'K'},
-'BCEFGHIJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'E',r32_16:'I'},
-'BCEFGHIK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BCEFGHIL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BCEFGHJK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'E',r32_16:'K'},
-'BCEFGHJL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'E'},
-'BCEFGHKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCEFGIJK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BCEFGIJL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BCEFGIKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCEFGJKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCEFHIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BCEFHIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BCEFHIKL':{r32_1:'E',r32_3:'I',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCEFHJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCEFIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCEGHIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'G',r32_15:'I',r32_16:'K'},
-'BCEGHIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'I'},
-'BCEGHIKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'H',r32_15:'L',r32_16:'K'},
-'BCEGHJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'K'},
-'BCEGIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'G',r32_15:'L',r32_16:'K'},
-'BCEHIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'H',r32_15:'L',r32_16:'K'},
-'BCFGHIJK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BCFGHIJL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BCFGHIKL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCFGHJKL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCFGIJKL':{r32_1:'I',r32_3:'G',r32_7:'B',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCFHIJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BCGHIJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'C',r32_8:'I',r32_13:'G',r32_15:'L',r32_16:'K'},
-'BDEFGHIJ':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'E',r32_16:'I'},
-'BDEFGHIK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BDEFGHIL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BDEFGHJK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'E',r32_16:'K'},
-'BDEFGHJL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'E'},
-'BDEFGHKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BDEFGIJK':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BDEFGIJL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BDEFGIKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BDEFGJKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BDEFHIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BDEFHIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BDEFHIKL':{r32_1:'E',r32_3:'I',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BDEFHJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BDEFIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BDEGHIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'G',r32_15:'I',r32_16:'K'},
-'BDEGHIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'I'},
-'BDEGHIKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'H',r32_15:'L',r32_16:'K'},
-'BDEGHJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'K'},
-'BDEGIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'G',r32_15:'L',r32_16:'K'},
-'BDEHIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'H',r32_15:'L',r32_16:'K'},
-'BDFGHIJK':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'I',r32_16:'K'},
-'BDFGHIJL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'I'},
-'BDFGHIKL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BDFGHJKL':{r32_1:'H',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BDFGIJKL':{r32_1:'I',r32_3:'G',r32_7:'B',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BDFHIJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'BDGHIJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'D',r32_8:'I',r32_13:'G',r32_15:'L',r32_16:'K'},
-'BEFGHIJK':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'H',r32_13:'G',r32_15:'I',r32_16:'K'},
-'BEFGHIJL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'I'},
-'BEFGHIKL':{r32_1:'E',r32_3:'G',r32_7:'B',r32_9:'F',r32_8:'I',r32_13:'H',r32_15:'L',r32_16:'K'},
-'BEFGHJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'K'},
-'BEFGIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'I',r32_13:'G',r32_15:'L',r32_16:'K'},
-'BEFHIJKL':{r32_1:'E',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'I',r32_13:'H',r32_15:'L',r32_16:'K'},
-'BEGHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'B',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'K'},
-'BFGHIJKL':{r32_1:'H',r32_3:'J',r32_7:'B',r32_9:'F',r32_8:'I',r32_13:'G',r32_15:'L',r32_16:'K'},
-'CDEFGHIJ':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'E',r32_16:'I'},
-'CDEFGHIK':{r32_1:'C',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'CDEFGHIL':{r32_1:'C',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'CDEFGHJK':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'E',r32_16:'K'},
-'CDEFGHJL':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'E'},
-'CDEFGHKL':{r32_1:'C',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CDEFGIJK':{r32_1:'C',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'I',r32_16:'K'},
-'CDEFGIJL':{r32_1:'C',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'I'},
-'CDEFGIKL':{r32_1:'C',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CDEFGJKL':{r32_1:'C',r32_3:'G',r32_7:'E',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CDEFHIJK':{r32_1:'C',r32_3:'J',r32_7:'E',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'CDEFHIJL':{r32_1:'C',r32_3:'J',r32_7:'E',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'CDEFHIKL':{r32_1:'C',r32_3:'E',r32_7:'I',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CDEFHJKL':{r32_1:'C',r32_3:'J',r32_7:'E',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CDEFIJKL':{r32_1:'C',r32_3:'J',r32_7:'E',r32_9:'D',r32_8:'I',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CDEGHIJK':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'I',r32_16:'K'},
-'CDEGHIJL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'L',r32_16:'I'},
-'CDEGHIKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'L',r32_16:'K'},
-'CDEGHJKL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'L',r32_16:'K'},
-'CDEGIJKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'L',r32_16:'K'},
-'CDEHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'C',r32_8:'H',r32_13:'D',r32_15:'L',r32_16:'K'},
-'CDFGHIJK':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'CDFGHIJL':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'CDFGHIKL':{r32_1:'C',r32_3:'G',r32_7:'I',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CDFGHJKL':{r32_1:'C',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CDFGIJKL':{r32_1:'C',r32_3:'G',r32_7:'I',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CDFHIJKL':{r32_1:'C',r32_3:'J',r32_7:'I',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CDGHIJKL':{r32_1:'H',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'J',r32_13:'D',r32_15:'L',r32_16:'K'},
-'CEFGHIJK':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'CEFGHIJL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'CEFGHIKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CEFGHJKL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CEFGIJKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CEFHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'C',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'CEGHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'C',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'K'},
-'CFGHIJKL':{r32_1:'H',r32_3:'G',r32_7:'I',r32_9:'C',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'DEFGHIJK':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'I',r32_16:'K'},
-'DEFGHIJL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'I'},
-'DEFGHIKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'DEFGHJKL':{r32_1:'E',r32_3:'G',r32_7:'J',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'DEFGIJKL':{r32_1:'E',r32_3:'G',r32_7:'I',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'DEFHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'D',r32_8:'H',r32_13:'F',r32_15:'L',r32_16:'K'},
-'DEGHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'D',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'K'},
-'DFGHIJKL':{r32_1:'H',r32_3:'G',r32_7:'I',r32_9:'D',r32_8:'J',r32_13:'F',r32_15:'L',r32_16:'K'},
-'EFGHIJKL':{r32_1:'E',r32_3:'J',r32_7:'I',r32_9:'F',r32_8:'H',r32_13:'G',r32_15:'L',r32_16:'K'},
-};
-
 function assignThirdsToSlots(){
-  const key = state.selectedThirds.map(t=>t.group).sort().join('');
-  const slots = THIRDS_TABLE[key];
-  if(!slots) return {};
+  // Asignar los 8 terceros seleccionados a los 8 slots de tercero
+  // Estrategia: para cada slot (en orden), asignar el primer tercero elegible no asignado
+  const thirdSlots = R32_TEMPLATE.filter(m => m.slotB.type === 'third');
+  const availableThirds = [...state.selectedThirds];
   const assignments = {};
-  for(const [slotId,groupLetter] of Object.entries(slots)){
-    const third = state.selectedThirds.find(t=>t.group===groupLetter);
-    if(third) assignments[slotId] = third;
+
+  // Greedy: ordenar slots por flexibilidad (slots con menos opciones primero)
+  const slotsWithOptions = thirdSlots.map(slot => {
+    const opts = availableThirds.filter(t => slot.slotB.eligibleGroups.includes(t.group));
+    return {slot, opts: opts.length};
+  });
+  slotsWithOptions.sort((a,b)=> a.opts - b.opts);
+
+  for(const {slot} of slotsWithOptions){
+    const assigned = availableThirds.find(t => slot.slotB.eligibleGroups.includes(t.group));
+    if(assigned){
+      assignments[slot.id] = assigned;
+      const idx = availableThirds.indexOf(assigned);
+      availableThirds.splice(idx, 1);
+    }
   }
   return assignments;
 }
