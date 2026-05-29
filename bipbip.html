@@ -931,13 +931,13 @@
 <body>
 
 <nav class="top-nav">
-  <a href="#" onclick="goHome();return false;" style="cursor:pointer;line-height:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 50" class="logo-mini" style="height:36px;width:auto"><text x="120" y="40" text-anchor="middle" font-family="'Yango Headline',Arial,sans-serif" font-size="48" font-weight="900" font-style="italic" fill="#FC3F1D">BIPBIP</text></svg></a>
+  <a href="#" onclick="goHome();return false;" style="cursor:pointer;line-height:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 44" class="logo-mini" style="height:36px;width:auto"><text transform="skewX(-12)" x="108" y="36" text-anchor="middle" font-family="Impact,'Arial Black',Arial,sans-serif" font-size="44" font-weight="900" fill="#FF0000">BIPBIP</text></svg></a>
   <button onclick="showLeaderboard()">RANKING 🏆</button>
 </nav>
 
 <section class="hero" id="hero">
   <div class="hero-content">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100" style="display:block;margin:0 auto 16px;width:min(380px,85vw);height:auto"><text x="260" y="82" text-anchor="middle" font-family="'Yango Headline',Arial,sans-serif" font-size="96" font-weight="900" font-style="italic" fill="#FC3F1D">BIPBIP</text></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 100" style="display:block;margin:0 auto 16px;width:min(360px,85vw);height:auto"><text transform="skewX(-12)" x="248" y="84" text-anchor="middle" font-family="Impact,'Arial Black',Arial,sans-serif" font-size="96" font-weight="900" fill="#FF0000">BIPBIP</text></svg>
     <h1>QUINIELA<br><span class="yellow">MUNDIAL</span><br><span class="stroke">FIFA 2026</span></h1>
     <p class="hero-sub">Predice los resultados del Mundial 2026 y compite contra tus compañeros de BipBip por increíbles premios.</p>
 
@@ -1188,7 +1188,7 @@
 </section>
 
 <footer>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" class="logo-foot" style="width:240px;height:auto"><text x="200" y="64" text-anchor="middle" font-family="'Yango Headline',Arial,sans-serif" font-size="72" font-weight="900" font-style="italic" fill="#FC3F1D">BIPBIP</text></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 80" class="logo-foot" style="width:220px;height:auto"><text transform="skewX(-12)" x="196" y="66" text-anchor="middle" font-family="Impact,'Arial Black',Arial,sans-serif" font-size="72" font-weight="900" fill="#FF0000">BIPBIP</text></svg>
   <p>QUINIELA MUNDIAL <i style="color:var(--yango-yellow);font-style:normal">●</i> BIPBIP 2026</p>
   <p style="font-size:11px;color:#888;margin-top:12px;text-transform:none;letter-spacing:0;font-weight:400">Actividad interna BipBip. FIFA World Cup 2026.</p>
 </footer>
@@ -2376,15 +2376,15 @@ async function showLeaderboard(){
     list.innerHTML = `
       <div style="text-align:center;padding:48px 24px;background:var(--yango-yellow);border:4px solid var(--yango-black);box-shadow:8px 8px 0 var(--yango-red);max-width:500px;margin:0 auto">
         <div style="font-size:72px;margin-bottom:16px">⏰</div>
-        <h3 style="font-family:'Yango Headline',sans-serif;font-size:36px;text-transform:uppercase;line-height:0.95;margin-bottom:16px;color:var(--yango-black)">RANKING<br><span style="color:var(--yango-red)">PRÓXIMAMENTE</span></h3>
-        <p style="font-family:'Yango Headline',sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:0.04em;line-height:1.4;color:var(--yango-black)">El ranking se activa el 11 de junio cuando arranque el torneo.</p>
+        <h3 style="font-family:Yango Headline,sans-serif;font-size:36px;text-transform:uppercase;line-height:0.95;margin-bottom:16px;color:var(--yango-black)">RANKING<br><span style="color:var(--yango-red)">PRÓXIMAMENTE</span></h3>
+        <p style="font-family:Yango Headline,sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:0.04em;line-height:1.4;color:var(--yango-black)">El ranking se activa el 11 de junio cuando arranque el torneo.</p>
         <p style="font-size:13px;color:#555;margin-top:16px;line-height:1.5">Mientras tanto, asegúrate de completar tu participación y comparte con tus amigos.</p>
       </div>
     `;
     return;
   }
   
-  list.innerHTML = '<p style="color:#888;font-family:'Yango Headline',sans-serif;font-size:20px;text-transform:uppercase">CARGANDO RANKING...</p>';
+  list.innerHTML = '<p style="color:#888;font-family:Yango Headline,sans-serif;font-size:20px;text-transform:uppercase">CARGANDO RANKING...</p>';
 
   try{
     // Intentar cargar del Google Sheet (calculado por el admin)
@@ -2403,13 +2403,13 @@ async function showLeaderboard(){
     list.innerHTML = `
       <div style="text-align:center;padding:48px 24px;background:#fff;border:4px solid var(--yango-black);max-width:500px;margin:0 auto">
         <div style="font-size:60px;margin-bottom:16px">🏆</div>
-        <h3 style="font-family:'Yango Headline',sans-serif;font-size:28px;text-transform:uppercase;line-height:0.95;margin-bottom:12px">RANKING EN<br><span style="color:var(--yango-red)">PREPARACIÓN</span></h3>
-        <p style="font-family:'Yango Headline',sans-serif;font-weight:700;font-size:13px;color:#555;line-height:1.5">Los puntos se actualizan después de cada jornada del torneo. Vuelve pronto.</p>
+        <h3 style="font-family:Yango Headline,sans-serif;font-size:28px;text-transform:uppercase;line-height:0.95;margin-bottom:12px">RANKING EN<br><span style="color:var(--yango-red)">PREPARACIÓN</span></h3>
+        <p style="font-family:Yango Headline,sans-serif;font-weight:700;font-size:13px;color:#555;line-height:1.5">Los puntos se actualizan después de cada jornada del torneo. Vuelve pronto.</p>
       </div>
     `;
   }catch(e){
     console.error(e);
-    list.innerHTML = '<p style="color:#FFE44D;font-family:'Yango Headline',sans-serif;font-size:22px;text-align:center">ERROR AL CARGAR EL RANKING.</p>';
+    list.innerHTML = '<p style="color:#FFE44D;font-family:Yango Headline,sans-serif;font-size:22px;text-align:center">ERROR AL CARGAR EL RANKING.</p>';
   }
 }
 
@@ -2439,7 +2439,7 @@ function renderPublicRanking(ranking){
       <div class="lb-score">${p.puntos || 0} pts</div>
     </div>`;
   });
-  html += '<p style="color:#888;font-size:12px;margin-top:16px;text-align:center;font-family:'Yango Headline',sans-serif">El ranking se actualiza después de cada jornada del torneo.</p>';
+  html += '<p style="color:#888;font-size:12px;margin-top:16px;text-align:center;font-family:Yango Headline,sans-serif">El ranking se actualiza después de cada jornada del torneo.</p>';
   list.innerHTML = html;
 }
 
