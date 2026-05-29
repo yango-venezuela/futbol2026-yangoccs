@@ -1947,7 +1947,15 @@ function renderThird(){
   restoreSelections('third');
 }
 
+
+function reEnableSubmit(){
+  const btn = document.querySelector('[onclick="submitQuiniela()"]');
+  if(btn){ btn.disabled = false; btn.textContent = 'ENVIAR PARTICIPACIÓN 🚀'; }
+}
 async function submitQuiniela(){
+  const btn = document.querySelector('[onclick="submitQuiniela()"]');
+  if(btn && btn.disabled) return;
+  if(btn){ btn.disabled = true; btn.textContent = 'ENVIANDO...'; }
   // VALIDACIÓN: Check si ya hay una participación con este email o teléfono
   if(GOOGLE_SHEETS_URL && GOOGLE_SHEETS_URL.indexOf('PEGA_AQUI') === -1){
     try{
@@ -1966,18 +1974,18 @@ async function submitQuiniela(){
   
   const matchId = 'final_1';
   const finalMatch = state.predictions.final[matchId];
-  if(!finalMatch || !finalMatch.winner){showToast('Define el campeón en la final');return;}
+  if(!finalMatch || !finalMatch.winner){showToast('Define el campeón en la final');reEnableSubmit();return;}
   const thirdMatch = state.predictions.third['third_1'];
-  if(!thirdMatch || !thirdMatch.winner){showToast('Define el ganador del tercer puesto');return;}
-  if(finalMatch.scoreA === '' || finalMatch.scoreB === ''){showToast('Completa el marcador de la final');return;}
-  if(thirdMatch.scoreA === '' || thirdMatch.scoreB === ''){showToast('Completa el marcador del 3er puesto');return;}
+  if(!thirdMatch || !thirdMatch.winner){showToast('Define el ganador del tercer puesto');reEnableSubmit();return;}
+  if(finalMatch.scoreA === '' || finalMatch.scoreB === ''){showToast('Completa el marcador de la final');reEnableSubmit();return;}
+  if(thirdMatch.scoreA === '' || thirdMatch.scoreB === ''){showToast('Completa el marcador del 3er puesto');reEnableSubmit();return;}
 
   if(state.predictions.topScorerSelected === undefined || state.predictions.topScorerSelected === null){
-    showToast('Selecciona el goleador');return;
+    showToast('Selecciona el goleador');reEnableSubmit();return;
   }
   if(state.predictions.topScorerSelected === SCORERS.length - 1){
     const custom = document.getElementById('scorerOther').value.trim();
-    if(!custom){showToast('Escribe el nombre del jugador');return;}
+    if(!custom){showToast('Escribe el nombre del jugador');reEnableSubmit();return;}
     state.predictions.topScorer = custom.toUpperCase();
     state.predictions.topScorerCustom = custom;
   }
