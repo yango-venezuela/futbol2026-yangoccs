@@ -1054,17 +1054,17 @@
     <p class="section-sub">PARA AVISARTE SI GANAS.</p>
     
     <div class="eligibility-box">
-      <b>ELEGIBILIDAD:</b> Actividad válida únicamente para conductores de Yango Pro, mayores de 18 años, residentes en Gran Caracas, que hayan completado al menos un viaje en Yango Pro en los últimos 15 días. No se requiere realizar viajes adicionales durante la Promoción para participar.
+      <b>ELEGIBILIDAD:</b> Actividad válida únicamente para conductores de Yango Pro, mayores de 18 años, residentes en Gran Caracas, que hayan completado al menos un viaje en Yango Pro en los últimos 15 días.
     </div>
     
     <div class="card">
       <div class="form-group">
         <label>NOMBRE COMPLETO</label>
-        <input type="text" id="userName" placeholder="Ej: Isabella Pérez">
+        <input type="text" id="userName" placeholder="Ej: Juan Pérez">
       </div>
       <div class="form-group">
-        <label>EMAIL</label>
-        <input type="email" id="userEmail" placeholder="tucorreo@gmail.com">
+        <label>NÚMERO DE PLACA</label>
+        <input type="text" id="userEmail" placeholder="Ej: ABC123">
       </div>
       <div class="form-group">
         <label>TELÉFONO</label>
@@ -1489,7 +1489,6 @@ function nextStep(current){
     const acceptTerms = document.getElementById('acceptTerms').checked;
     const acceptPrivacy = document.getElementById('acceptPrivacy').checked;
     if(!name || !email || !phone){showToast('Completa todos los campos');return;}
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Email inválido');return;}
     if(!acceptTerms){showToast('Debes aceptar los Términos y Condiciones');return;}
     if(!acceptPrivacy){showToast('Debes autorizar el tratamiento de datos');return;}
     state.user = {name, email, phone, acceptedTerms:true, acceptedPrivacy:true};
