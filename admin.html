@@ -997,6 +997,7 @@
         <button class="ranking-subtab" id="subtab-drivers" onclick="switchRankingView('drivers')">DRIVERS</button>
         <button class="ranking-subtab" id="subtab-bpo" onclick="switchRankingView('bpo')">BPO</button>
         <button class="ranking-subtab" id="subtab-bipbip" onclick="switchRankingView('bipbip')">BIPBIP</button>
+        <button class="ranking-subtab" id="subtab-peru" onclick="switchRankingView('peru')">USUARIOS PERÚ</button>
       </div>
 
       <div class="stats-bar" id="statsBar"></div>
@@ -1037,6 +1038,7 @@ const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxHSwzDNWdOJ-
 const GOOGLE_SHEETS_URL_DRIVERS = 'https://script.google.com/macros/s/AKfycbwAWBCstI2Oso0y4PwwETdx-YmqZyW8I1-ht-MMzpGB1iOEHjLEQShdmaaeH9P4FfIzxg/exec';
 const GOOGLE_SHEETS_URL_BPO = 'https://script.google.com/macros/s/AKfycbxEHT4VoSKBR946uk3zA--GIw4WEw3poc1xDzCRncmubCWEtYdE3gO0AyaBxxPEsHDG/exec';
 const GOOGLE_SHEETS_URL_BIPBIP = 'https://script.google.com/macros/s/AKfycbyW_ujbUL18TcP6mWUIy5dWUmBoGgJU9h98aFJU_Pqm9MQAGm8_fkOPhp1d0eOSHPv8kw/exec';
+const GOOGLE_SHEETS_URL_PERU = 'https://script.google.com/macros/s/AKfycby0I3GjBWbjDfr_Upe-1VMcF0W9V73mSwx1mLwiI5x4-PFkDfUvbu6Y83AQEKbtC8vW/exec';
 
 // Datos de grupos (mismos del index)
 const GROUPS = {
@@ -1071,7 +1073,9 @@ const adminState = {
   rankingBpo: [],
   allQuinielasBpo: [],
   rankingBipbip: [],
-  allQuinielasBipbip: []
+  allQuinielasBipbip: [],
+  rankingPeru: [],
+  allQuinielasPeru: []
 };
 
 // ============================================
@@ -1680,6 +1684,19 @@ async function loadSavedData(){
       }catch(e){ /* bipbip ranking no disponible aún */ }
     }
 
+    // Cargar ranking de Usuarios Perú si el URL está configurado
+    if(GOOGLE_SHEETS_URL_PERU && GOOGLE_SHEETS_URL_PERU.indexOf('PEGA_AQUI') === -1){
+      try{
+        const rp = await fetch(GOOGLE_SHEETS_URL_PERU + '?action=get_ranking');
+        if(rp.ok){
+          const dp = await rp.json();
+          if(dp.ranking && dp.ranking.length > 0){
+            adminState.rankingPeru = dp.ranking;
+          }
+        }
+      }catch(e){ /* peru ranking no disponible aún */ }
+    }
+
     // Recalcular standings de todos los grupos al cargar
     Object.keys(GROUPS).forEach(g => calculateGroupStandings(g));
   }catch(e){
@@ -1782,10 +1799,34 @@ async function calculateRanking(){
       driversMsg = ' · (Drivers URL no configurada)';
     }
 
+    // ── Usuarios Perú ──
+    let peruMsg = '';
+    if(GOOGLE_SHEETS_URL_PERU && GOOGLE_SHEETS_URL_PERU.indexOf('PEGA_AQUI') === -1){
+      try{
+        adminState.allQuinielasPeru = await fetchQuinielas(GOOGLE_SHEETS_URL_PERU);
+        const rankingPeru = buildRankingFromQuinielas(adminState.allQuinielasPeru);
+        adminState.rankingPeru = rankingPeru;
+        await fetch(GOOGLE_SHEETS_URL_PERU, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {'Content-Type': 'text/plain;charset=utf-8'},
+          body: JSON.stringify({action:'save_ranking', ranking: rankingPeru.map(r => ({
+            code: r.code, nombre: r.nombre, email: r.email, telefono: r.telefono,
+            campeon: r.campeon, goleador: r.goleador, puntos: r.puntos
+          }))})
+        });
+        peruMsg = ' · Perú: '+rankingPeru.length;
+      }catch(e){
+        peruMsg = ' · (Error Perú: '+e.message+')';
+      }
+    } else {
+      peruMsg = ' · (Perú URL no configurada)';
+    }
+
     renderRanking();
     updateAllStatuses();
     showTab('ranking');
-    showToast('✓ Usuarios: '+rankingUsuarios.length+driversMsg, 'success');
+    showToast('✓ Usuarios: '+rankingUsuarios.length+driversMsg+peruMsg, 'success');
   }catch(e){
     console.error(e);
     showToast('Error: '+e.message, 'error');
@@ -1927,6 +1968,7 @@ function switchRankingView(view){
   document.getElementById('subtab-drivers').classList.toggle('active', view === 'drivers');
   document.getElementById('subtab-bpo').classList.toggle('active', view === 'bpo');
   document.getElementById('subtab-bipbip').classList.toggle('active', view === 'bipbip');
+  document.getElementById('subtab-peru').classList.toggle('active', view === 'peru');
   currentFilter = '';
   document.getElementById('searchInput').value = '';
   renderRanking();
@@ -1934,7 +1976,7 @@ function switchRankingView(view){
 
 function renderRanking(){
   const body = document.getElementById('rankingBody');
-  let ranking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : adminState.ranking));
+  let ranking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : adminState.ranking)));
   
   if (currentFilter){
     const f = currentFilter.toLowerCase();
@@ -1966,7 +2008,7 @@ function renderRanking(){
   // Stats (basadas en la vista activa, sin filtro)
   const stats = document.getElementById('statsBar');
   if (stats){
-    const fullRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : adminState.ranking));
+    const fullRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : adminState.ranking)));
     const total = fullRanking.length;
     const conPuntos = fullRanking.filter(r => r.puntos > 0).length;
     const maxPts = fullRanking[0] ? fullRanking[0].puntos : 0;
@@ -1988,7 +2030,7 @@ function filterRanking(){
 // DETAIL MODAL
 // ============================================
 function viewDetail(code){
-  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : adminState.ranking));
+  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : adminState.ranking)));
   const p = activeRanking.find(r => r.code === code);
   if (!p) return;
   const d = p.datos;
@@ -2062,7 +2104,7 @@ document.addEventListener('click', e => {
 // EXPORT CSV
 // ============================================
 function exportCSV(){
-  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : adminState.ranking));
+  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : adminState.ranking)));
   if (activeRanking.length === 0){
     showToast('No hay datos para exportar', 'error');
     return;
