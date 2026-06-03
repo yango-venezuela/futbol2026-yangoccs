@@ -998,6 +998,7 @@
         <button class="ranking-subtab" id="subtab-bpo" onclick="switchRankingView('bpo')">BPO</button>
         <button class="ranking-subtab" id="subtab-bipbip" onclick="switchRankingView('bipbip')">BIPBIP</button>
         <button class="ranking-subtab" id="subtab-peru" onclick="switchRankingView('peru')">USUARIOS PERÚ</button>
+        <button class="ranking-subtab" id="subtab-drivers-peru" onclick="switchRankingView('drivers-peru')">DRIVERS PERÚ</button>
       </div>
 
       <div class="stats-bar" id="statsBar"></div>
@@ -1039,6 +1040,7 @@ const GOOGLE_SHEETS_URL_DRIVERS = 'https://script.google.com/macros/s/AKfycbwAWB
 const GOOGLE_SHEETS_URL_BPO = 'https://script.google.com/macros/s/AKfycbxEHT4VoSKBR946uk3zA--GIw4WEw3poc1xDzCRncmubCWEtYdE3gO0AyaBxxPEsHDG/exec';
 const GOOGLE_SHEETS_URL_BIPBIP = 'https://script.google.com/macros/s/AKfycbyW_ujbUL18TcP6mWUIy5dWUmBoGgJU9h98aFJU_Pqm9MQAGm8_fkOPhp1d0eOSHPv8kw/exec';
 const GOOGLE_SHEETS_URL_PERU = 'https://script.google.com/macros/s/AKfycby0I3GjBWbjDfr_Upe-1VMcF0W9V73mSwx1mLwiI5x4-PFkDfUvbu6Y83AQEKbtC8vW/exec';
+const GOOGLE_SHEETS_URL_DRIVERS_PERU = 'https://script.google.com/macros/s/AKfycbydLyca3O19Cc90KHIAX7Sz_1kNHhINi5TULNTmd7QWNgKSKkSDqaB8QBfRUhroT-Ow0A/exec';
 
 // Datos de grupos (mismos del index)
 const GROUPS = {
@@ -1075,7 +1077,9 @@ const adminState = {
   rankingBipbip: [],
   allQuinielasBipbip: [],
   rankingPeru: [],
-  allQuinielasPeru: []
+  allQuinielasPeru: [],
+  rankingDriversPeru: [],
+  allQuinielasDriversPeru: []
 };
 
 // ============================================
@@ -1697,6 +1701,19 @@ async function loadSavedData(){
       }catch(e){ /* peru ranking no disponible aún */ }
     }
 
+    // Cargar ranking de Drivers Perú si el URL está configurado
+    if(GOOGLE_SHEETS_URL_DRIVERS_PERU && GOOGLE_SHEETS_URL_DRIVERS_PERU.indexOf('PEGA_AQUI') === -1){
+      try{
+        const rdp = await fetch(GOOGLE_SHEETS_URL_DRIVERS_PERU + '?action=get_ranking');
+        if(rdp.ok){
+          const ddp = await rdp.json();
+          if(ddp.ranking && ddp.ranking.length > 0){
+            adminState.rankingDriversPeru = ddp.ranking;
+          }
+        }
+      }catch(e){ /* drivers peru ranking no disponible aún */ }
+    }
+
     // Recalcular standings de todos los grupos al cargar
     Object.keys(GROUPS).forEach(g => calculateGroupStandings(g));
   }catch(e){
@@ -1823,10 +1840,34 @@ async function calculateRanking(){
       peruMsg = ' · (Perú URL no configurada)';
     }
 
+    // ── Drivers Perú ──
+    let driversPeruMsg = '';
+    if(GOOGLE_SHEETS_URL_DRIVERS_PERU && GOOGLE_SHEETS_URL_DRIVERS_PERU.indexOf('PEGA_AQUI') === -1){
+      try{
+        adminState.allQuinielasDriversPeru = await fetchQuinielas(GOOGLE_SHEETS_URL_DRIVERS_PERU);
+        const rankingDriversPeru = buildRankingFromQuinielas(adminState.allQuinielasDriversPeru);
+        adminState.rankingDriversPeru = rankingDriversPeru;
+        await fetch(GOOGLE_SHEETS_URL_DRIVERS_PERU, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {'Content-Type': 'text/plain;charset=utf-8'},
+          body: JSON.stringify({action:'save_ranking', ranking: rankingDriversPeru.map(r => ({
+            code: r.code, nombre: r.nombre, email: r.email, telefono: r.telefono,
+            campeon: r.campeon, goleador: r.goleador, puntos: r.puntos
+          }))})
+        });
+        driversPeruMsg = ' · Drivers Perú: '+rankingDriversPeru.length;
+      }catch(e){
+        driversPeruMsg = ' · (Error Drivers Perú: '+e.message+')';
+      }
+    } else {
+      driversPeruMsg = ' · (Drivers Perú URL no configurada)';
+    }
+
     renderRanking();
     updateAllStatuses();
     showTab('ranking');
-    showToast('✓ Usuarios: '+rankingUsuarios.length+driversMsg+peruMsg, 'success');
+    showToast('✓ Usuarios: '+rankingUsuarios.length+driversMsg+peruMsg+driversPeruMsg, 'success');
   }catch(e){
     console.error(e);
     showToast('Error: '+e.message, 'error');
@@ -1969,6 +2010,7 @@ function switchRankingView(view){
   document.getElementById('subtab-bpo').classList.toggle('active', view === 'bpo');
   document.getElementById('subtab-bipbip').classList.toggle('active', view === 'bipbip');
   document.getElementById('subtab-peru').classList.toggle('active', view === 'peru');
+  document.getElementById('subtab-drivers-peru').classList.toggle('active', view === 'drivers-peru');
   currentFilter = '';
   document.getElementById('searchInput').value = '';
   renderRanking();
@@ -1976,7 +2018,7 @@ function switchRankingView(view){
 
 function renderRanking(){
   const body = document.getElementById('rankingBody');
-  let ranking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : adminState.ranking)));
+  let ranking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : (currentRankingView === 'drivers-peru' ? adminState.rankingDriversPeru : adminState.ranking))));
   
   if (currentFilter){
     const f = currentFilter.toLowerCase();
@@ -2008,7 +2050,7 @@ function renderRanking(){
   // Stats (basadas en la vista activa, sin filtro)
   const stats = document.getElementById('statsBar');
   if (stats){
-    const fullRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : adminState.ranking)));
+    const fullRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : (currentRankingView === 'drivers-peru' ? adminState.rankingDriversPeru : adminState.ranking))));
     const total = fullRanking.length;
     const conPuntos = fullRanking.filter(r => r.puntos > 0).length;
     const maxPts = fullRanking[0] ? fullRanking[0].puntos : 0;
@@ -2030,7 +2072,7 @@ function filterRanking(){
 // DETAIL MODAL
 // ============================================
 function viewDetail(code){
-  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : adminState.ranking)));
+  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : (currentRankingView === 'drivers-peru' ? adminState.rankingDriversPeru : adminState.ranking))));
   const p = activeRanking.find(r => r.code === code);
   if (!p) return;
   const d = p.datos;
@@ -2104,12 +2146,12 @@ document.addEventListener('click', e => {
 // EXPORT CSV
 // ============================================
 function exportCSV(){
-  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : adminState.ranking)));
+  const activeRanking = currentRankingView === 'drivers' ? adminState.rankingDrivers : (currentRankingView === 'bpo' ? adminState.rankingBpo : (currentRankingView === 'bipbip' ? adminState.rankingBipbip : (currentRankingView === 'peru' ? adminState.rankingPeru : (currentRankingView === 'drivers-peru' ? adminState.rankingDriversPeru : adminState.ranking))));
   if (activeRanking.length === 0){
     showToast('No hay datos para exportar', 'error');
     return;
   }
-  const label = currentRankingView === 'drivers' ? 'drivers' : (currentRankingView === 'bpo' ? 'bpo' : (currentRankingView === 'bipbip' ? 'bipbip' : 'usuarios'));
+  const label = currentRankingView === 'drivers' ? 'drivers' : (currentRankingView === 'bpo' ? 'bpo' : (currentRankingView === 'bipbip' ? 'bipbip' : (currentRankingView === 'peru' ? 'usuarios-peru' : (currentRankingView === 'drivers-peru' ? 'drivers-peru' : 'usuarios'))));
   let csv = 'Posicion,Codigo,Nombre,Email,Telefono,Campeon,Goleador,Puntos\n';
   activeRanking.forEach((p, i) => {
     csv += (i+1)+',';
