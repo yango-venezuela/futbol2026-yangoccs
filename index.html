@@ -1417,22 +1417,28 @@ const GROUPS = {
 // Plantillas oficiales FIFA Round of 32
 // Cada partido tiene un slot fijo (1A, 2B...) y un slot de tercero con grupos elegibles
 const R32_TEMPLATE = [
-  {id:'r32_1', slotA:{type:'pos',pos:1,group:'A'}, slotB:{type:'third',eligibleGroups:['C','E','F','H','I']}},
-  {id:'r32_2', slotA:{type:'pos',pos:2,group:'A'}, slotB:{type:'pos',pos:2,group:'B'}},
-  {id:'r32_3', slotA:{type:'pos',pos:1,group:'B'}, slotB:{type:'third',eligibleGroups:['E','F','G','I','J']}},
-  {id:'r32_4', slotA:{type:'pos',pos:2,group:'D'}, slotB:{type:'pos',pos:2,group:'G'}},
-  {id:'r32_5', slotA:{type:'pos',pos:1,group:'C'}, slotB:{type:'pos',pos:2,group:'F'}},
-  {id:'r32_6', slotA:{type:'pos',pos:2,group:'E'}, slotB:{type:'pos',pos:2,group:'I'}},
-  {id:'r32_7', slotA:{type:'pos',pos:1,group:'D'}, slotB:{type:'third',eligibleGroups:['B','E','F','I','J']}},
-  {id:'r32_8', slotA:{type:'pos',pos:1,group:'G'}, slotB:{type:'third',eligibleGroups:['A','E','H','I','J']}},
-  {id:'r32_9', slotA:{type:'pos',pos:1,group:'E'}, slotB:{type:'third',eligibleGroups:['A','B','C','D','F']}},
-  {id:'r32_10', slotA:{type:'pos',pos:1,group:'F'}, slotB:{type:'pos',pos:2,group:'C'}},
-  {id:'r32_11', slotA:{type:'pos',pos:1,group:'H'}, slotB:{type:'pos',pos:2,group:'J'}},
-  {id:'r32_12', slotA:{type:'pos',pos:1,group:'J'}, slotB:{type:'pos',pos:2,group:'H'}},
+  // --- SEMIFINAL 1 (Dallas) ---
+  // Spain's quarter
+  {id:'r32_1',  slotA:{type:'pos',pos:1,group:'H'}, slotB:{type:'pos',pos:2,group:'J'}},
+  {id:'r32_2',  slotA:{type:'pos',pos:2,group:'K'}, slotB:{type:'pos',pos:2,group:'L'}},
+  {id:'r32_3',  slotA:{type:'pos',pos:1,group:'B'}, slotB:{type:'third',eligibleGroups:['E','F','G','I','J']}},
+  {id:'r32_4',  slotA:{type:'pos',pos:1,group:'F'}, slotB:{type:'pos',pos:2,group:'C'}},
+  // England's quarter
+  {id:'r32_5',  slotA:{type:'pos',pos:1,group:'L'}, slotB:{type:'third',eligibleGroups:['E','H','I','J','K']}},
+  {id:'r32_6',  slotA:{type:'pos',pos:1,group:'A'}, slotB:{type:'third',eligibleGroups:['C','E','F','H','I']}},
+  {id:'r32_7',  slotA:{type:'pos',pos:1,group:'C'}, slotB:{type:'pos',pos:2,group:'F'}},
+  {id:'r32_8',  slotA:{type:'pos',pos:2,group:'E'}, slotB:{type:'pos',pos:2,group:'I'}},
+  // --- SEMIFINAL 2 (Atlanta) ---
+  // Argentina's quarter
+  {id:'r32_9',  slotA:{type:'pos',pos:1,group:'J'}, slotB:{type:'pos',pos:2,group:'H'}},
+  {id:'r32_10', slotA:{type:'pos',pos:2,group:'D'}, slotB:{type:'pos',pos:2,group:'G'}},
+  {id:'r32_11', slotA:{type:'pos',pos:1,group:'D'}, slotB:{type:'third',eligibleGroups:['B','E','F','I','J']}},
+  {id:'r32_12', slotA:{type:'pos',pos:1,group:'G'}, slotB:{type:'third',eligibleGroups:['A','E','H','I','J']}},
+  // France's quarter
   {id:'r32_13', slotA:{type:'pos',pos:1,group:'I'}, slotB:{type:'third',eligibleGroups:['C','D','F','G','H']}},
-  {id:'r32_14', slotA:{type:'pos',pos:2,group:'K'}, slotB:{type:'pos',pos:2,group:'L'}},
+  {id:'r32_14', slotA:{type:'pos',pos:1,group:'E'}, slotB:{type:'third',eligibleGroups:['A','B','C','D','F']}},
   {id:'r32_15', slotA:{type:'pos',pos:1,group:'K'}, slotB:{type:'third',eligibleGroups:['D','E','I','J','L']}},
-  {id:'r32_16', slotA:{type:'pos',pos:1,group:'L'}, slotB:{type:'third',eligibleGroups:['E','H','I','J','K']}}
+  {id:'r32_16', slotA:{type:'pos',pos:2,group:'A'}, slotB:{type:'pos',pos:2,group:'B'}},
 ];
 
 const state = {
