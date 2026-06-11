@@ -1881,11 +1881,13 @@ function calcularPuntosQuiniela(datos){
   let total = 0;
   const grupos = ['A','B','C','D','E','F','G','H','I','J','K','L'];
   
-  // ===== Grupos =====
+  // ===== Grupos (solo si el grupo terminó: 6 partidos jugados) =====
   grupos.forEach(g => {
     const userRanking = datos.groupRankings && datos.groupRankings[g];
     const realRanking = adminState.groupRankings[g];
     if (!userRanking || userRanking.length < 2 || !realRanking || realRanking.length < 2) return;
+    const standings = adminState.groupStandings && adminState.groupStandings[g];
+    if (!standings || standings.some(s => s.pj < 3)) return; // grupo incompleto
     
     const userTeams = GROUPS[g];
     const realTeams = GROUPS[g];
