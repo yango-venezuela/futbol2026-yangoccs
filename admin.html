@@ -1779,20 +1779,32 @@ function buildRankingFromQuinielas(quinielas){
 }
 
 async function fetchQuinielas(url){
-  // Intentar get_quinielas primero; si falla o devuelve vacío, caer en load_admin
+  // Intentar get_quinielas con paginación (limit=400 para no exceder 10MB)
   try{
-    const r = await fetch(url + '?action=get_quinielas');
-    if(r.ok){
+    const all = [];
+    let offset = 0;
+    const limit = 400;
+    let hasMore = true;
+    while(hasMore){
+      const r = await fetch(`${url}?action=get_quinielas&offset=${offset}&limit=${limit}`);
+      if(!r.ok) break;
       const result = await r.json();
-      if(result.quinielas && result.quinielas.length > 0) return result.quinielas;
+      if(result.quinielas && result.quinielas.length > 0) all.push(...result.quinielas);
+      hasMore = result.hasMore === true;
+      offset += limit;
+      if(!result.hasMore && result.quinielas === undefined) break; // script sin paginación
     }
+    if(all.length > 0) return all;
   }catch(e){ /* fallback */ }
-  // Fallback: load_admin (devuelve quinielas en data.quinielas)
-  const r2 = await fetch(url + '?action=load_admin');
-  if(!r2.ok) throw new Error('No se pudo cargar quinielas de ' + url);
-  const data = await r2.json();
-  if(data.quinielas && data.quinielas.length > 0) return data.quinielas;
-  // Segundo fallback: get_all (algunos scripts lo exponen así)
+  // Fallback: load_admin
+  try{
+    const r2 = await fetch(url + '?action=load_admin');
+    if(r2.ok){
+      const data = await r2.json();
+      if(data.quinielas && data.quinielas.length > 0) return data.quinielas;
+    }
+  }catch(e){ /* ignorar */ }
+  // Segundo fallback: get_all
   try{
     const r3 = await fetch(url + '?action=get_all');
     if(r3.ok){
