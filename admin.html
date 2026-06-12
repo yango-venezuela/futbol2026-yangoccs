@@ -1779,24 +1779,28 @@ function buildRankingFromQuinielas(quinielas){
 }
 
 async function fetchQuinielas(url){
-  // Intentar get_quinielas con paginación (limit=400 para no exceder 10MB)
+  // Si el script soporta paginación (responde con hasMore), úsala; si no, cae en load_admin
   try{
-    const all = [];
-    let offset = 0;
-    const limit = 400;
-    let hasMore = true;
-    while(hasMore){
-      const r = await fetch(`${url}?action=get_quinielas&offset=${offset}&limit=${limit}`);
-      if(!r.ok) break;
+    const r = await fetch(`${url}?action=get_quinielas&offset=0&limit=400`);
+    if(r.ok){
       const result = await r.json();
-      if(result.quinielas && result.quinielas.length > 0) all.push(...result.quinielas);
-      hasMore = result.hasMore === true;
-      offset += limit;
-      if(!result.hasMore && result.quinielas === undefined) break; // script sin paginación
+      if(result.hasMore !== undefined){ // script con paginación (Peru)
+        const all = result.quinielas ? [...result.quinielas] : [];
+        let offset = 400;
+        let hasMore = result.hasMore === true;
+        while(hasMore){
+          const rn = await fetch(`${url}?action=get_quinielas&offset=${offset}&limit=400`);
+          if(!rn.ok) break;
+          const rr = await rn.json();
+          if(rr.quinielas && rr.quinielas.length > 0) all.push(...rr.quinielas);
+          hasMore = rr.hasMore === true;
+          offset += 400;
+        }
+        if(all.length > 0) return all;
+      }
     }
-    if(all.length > 0) return all;
   }catch(e){ /* fallback */ }
-  // Fallback: load_admin
+  // Fallback: load_admin (VE, BPO, BipBip)
   try{
     const r2 = await fetch(url + '?action=load_admin');
     if(r2.ok){
