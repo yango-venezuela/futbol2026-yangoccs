@@ -350,10 +350,12 @@ async function loadAll() {
 }
 
 async function fetchRanking(url) {
-  const r = await fetch(url + '?action=get_ranking');
-  if (!r.ok) throw new Error('Sin conexión');
-  const d = await r.json();
-  return (d.ranking || []).sort((a,b) => (b.puntos||0)-(a.puntos||0));
+  try {
+    const r = await fetch(url + '?action=get_ranking');
+    if (!r.ok) return [];
+    const d = await r.json();
+    return (d.ranking || []).sort((a,b) => (b.puntos||0)-(a.puntos||0));
+  } catch(e) { return []; }
 }
 
 async function fetchQuinielas(url) {
