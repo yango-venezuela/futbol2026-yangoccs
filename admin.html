@@ -1762,15 +1762,23 @@ async function sendToSheetsDrivers(payload){
 function buildRankingFromQuinielas(quinielas){
   return quinielas.map(q => {
     try{
-      const datos = JSON.parse(q.json);
+      // Soporta dos formatos: {code, json:"string"} y objeto ya parseado
+      let datos;
+      if(q.json){
+        datos = JSON.parse(q.json);
+      } else if(q.user || q.predictions || q.groupRankings){
+        datos = q;
+      } else {
+        return null;
+      }
       const puntos = calcularPuntosQuiniela(datos);
       return {
-        code: q.code,
-        nombre: datos.user.name,
-        email: datos.user.email,
-        telefono: datos.user.phone,
+        code: (q.code || datos.code || ''),
+        nombre: (datos.user && datos.user.name) || '',
+        email: (datos.user && datos.user.email) || '',
+        telefono: (datos.user && datos.user.phone) || '',
         campeon: (datos.predictions && datos.predictions.champion) ? datos.predictions.champion.name : '',
-        goleador: datos.predictions.topScorer || '',
+        goleador: (datos.predictions && datos.predictions.topScorer) || '',
         puntos: puntos,
         datos: datos
       };
