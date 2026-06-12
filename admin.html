@@ -1779,28 +1779,28 @@ function buildRankingFromQuinielas(quinielas){
 }
 
 async function fetchQuinielas(url){
-  // Si el script soporta paginación (responde con hasMore), úsala; si no, cae en load_admin
+  // 1. Paginado (Peru): responde con hasMore
   try{
-    const r = await fetch(`${url}?action=get_quinielas&offset=0&limit=400`);
+    const r = await fetch(`${url}?action=get_quinielas&offset=0&limit=200`);
     if(r.ok){
       const result = await r.json();
-      if(result.hasMore !== undefined){ // script con paginación (Peru)
+      if(result.hasMore !== undefined){
         const all = result.quinielas ? [...result.quinielas] : [];
-        let offset = 400;
+        let offset = 200;
         let hasMore = result.hasMore === true;
         while(hasMore){
-          const rn = await fetch(`${url}?action=get_quinielas&offset=${offset}&limit=400`);
+          const rn = await fetch(`${url}?action=get_quinielas&offset=${offset}&limit=200`);
           if(!rn.ok) break;
           const rr = await rn.json();
           if(rr.quinielas && rr.quinielas.length > 0) all.push(...rr.quinielas);
           hasMore = rr.hasMore === true;
-          offset += 400;
+          offset += 200;
         }
         if(all.length > 0) return all;
       }
     }
   }catch(e){ /* fallback */ }
-  // Fallback: load_admin (VE, BPO, BipBip)
+  // 2. load_admin (VE Usuarios, VE Drivers)
   try{
     const r2 = await fetch(url + '?action=load_admin');
     if(r2.ok){
@@ -1808,12 +1808,20 @@ async function fetchQuinielas(url){
       if(data.quinielas && data.quinielas.length > 0) return data.quinielas;
     }
   }catch(e){ /* ignorar */ }
-  // Segundo fallback: get_all
+  // 3. get_quinielas sin paginación (BipBip, BPO)
   try{
-    const r3 = await fetch(url + '?action=get_all');
+    const r3 = await fetch(url + '?action=get_quinielas');
     if(r3.ok){
       const d3 = await r3.json();
       if(d3.quinielas && d3.quinielas.length > 0) return d3.quinielas;
+    }
+  }catch(e){ /* ignorar */ }
+  // 4. get_all último recurso
+  try{
+    const r4 = await fetch(url + '?action=get_all');
+    if(r4.ok){
+      const d4 = await r4.json();
+      if(d4.quinielas && d4.quinielas.length > 0) return d4.quinielas;
     }
   }catch(e){ /* ignorar */ }
   return [];
